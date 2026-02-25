@@ -1,0 +1,143 @@
+import { QuizQuestion } from "@/types/quiz";
+
+export const QUIZ_QUESTIONS: QuizQuestion[] = [
+  {
+    id: "job_title",
+    question: "What best describes your current role?",
+    description: "This helps us calibrate your AI risk assessment to your industry.",
+    category: "domain_expertise",
+    options: [
+      { label: "Software Engineer / Developer", value: "software_engineer", weight: 5 },
+      { label: "Designer (UX/UI/Graphic)", value: "designer", weight: 6 },
+      { label: "Marketing / Content", value: "marketing", weight: 4 },
+      { label: "Data / Analytics", value: "data_analytics", weight: 5 },
+      { label: "Management / Leadership", value: "management", weight: 7 },
+      { label: "Sales / Business Development", value: "sales", weight: 6 },
+      { label: "Finance / Accounting", value: "finance", weight: 4 },
+      { label: "Healthcare Professional", value: "healthcare", weight: 7 },
+      { label: "Education / Teaching", value: "education", weight: 6 },
+      { label: "Other", value: "other", weight: 5 },
+    ],
+  },
+  {
+    id: "creative_work",
+    question: "How much of your work requires original creative thinking?",
+    description: "AI struggles most with novel, imaginative problem-solving.",
+    category: "creativity",
+    options: [
+      { label: "Almost everything I do is creative and novel", value: "mostly_creative", weight: 9 },
+      { label: "A good mix of creative and routine work", value: "balanced", weight: 6 },
+      { label: "Mostly routine with occasional creative tasks", value: "mostly_routine", weight: 3 },
+      { label: "My work is highly standardized and repeatable", value: "standardized", weight: 1 },
+    ],
+  },
+  {
+    id: "human_interaction",
+    question: "How central is face-to-face human interaction to your role?",
+    description: "Roles requiring empathy, negotiation, and physical presence are harder to automate.",
+    category: "interpersonal",
+    options: [
+      { label: "Essential — I can't do my job without in-person interaction", value: "essential", weight: 9 },
+      { label: "Important — regular client/team face time", value: "important", weight: 7 },
+      { label: "Moderate — some meetings but mostly independent", value: "moderate", weight: 4 },
+      { label: "Minimal — I work mostly alone or asynchronously", value: "minimal", weight: 2 },
+    ],
+  },
+  {
+    id: "decision_complexity",
+    question: "How complex and ambiguous are the decisions you make daily?",
+    description: "High-stakes, nuanced decisions with incomplete information are AI's weakness.",
+    category: "leadership",
+    options: [
+      { label: "Extremely complex — multi-stakeholder, high-stakes decisions", value: "extreme", weight: 9 },
+      { label: "Complex — requires judgment and experience", value: "complex", weight: 7 },
+      { label: "Moderate — some judgment calls, mostly clear guidelines", value: "moderate", weight: 4 },
+      { label: "Simple — clear rules and processes to follow", value: "simple", weight: 1 },
+    ],
+  },
+  {
+    id: "tool_usage",
+    question: "How do you currently use AI tools in your work?",
+    description: "Your relationship with AI tools signals your adaptability.",
+    category: "adaptability",
+    options: [
+      { label: "I use AI daily and it makes me significantly more productive", value: "power_user", weight: 8 },
+      { label: "I use AI occasionally for specific tasks", value: "occasional", weight: 6 },
+      { label: "I've tried AI tools but don't use them regularly", value: "tried", weight: 4 },
+      { label: "I haven't used AI tools for work", value: "none", weight: 2 },
+    ],
+  },
+  {
+    id: "learning_speed",
+    question: "How quickly do you typically learn and adopt new technologies?",
+    description: "Adaptability is the #1 predictor of career resilience in the AI era.",
+    category: "adaptability",
+    options: [
+      { label: "Very fast — I'm usually an early adopter", value: "very_fast", weight: 9 },
+      { label: "Fast — I pick things up quickly when needed", value: "fast", weight: 7 },
+      { label: "Average — I learn at a steady pace", value: "average", weight: 4 },
+      { label: "Slow — I prefer sticking with what I know", value: "slow", weight: 1 },
+    ],
+  },
+  {
+    id: "domain_depth",
+    question: "How deep is your specialized knowledge in your field?",
+    description: "Deep expertise in niche areas is harder for AI to replicate.",
+    category: "domain_expertise",
+    options: [
+      { label: "World-class — I'm a recognized expert in my niche", value: "expert", weight: 9 },
+      { label: "Deep — years of specialized experience", value: "deep", weight: 7 },
+      { label: "Solid — good general knowledge of my field", value: "solid", weight: 4 },
+      { label: "Surface — I could be replaced by someone with basic training", value: "surface", weight: 1 },
+    ],
+  },
+  {
+    id: "physical_presence",
+    question: "Does your job require physical presence or hands-on work?",
+    description: "Physical tasks remain one of AI's biggest limitations.",
+    category: "interpersonal",
+    options: [
+      { label: "Yes — hands-on physical work is essential", value: "essential", weight: 9 },
+      { label: "Sometimes — a mix of physical and digital work", value: "sometimes", weight: 6 },
+      { label: "Rarely — mostly digital with occasional in-person needs", value: "rarely", weight: 3 },
+      { label: "Never — my job is 100% digital/remote-capable", value: "never", weight: 1 },
+    ],
+  },
+  {
+    id: "data_patterns",
+    question: "How much of your work involves recognizing patterns in data?",
+    description: "Pattern recognition in structured data is AI's strongest capability.",
+    category: "technical",
+    options: [
+      { label: "It's the core of what I do", value: "core", weight: 2 },
+      { label: "A significant part of my work", value: "significant", weight: 4 },
+      { label: "Occasionally relevant", value: "occasional", weight: 6 },
+      { label: "Not really part of my role", value: "none", weight: 8 },
+    ],
+  },
+  {
+    id: "strategic_thinking",
+    question: "How much does your role involve long-term strategic planning?",
+    description: "Strategic vision across complex systems remains uniquely human.",
+    category: "leadership",
+    options: [
+      { label: "I set the vision and strategy for my organization", value: "vision_setter", weight: 9 },
+      { label: "I contribute to strategic planning regularly", value: "contributor", weight: 7 },
+      { label: "I sometimes provide input on strategy", value: "sometimes", weight: 4 },
+      { label: "I execute on plans others create", value: "executor", weight: 2 },
+    ],
+  },
+];
+
+export const JOB_TITLE_MAP: Record<string, string> = {
+  software_engineer: "Software Engineer",
+  designer: "Designer",
+  marketing: "Marketing Professional",
+  data_analytics: "Data Analyst",
+  management: "Manager",
+  sales: "Sales Professional",
+  finance: "Finance Professional",
+  healthcare: "Healthcare Professional",
+  education: "Educator",
+  other: "Professional",
+};
