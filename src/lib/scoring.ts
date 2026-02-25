@@ -1,4 +1,4 @@
-import { QuizAnswers, ScoreResult, SkillRisk } from "./types";
+import { QuizAnswers, ScoreResult } from "./types";
 import { quizQuestions } from "./questions";
 
 function getRiskLabel(score: number): "Low" | "Medium" | "High" {
@@ -84,7 +84,7 @@ export function calculateScore(answers: QuizAnswers): ScoreResult {
   const clampedScore = Math.max(0, Math.min(100, overallScore));
 
   // Build skill breakdown from selected skills
-  const skillBreakdown: SkillRisk[] = answers.skills.map((skillValue) => {
+  const skillBreakdown: ScoreResult["skillBreakdown"] = answers.skills.map((skillValue) => {
     const question = quizQuestions.find((q) => q.id === "skills");
     const option = question?.options.find((o) => o.value === skillValue);
     const risk = option?.riskWeight ?? 40;
@@ -96,7 +96,7 @@ export function calculateScore(answers: QuizAnswers): ScoreResult {
   });
 
   // Add task-based risks
-  const taskBreakdown: SkillRisk[] = answers.tasks.map((taskValue) => {
+  const taskBreakdown: ScoreResult["skillBreakdown"] = answers.tasks.map((taskValue) => {
     const question = quizQuestions.find((q) => q.id === "tasks");
     const option = question?.options.find((o) => o.value === taskValue);
     const risk = option?.riskWeight ?? 40;

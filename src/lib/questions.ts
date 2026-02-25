@@ -1,6 +1,6 @@
-import { QuizQuestion } from "./types";
+import { AssessmentQuestion } from "./types";
 
-export const quizQuestions: QuizQuestion[] = [
+export const quizQuestions: AssessmentQuestion[] = [
   {
     id: "jobTitle",
     title: "What's your job title?",

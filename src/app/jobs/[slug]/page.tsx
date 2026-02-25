@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { JOB_CATEGORIES } from "@/lib/scoring";
+import { jobCategories } from "@/data/job-categories";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
@@ -288,7 +288,7 @@ export default async function JobSEOPage({ params }: { params: Promise<{ slug: s
         <div className="mt-8 text-center">
           <p className="text-sm text-gray-500">
             See all{" "}
-            <span className="text-accent">{JOB_CATEGORIES.length}</span>{" "}
+            <span className="text-accent">{jobCategories.length}</span>{" "}
             job categories analyzed
           </p>
         </div>

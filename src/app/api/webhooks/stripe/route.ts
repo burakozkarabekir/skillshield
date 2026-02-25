@@ -19,12 +19,15 @@ import Stripe from "stripe";
  *   stripe listen --forward-to localhost:3000/api/webhooks/stripe
  */
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: "2025-02-24.acacia",
-  typescript: true,
-});
+function getStripe() {
+  return new Stripe(process.env.STRIPE_SECRET_KEY!, {
+    apiVersion: "2025-02-24.acacia",
+    typescript: true,
+  });
+}
 
 export async function POST(request: Request) {
+  const stripe = getStripe();
   const body = await request.text();
   const headersList = await headers();
   const signature = headersList.get("stripe-signature");

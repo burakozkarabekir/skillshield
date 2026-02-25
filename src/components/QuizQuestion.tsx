@@ -1,10 +1,10 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { QuizQuestion as QuizQuestionType } from "@/lib/types";
+import { AssessmentQuestion } from "@/lib/types";
 
 interface QuizQuestionProps {
-  question: QuizQuestionType;
+  question: AssessmentQuestion;
   value: string | string[];
   onChange: (value: string | string[]) => void;
 }
