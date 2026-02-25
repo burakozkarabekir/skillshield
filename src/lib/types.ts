@@ -109,3 +109,32 @@ export interface JobCategory {
   /** Industry velocity modifier (-10 to +10, added to industryVelocity) */
   industryModifier: number;
 }
+
+// ─── Assessment Quiz Types (alternative quiz format) ────────────────────────
+
+export interface QuizAnswers {
+  jobTitle: string;
+  industry: string;
+  experience: string;
+  skills: string[];
+  tasks: string[];
+}
+
+export interface ScoreResult {
+  overallScore: number; // 0-100
+  riskLevel: "Low" | "Medium" | "High";
+  skillBreakdown: { skill: string; risk: number; label: "Low" | "Medium" | "High" }[];
+  jobTitle: string;
+  industry: string;
+  headline: string;
+  description: string;
+}
+
+export interface AssessmentQuestion {
+  id: keyof QuizAnswers;
+  title: string;
+  subtitle: string;
+  type: "single" | "multi" | "search";
+  options: { value: string; label: string; riskWeight?: number }[];
+  maxSelections?: number;
+}
