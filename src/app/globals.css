@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+@layer base {
+  body {
+    @apply bg-gray-950 text-white antialiased;
+  }
+}
+
+@layer components {
+  .quiz-option {
+    @apply relative flex cursor-pointer items-center rounded-xl border-2 border-gray-800 bg-gray-900/50 px-4 py-3 text-sm font-medium text-gray-300 transition-all duration-200 hover:border-shield-600 hover:bg-gray-900 hover:text-white;
+  }
+
+  .quiz-option-selected {
+    @apply border-shield-500 bg-shield-500/10 text-white ring-1 ring-shield-500/30;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-xl bg-shield-600 px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-shield-500 disabled:cursor-not-allowed disabled:opacity-40;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-xl border border-gray-700 bg-gray-900 px-6 py-3 text-sm font-semibold text-gray-300 transition-all duration-200 hover:border-gray-600 hover:text-white;
+  }
+
+  .score-ring {
+    @apply relative flex h-48 w-48 items-center justify-center rounded-full;
+    background: conic-gradient(
+      var(--ring-color) calc(var(--score) * 1%),
+      rgba(255, 255, 255, 0.08) calc(var(--score) * 1%)
+    );
+  }
+
+  .score-ring-inner {
+    @apply flex h-40 w-40 flex-col items-center justify-center rounded-full bg-gray-950;
+  }
+}
+
+/* Smooth slide transitions */
+.slide-enter {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+.slide-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms ease-out, transform 300ms ease-out;
+}
+
+.slide-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.slide-exit-active {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 200ms ease-in, transform 200ms ease-in;
+}
+
+/* Progress bar animation */
+@keyframes progress-fill {
+  from { width: 0%; }
+}
+
+.animate-progress {
+  animation: progress-fill 0.5s ease-out;
+}
+
+/* Score counter animation */
+@keyframes count-up {
+  from { opacity: 0; transform: scale(0.5); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.animate-score {
+  animation: count-up 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Risk bar animation */
+@keyframes risk-bar-fill {
+  from { width: 0%; }
+}
+
+.animate-risk-bar {
+  animation: risk-bar-fill 0.6s ease-out forwards;
+}
