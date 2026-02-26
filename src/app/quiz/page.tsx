@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { quizIntro, progress, questions, quizComplete } from "@/copy/quiz";
+import { quizIntro, progress, quizComplete } from "@/copy/quiz";
 import { loading, errors, validation, nav, a11y } from "@/copy/microcopy";
 import { quizQuestions } from "@/data/quiz-questions";
 
@@ -13,8 +13,8 @@ export default function QuizPage() {
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [selectedValue, setSelectedValue] = useState<string | null>(null);
 
-  const totalQuestions = questions.length;
-  const currentQuestion = questions[currentIndex];
+  const totalQuestions = quizQuestions.length;
+  const currentQuestion = quizQuestions[currentIndex];
 
   function getEncouragement() {
     const pct = currentIndex / totalQuestions;
@@ -40,19 +40,9 @@ export default function QuizPage() {
     } else {
       setState("submitting");
 
-      // Map quiz copy answers to scoring engine format
+      // Build scoring payload directly from quiz-questions data
       const quizAnswerPayload = Object.entries(newAnswers).map(
-        ([questionId, answerId]) => {
-          // Find the matching quiz question from scoring data
-          const scoringQ = quizQuestions.find((q) => {
-            return q.answers.some((a) => a.id === answerId);
-          });
-          if (scoringQ) {
-            return { questionId: scoringQ.id, answerId };
-          }
-          // Fallback for copy-based questions: pass through
-          return { questionId, answerId };
-        }
+        ([questionId, answerId]) => ({ questionId, answerId })
       );
 
       try {
@@ -61,7 +51,7 @@ export default function QuizPage() {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             answers: quizAnswerPayload,
-            jobCategoryId: "other", // Default; could be derived from answers
+            jobCategoryId: "other",
           }),
         });
 
@@ -70,26 +60,20 @@ export default function QuizPage() {
           if (data.scoreId) {
             window.location.href = `/results?scoreId=${data.scoreId}`;
           } else {
-            // Fallback: redirect with answers as URL params
-            const params = new URLSearchParams(newAnswers);
-            window.location.href = `/results?${params.toString()}`;
+            setState("error");
           }
         } else {
-          // Fallback: redirect with answers
-          const params = new URLSearchParams(newAnswers);
-          window.location.href = `/results?${params.toString()}`;
+          setState("error");
         }
       } catch {
-        // Fallback: redirect with answers if API fails
-        const params = new URLSearchParams(newAnswers);
-        window.location.href = `/results?${params.toString()}`;
+        setState("error");
       }
     }
   }
 
   function handleBack() {
     if (currentIndex > 0) {
-      const prevQuestion = questions[currentIndex - 1];
+      const prevQuestion = quizQuestions[currentIndex - 1];
       setSelectedValue(answers[prevQuestion.id] || null);
       setCurrentIndex(currentIndex - 1);
     }
@@ -201,21 +185,23 @@ export default function QuizPage() {
 
         {/* Question */}
         <h2 className="text-2xl font-bold">{currentQuestion.question}</h2>
-        <p className="mt-2 text-sm text-muted">{currentQuestion.context}</p>
+        {currentQuestion.helpText && (
+          <p className="mt-2 text-sm text-muted">{currentQuestion.helpText}</p>
+        )}
 
         {/* Options */}
         <div className="mt-8 space-y-3">
-          {currentQuestion.options.map((option) => (
+          {currentQuestion.answers.map((answer) => (
             <button
-              key={option.value}
-              onClick={() => handleSelect(option.value)}
+              key={answer.id}
+              onClick={() => handleSelect(answer.id)}
               className={`w-full text-left rounded-lg border px-5 py-4 transition-colors cursor-pointer ${
-                selectedValue === option.value
+                selectedValue === answer.id
                   ? "border-accent bg-accent/5 font-medium"
                   : "border-border hover:border-accent/50"
               }`}
             >
-              {option.label}
+              {answer.text}
             </button>
           ))}
         </div>

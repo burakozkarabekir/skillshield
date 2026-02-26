@@ -35,7 +35,7 @@ export const progress = {
     quarter: "İyi başlangıç. Devam et.",
     halfway: "Yarıya geldin. İlginçleşiyor.",
     threeQuarter: "Neredeyse bitti. Asıl güzel kısmı şimdi geliyor.",
-    final: "Son soru. Adam gibi cevapla.",
+    final: "Son soru. En dürüst cevabını ver.",
   },
 } as const;
 
