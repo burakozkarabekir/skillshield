@@ -55,7 +55,7 @@ export default function QuizQuestion({
       <p className="mb-6 text-sm text-gray-400">
         {question.subtitle}
         {isMulti && question.maxSelections && (
-          <span className="ml-1 text-shield-400">
+          <span className="ml-1 text-adapt-400">
             ({currentSelections}/{question.maxSelections} seçildi)
           </span>
         )}
@@ -69,7 +69,7 @@ export default function QuizQuestion({
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Rolünü ara..."
-            className="w-full rounded-xl border border-gray-800 bg-gray-900/50 px-4 py-3 text-sm text-white placeholder-gray-500 outline-none transition-colors focus:border-shield-600 focus:ring-1 focus:ring-shield-600/30"
+            className="w-full rounded-xl border border-gray-800 bg-gray-900/50 px-4 py-3 text-sm text-white placeholder-gray-500 outline-none transition-colors focus:border-adapt-600 focus:ring-1 focus:ring-adapt-600/30"
           />
         </div>
       )}
@@ -108,7 +108,7 @@ export default function QuizQuestion({
                 isMulti ? "md" : "full"
               } border-2 transition-colors ${
                 isSelected(option.value)
-                  ? "border-shield-500 bg-shield-500"
+                  ? "border-adapt-500 bg-adapt-500"
                   : "border-gray-600"
               }`}
             >

@@ -1,5 +1,5 @@
 /**
- * SkillShield Copy — Central Export
+ * AdaptAI Copy — Central Export
  *
  * All app copy lives in this directory.
  * Import from "@/copy" to access any text in the app.

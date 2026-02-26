@@ -1,11 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import { calculateScore } from "@/lib/scoring-engine";
 import { QuizAnswer } from "@/lib/types";
-import { kv, keys } from "@/lib/kv";
+import { kv, keys, addEmailScoreAssociation, getEmailScores } from "@/lib/kv";
+import type { ScoringResult } from "@/lib/types";
 
 interface ScoreRequest {
   answers: QuizAnswer[];
   jobCategoryId: string;
+  email?: string;
 }
 
 /**
@@ -63,7 +65,35 @@ export async function POST(request: NextRequest) {
 
     await kv.set(keys.score(scoreId), resultWithId, { ex: 60 * 60 * 24 * 90 }); // 90 days TTL
 
-    return NextResponse.json(resultWithId);
+    // Fetch previous score for comparison (if email provided)
+    let previousScore: { overallScore: number; dimensions: ScoringResult["dimensions"]; createdAt: number } | null = null;
+    if (body.email && typeof body.email === "string" && body.email.includes("@")) {
+      // Get previous scores before adding the new one
+      const existingScores = await getEmailScores(body.email);
+      if (existingScores.length > 0) {
+        // Most recent previous score
+        const sorted = existingScores.sort((a, b) => b.createdAt - a.createdAt);
+        const prevEntry = sorted[0];
+        const prevData = await kv.get<ScoringResult>(keys.score(prevEntry.scoreId));
+        if (prevData) {
+          previousScore = {
+            overallScore: prevData.overallScore,
+            dimensions: prevData.dimensions,
+            createdAt: prevEntry.createdAt,
+          };
+        }
+      }
+
+      // Associate email with score (non-blocking)
+      addEmailScoreAssociation(body.email, {
+        scoreId,
+        overallScore: result.overallScore,
+        jobCategoryId: body.jobCategoryId,
+        createdAt: Date.now(),
+      }).catch((err) => console.error("[Score] Email association failed:", err));
+    }
+
+    return NextResponse.json({ ...resultWithId, previousScore });
   } catch (error) {
     const message =
       error instanceof Error ? error.message : "Internal server error";

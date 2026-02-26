@@ -22,7 +22,7 @@ function generateHeadline(score: number, jobTitle: string): string {
     quizQuestions[0].options.find((o) => o.value === jobTitle)?.label ??
     "Professional";
 
-  if (score <= 20) return `${titleLabel}s are well-shielded from AI disruption`;
+  if (score <= 20) return `${titleLabel}s are well-protected from AI disruption`;
   if (score <= 35) return `${titleLabel}s have a strong position in the AI era`;
   if (score <= 50)
     return `${titleLabel}s face moderate AI automation pressure`;

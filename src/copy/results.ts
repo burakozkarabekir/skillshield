@@ -1,5 +1,5 @@
 /**
- * Sonuçlar / Skor Açıklama Sayfası Metinleri — SkillShield
+ * Sonuçlar / Skor Açıklama Sayfası Metinleri — AdaptAI
  *
  * Duygusal hedef: Duygusal zirve (rahatlama veya aciliyet)
  *   → sonra paylaşma isteği
@@ -129,7 +129,7 @@ export const skillBreakdown = {
   ],
   categories: {
     shielded: {
-      label: "Kalkan Becerilerin",
+      label: "Korunan Becerilerin",
       description: "Yapay zeka bunlara dokunamaz. Seni vazgeçilmez yapıyorlar.",
     },
     atRisk: {

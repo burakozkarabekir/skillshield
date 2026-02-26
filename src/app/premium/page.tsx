@@ -62,7 +62,7 @@ export default function PremiumPage() {
 
         {/* Pricing Card */}
         <div className="mt-16 rounded-2xl border-2 border-accent bg-card-bg p-8 sm:p-12 text-center">
-          <h2 className="text-2xl font-bold">SkillShield Pro</h2>
+          <h2 className="text-2xl font-bold">AdaptAI Pro</h2>
           <p className="mt-6 text-5xl font-bold">
             {premiumCta.pricing.amount}
           </p>

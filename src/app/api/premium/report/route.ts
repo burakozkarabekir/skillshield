@@ -52,7 +52,7 @@ export async function GET(request: Request) {
     status: 200,
     headers: {
       "Content-Type": "application/pdf",
-      "Content-Disposition": `attachment; filename="skillshield-rapor-${scoreId}.pdf"`,
+      "Content-Disposition": `attachment; filename="adaptai-rapor-${scoreId}.pdf"`,
       "Cache-Control": "private, max-age=3600",
     },
   });

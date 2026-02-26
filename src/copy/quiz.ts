@@ -1,10 +1,10 @@
 /**
- * Quiz Sayfası Metinleri — SkillShield
+ * Quiz Sayfası Metinleri — AdaptAI
  *
  * Duygusal hedef: Katılım + artan yatırım
  * Sorular kişiselleştirilmiş ve içgörülü hissettirmeli, bürokratik değil.
  *
- * 25 soru, her birinde 4–5 cevap seçeneği.
+ * 32 soru, her birinde 4–5 cevap seçeneği.
  * Sorular kolay/rahat → daha araştırıcı/düşündürücü şeklinde ilerler.
  */
 
@@ -12,13 +12,13 @@
 export const quizIntro = {
   headlines: [
     "Gerçek riskini öğrenelim.",
-    "25 soru. Sadece dürüst cevaplar.",
+    "32 soru. Sadece dürüst cevaplar.",
     "Gerçeği öğrenmeye hazır mısın?",
   ],
   subheads: [
     "Her cevap gerçek bir yapay zeka yetenek ölçütüyle eşleşiyor. Boş soru yok.",
     "Detaylı cevapla. Ne kadar dürüst olursan, skorun o kadar işe yarar.",
-    "Bu yaklaşık 5 dakika sürer. Kariyer netliğin çok daha uzun sürer.",
+    "Bu yaklaşık 7 dakika sürer. Kariyer netliğin çok daha uzun sürer.",
   ],
 } as const;
 

@@ -4,19 +4,21 @@
 // and WEF Future of Jobs 2025.
 
 export interface ScoringWeights {
-  taskComposition: number; // 0.30 — What % of tasks are routine-cognitive?
-  skillReplaceability: number; // 0.25 — Can AI do these skills now/soon/not yet?
-  industryVelocity: number; // 0.20 — How fast is the industry adopting AI?
+  taskComposition: number; // 0.25 — What % of tasks are routine-cognitive?
+  skillReplaceability: number; // 0.20 — Can AI do these skills now/soon/not yet?
+  industryVelocity: number; // 0.15 — How fast is the industry adopting AI?
   experienceMoat: number; // 0.10 — Does seniority create defensibility?
   humanInteraction: number; // 0.15 — How much requires human judgment/presence?
+  aiReadiness: number; // 0.15 — How prepared is the person for AI integration?
 }
 
 export const DEFAULT_WEIGHTS: ScoringWeights = {
-  taskComposition: 0.3,
-  skillReplaceability: 0.25,
-  industryVelocity: 0.2,
+  taskComposition: 0.25,
+  skillReplaceability: 0.2,
+  industryVelocity: 0.15,
   experienceMoat: 0.1,
   humanInteraction: 0.15,
+  aiReadiness: 0.15,
 };
 
 // ─── Quiz Types ─────────────────────────────────────────────────────────────

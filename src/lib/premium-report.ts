@@ -170,6 +170,16 @@ function generateDimensionRecommendations(dim: DimensionScore): string[] {
         recs.push("Yapay zekayı idari görevlerde kullanarak insanlarla daha fazla vakit geçir");
       }
       break;
+    case "aiReadiness":
+      if (dim.score >= 60) {
+        recs.push("Bu hafta içinde en az bir yapay zeka aracını günlük iş akışına entegre et");
+        recs.push("Yapay zeka okuryazarlığı kursu al — Coursera AI For Everyone iyi bir başlangıç");
+        recs.push("6 aylık bir yapay zeka öğrenme planı oluştur ve takvime işle");
+      } else {
+        recs.push("Mevcut yapay zeka bilgini derinleştir — ileri düzey prompt mühendisliği öğren");
+        recs.push("İş yerinde yapay zeka şampiyonu rolünü üstlen ve ekibine öğret");
+      }
+      break;
   }
   return recs;
 }

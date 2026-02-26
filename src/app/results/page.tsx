@@ -6,8 +6,14 @@ import { scoreReveal, scoreContext, taskBreakdown, skillBreakdown, insights, sco
 import { sharePrompt } from "@/copy/share";
 import { premiumCta, emailCapture } from "@/copy/premium";
 import { loading, errors, empty, a11y } from "@/copy/microcopy";
-import type { ScoringResult } from "@/lib/types";
+import type { ScoringResult, DimensionScore } from "@/lib/types";
 import ResultsView from "@/components/ResultsView";
+
+interface PreviousScoreData {
+  overallScore: number;
+  dimensions: DimensionScore[];
+  createdAt: number;
+}
 
 /**
  * Simulated score calculation based on quiz answers (fallback).
@@ -303,7 +309,7 @@ function PremiumCtaSection({ scoreId }: { scoreId?: string }) {
 // ─── API-based results (when scoreId is available) ──────────────────────────
 
 function APIResultsContent({ scoreId }: { scoreId: string }) {
-  const [result, setResult] = useState<(ScoringResult & { scoreId?: string }) | null>(null);
+  const [result, setResult] = useState<(ScoringResult & { scoreId?: string; previousScore?: PreviousScoreData | null }) | null>(null);
   const [error, setError] = useState(false);
 
   useEffect(() => {
@@ -336,9 +342,15 @@ function APIResultsContent({ scoreId }: { scoreId: string }) {
     );
   }
 
+  const previousScore = result.previousScore ?? undefined;
+
   return (
     <div className="px-6 py-12">
-      <ResultsView result={result} onRetake={() => (window.location.href = "/quiz")} />
+      <ResultsView
+        result={result}
+        onRetake={() => (window.location.href = "/quiz")}
+        previousScore={previousScore}
+      />
     </div>
   );
 }

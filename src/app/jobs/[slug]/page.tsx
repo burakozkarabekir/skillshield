@@ -119,7 +119,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!job) return {};
 
   return {
-    title: `${job.title} Yapay Zeka Risk Skoru: ${job.risk}/100 — Yapay Zeka ${job.title} Mesleğinin Yerini Alacak mı? | SkillShield`,
+    title: `${job.title} Yapay Zeka Risk Skoru: ${job.risk}/100 — Yapay Zeka ${job.title} Mesleğinin Yerini Alacak mı? | AdaptAI`,
     description: `${job.title} yapay zeka otomasyon riski ${job.risk}/100 (${job.category}). ${job.description.slice(0, 120)}... Kişiselleştirilmiş skorunu al.`,
     openGraph: {
       title: `${job.title} Yapay Zeka Riski: ${job.risk}/100 — Mesleğin Güvende mi?`,
@@ -278,7 +278,7 @@ export default async function JobSEOPage({ params }: { params: Promise<{ slug: s
               description: job.description,
               author: {
                 "@type": "Organization",
-                name: "SkillShield",
+                name: "AdaptAI",
               },
             }),
           }}

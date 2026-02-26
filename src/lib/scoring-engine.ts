@@ -20,6 +20,7 @@ const DIMENSION_LABELS: Record<Dimension, string> = {
   industryVelocity: "Sektör Benimseme Hızı",
   experienceMoat: "Deneyim & Uzmanlık Kalkanı",
   humanInteraction: "İnsan Etkileşimi Bağımlılığı",
+  aiReadiness: "Yapay Zeka Hazırlık Durumu",
 };
 
 const DIMENSION_EXPLANATIONS: Record<Dimension, (score: number) => string> = {
@@ -53,6 +54,12 @@ const DIMENSION_EXPLANATIONS: Record<Dimension, (score: number) => string> = {
       : s >= 40
         ? "İşinin dijital ve yüz yüze bileşenleri karışık. Yüz yüze unsurlar otomasyona karşı savunulabilirlik ekliyor."
         : "İşin temelde insan varlığı, empati veya fiziksel beceri gerektiriyor — yapay zeka otomasyonuna karşı en güçlü koruma.",
+  aiReadiness: (s) =>
+    s >= 70
+      ? "Yapay zeka araçlarına aşinalığın düşük ve iş akışına entegrasyon planın yok. Bu, değişime uyum sağlama kapasiteni sınırlıyor ve riski artırıyor."
+      : s >= 40
+        ? "Yapay zeka araçlarını bir miktar kullanıyorsun ama sistematik bir öğrenme planın yok. Daha bilinçli bir yaklaşım risk profilini iyileştirir."
+        : "Yapay zeka araçlarını aktif kullanıyor ve gelişmeleri takip ediyorsun. Bu proaktif tutum, değişime uyum kapasiteni güçlendiriyor ve riskini azaltıyor.",
 };
 
 // ─── Risk Labels & Summaries ────────────────────────────────────────────────
@@ -165,6 +172,7 @@ function computeDimensionScores(
     industryVelocity: [],
     experienceMoat: [],
     humanInteraction: [],
+    aiReadiness: [],
   };
 
   for (const answer of answers) {

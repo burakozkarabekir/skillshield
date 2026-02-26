@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { getStripe } from "@/lib/stripe";
 
 /**
- * POST /api/checkout — Create a Stripe Checkout session for SkillShield Pro.
+ * POST /api/checkout — Create a Stripe Checkout session for AdaptAI Pro.
  *
  * Body: { scoreId?: string, email?: string }
  * Returns: { url: string } — Stripe hosted checkout URL
@@ -33,7 +33,7 @@ export async function POST(request: Request) {
             currency: "try",
             unit_amount: 14900, // 149.00 TL
             product_data: {
-              name: "SkillShield Pro — Detaylı Kariyer Raporu",
+              name: "AdaptAI Pro — Detaylı Kariyer Raporu",
               description:
                 "Detaylı skor raporu, kişiselleştirilmiş öneri planı ve PDF kariyer raporu",
             },

@@ -2,7 +2,12 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "nextjs",
   "regions": ["iad1"],
-  "crons": [],
+  "crons": [
+    {
+      "path": "/api/cron/reminder",
+      "schedule": "0 9 * * *"
+    }
+  ],
   "functions": {
     "src/app/api/og/route.tsx": {
       "maxDuration": 10
@@ -15,6 +20,9 @@
     },
     "src/app/api/score/route.ts": {
       "maxDuration": 10
+    },
+    "src/app/api/cron/reminder/route.ts": {
+      "maxDuration": 60
     }
   }
 }

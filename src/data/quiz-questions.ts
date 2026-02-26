@@ -2,7 +2,7 @@ import { QuizQuestion } from "@/lib/types";
 
 /**
  * Quiz soruları puanlama boyutlarıyla eşleştirilmiş.
- * 25 soru — yaklaşık 5 dakika sürer.
+ * 32 soru — yaklaşık 7 dakika sürer.
  *
  * Puan anlamı: yüksek puan = yapay zeka otomasyonundan DAHA FAZLA risk altında.
  * Her cevabın puanı (0-100) o boyut için risk katkısını temsil eder.
@@ -949,6 +949,265 @@ export const quizQuestions: QuizQuestion[] = [
         score: 5,
         reasoning:
           "Tamamen güven ve itibar temelli kariyer yapay zekaya en dirençli. Kişisel marka otomatikleştirilemez.",
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // BOYUT: aiReadiness (ağırlık: 0.15)
+  // Araştırma temeli: WEF Future of Jobs 2025 — yapay zeka okuryazarlığı ve
+  // proaktif adaptasyon, kariyer direncinin en güçlü belirleyicilerinden.
+  // NOT: Bu boyutta YÜKSEK puan = DAHA FAZLA risk (hazırlıksız = riskli).
+  // ═══════════════════════════════════════════════════════════════════════════
+  {
+    id: "air1",
+    dimension: "aiReadiness",
+    question: "Yapay zeka araçlarını ne sıklıkla kullanıyorsun?",
+    helpText: "ChatGPT, Copilot, Midjourney, Claude gibi araçları düşün.",
+    answers: [
+      {
+        id: "air1-a",
+        text: "Hiç kullanmıyorum ve kullanmayı düşünmüyorum",
+        score: 90,
+        reasoning:
+          "Yapay zeka araçlarını hiç kullanmamak, adaptasyon kapasitesinin düşük olduğuna işaret eder. Yapay zeka okuryazarlığı eksikliği artan bir kariyer riski.",
+      },
+      {
+        id: "air1-b",
+        text: "Birkaç kez denedim ama düzenli kullanmıyorum",
+        score: 65,
+        reasoning:
+          "Temel farkındalık var ama düzenli kullanım yok. Araçların potansiyelini tam olarak kavramak için daha fazla pratik gerekiyor.",
+      },
+      {
+        id: "air1-c",
+        text: "Haftada birkaç kez belirli görevler için kullanıyorum",
+        score: 35,
+        reasoning:
+          "Düzenli kullanım iyi bir başlangıç. Yapay zeka araçlarını iş akışına entegre etme sürecinde ilerleme kaydediyorsun.",
+      },
+      {
+        id: "air1-d",
+        text: "Her gün aktif olarak kullanıyorum — iş akışımın ayrılmaz parçası",
+        score: 10,
+        reasoning:
+          "Günlük aktif kullanım en güçlü adaptasyon göstergesi. Yapay zekayı iş akışına entegre edenler değişime en hazır olanlar.",
+      },
+    ],
+  },
+  {
+    id: "air2",
+    dimension: "aiReadiness",
+    question: "Hangi yapay zeka araç kategorilerini kullanıyorsun veya deneyimledin?",
+    helpText: "Birden fazla kategori bilmek daha geniş bir yapay zeka okuryazarlığı gösterir.",
+    answers: [
+      {
+        id: "air2-a",
+        text: "Hiçbirini — yapay zeka araçları hakkında bilgim çok sınırlı",
+        score: 90,
+        reasoning:
+          "Yapay zeka araç kategorilerinin farkında olmamak ciddi bir bilgi açığı. Bu açık hızla kapanmalı.",
+      },
+      {
+        id: "air2-b",
+        text: "Sadece sohbet botları (ChatGPT vb.) — başka bir şey denemedim",
+        score: 60,
+        reasoning:
+          "Sohbet botları iyi bir başlangıç ama yapay zekanın potansiyeli çok daha geniş. Diğer kategorileri keşfetmek faydalı olur.",
+      },
+      {
+        id: "air2-c",
+        text: "2-3 kategori — metin, görsel veya kod araçlarından birkaçını kullanıyorum",
+        score: 30,
+        reasoning:
+          "Birden fazla yapay zeka kategorisinde deneyim, geniş bir okuryazarlık göstergesi. İyi bir temel.",
+      },
+      {
+        id: "air2-d",
+        text: "4+ kategori — metin, görsel, kod, analiz, otomasyon gibi birçok alanda deneyimliyim",
+        score: 10,
+        reasoning:
+          "Geniş yapay zeka araç yetkinliği en güçlü hazırlık göstergesi. Farklı alanlarda deneyim, değişime hızlı uyum sağlama kapasitesi verir.",
+      },
+    ],
+  },
+  {
+    id: "air3",
+    dimension: "aiReadiness",
+    question: "İş akışında yapay zekayı ne derinlikte kullanıyorsun?",
+    helpText: "Basit sorular sormak ile karmaşık iş akışları oluşturmak arasındaki farkı düşün.",
+    answers: [
+      {
+        id: "air3-a",
+        text: "Hiç kullanmıyorum — iş akışım tamamen geleneksel",
+        score: 85,
+        reasoning:
+          "İş akışında yapay zeka kullanmamak, verimlilikte önemli bir fırsat kaybı ve artan rekabet riski anlamına gelir.",
+      },
+      {
+        id: "air3-b",
+        text: "Basit sorular soruyorum — hızlı cevaplar veya taslaklar için",
+        score: 55,
+        reasoning:
+          "Temel düzeyde yapay zeka kullanımı. Araçların gerçek potansiyeli çok daha derin entegrasyonla ortaya çıkar.",
+      },
+      {
+        id: "air3-c",
+        text: "Belirli görevleri tamamen yapay zekaya devrediyorum — araştırma, özetleme, analiz gibi",
+        score: 25,
+        reasoning:
+          "Görev bazında delegasyon iyi bir kullanım seviyesi. Yapay zekanın güçlü yanlarını tanıyorsun.",
+      },
+      {
+        id: "air3-d",
+        text: "Karmaşık iş akışları kuruyorum — çoklu araç, otomasyon zincirleri, özel promptlar",
+        score: 5,
+        reasoning:
+          "İleri düzey yapay zeka entegrasyonu en güçlü hazırlık seviyesi. Yapay zekayı stratejik bir araç olarak kullanabiliyorsun.",
+      },
+    ],
+  },
+  {
+    id: "air4",
+    dimension: "aiReadiness",
+    question: "Yapay zekanın ürettiği çıktıları ne kadar eleştirel değerlendiriyorsun?",
+    helpText: "Doğruluğunu kontrol etme, hataları yakalama, kaliteyi değerlendirme.",
+    answers: [
+      {
+        id: "air4-a",
+        text: "Yapay zeka kullanmıyorum, dolayısıyla değerlendirme yapmıyorum",
+        score: 85,
+        reasoning:
+          "Yapay zeka çıktısını değerlendirme deneyimi olmaması, araçları güvenli ve etkili kullanma kapasitesinin eksik olduğunu gösterir.",
+      },
+      {
+        id: "air4-b",
+        text: "Genellikle olduğu gibi kabul ediyorum — çoğu zaman doğru oluyor",
+        score: 65,
+        reasoning:
+          "Yapay zeka çıktısını sorgulamadan kabul etmek tehlikeli. Halüsinasyonlar ve hatalar ciddi iş sorunlarına yol açabilir.",
+      },
+      {
+        id: "air4-c",
+        text: "Önemli çıktıları kontrol ediyorum — ama her şeyi doğrulamıyorum",
+        score: 35,
+        reasoning:
+          "Kısmi doğrulama iyi bir yaklaşım. Kritik çıktılar için mutlaka kontrol mekanizması olmalı.",
+      },
+      {
+        id: "air4-d",
+        text: "Her zaman eleştirel değerlendiriyorum — güçlü ve zayıf yönlerini biliyorum",
+        score: 10,
+        reasoning:
+          "Eleştirel değerlendirme yapay zeka okuryazarlığının en önemli bileşeni. Yapay zekanın sınırlarını bilen kullanıcılar en etkili sonuçları alır.",
+      },
+    ],
+  },
+  {
+    id: "air5",
+    dimension: "aiReadiness",
+    question: "İş yerinde yapay zeka konusunda nasıl bir rol üstleniyorsun?",
+    helpText: "Başkalarına yol gösterme, araçları tanıtma, eğitim verme.",
+    answers: [
+      {
+        id: "air5-a",
+        text: "Hiçbir rol üstlenmiyorum — yapay zeka konusu benim alanım değil",
+        score: 80,
+        reasoning:
+          "Yapay zeka konusunda pasif kalmak, değişime uyum sağlama kapasitesinin düşük olduğunu gösterir.",
+      },
+      {
+        id: "air5-b",
+        text: "Kendi kullanımımla ilgileniyorum — başkalarına yol göstermiyorum",
+        score: 50,
+        reasoning:
+          "Bireysel kullanım iyi bir başlangıç ama yapay zeka şampiyonluğu kariyer değerini artırır.",
+      },
+      {
+        id: "air5-c",
+        text: "Ekip arkadaşlarıma yapay zeka araçlarını tanıtıyor ve kullanmalarına yardım ediyorum",
+        score: 20,
+        reasoning:
+          "Yapay zeka şampiyonluğu güçlü bir kariyer pozisyonu. Başkalarına öğretmek uzmanlığını derinleştirir.",
+      },
+      {
+        id: "air5-d",
+        text: "Şirketimizde yapay zeka stratejisine aktif katkı veriyorum — eğitim, pilot projeler yönetiyorum",
+        score: 5,
+        reasoning:
+          "Kurumsal yapay zeka stratejisine katkı vermek en güçlü kariyer pozisyonu. Bu insanlar dönüşümü yöneten kişiler olacak.",
+      },
+    ],
+  },
+  {
+    id: "air6",
+    dimension: "aiReadiness",
+    question: "Yapay zeka gelişmelerini ne kadar yakından takip ediyorsun?",
+    helpText: "Yeni modeller, araçlar, sektörel uygulamalar hakkındaki farkındalığın.",
+    answers: [
+      {
+        id: "air6-a",
+        text: "Hiç takip etmiyorum — ne olduğundan haberdar değilim",
+        score: 85,
+        reasoning:
+          "Yapay zeka gelişmelerini takip etmemek en büyük hazırlıksızlık göstergesi. Hızla değişen bir alanda farkındalık kritik.",
+      },
+      {
+        id: "air6-b",
+        text: "Ana akım haberlerde denk gelince okuyorum — aktif olarak takip etmiyorum",
+        score: 60,
+        reasoning:
+          "Pasif farkındalık yetersiz. Yapay zeka o kadar hızlı gelişiyor ki ana akım haberlere düştüğünde çoktan geride kalmış oluyorsun.",
+      },
+      {
+        id: "air6-c",
+        text: "Belirli kaynakları düzenli takip ediyorum — haber bültenleri, podcastler veya sosyal medya",
+        score: 25,
+        reasoning:
+          "Düzenli takip iyi bir hazırlık göstergesi. Proaktif bilgi edinme değişime uyum kapasitesini güçlendiriyor.",
+      },
+      {
+        id: "air6-d",
+        text: "Aktif olarak araştırıyorum — yeni araçları deniyorum, topluluk tartışmalarına katılıyorum",
+        score: 5,
+        reasoning:
+          "Aktif araştırma ve topluluk katılımı en güçlü hazırlık seviyesi. Bu kişiler değişimi önceden görüp uyum sağlıyor.",
+      },
+    ],
+  },
+  {
+    id: "air7",
+    dimension: "aiReadiness",
+    question: "Önümüzdeki 6 ay için yapay zeka öğrenme planın var mı?",
+    helpText: "Spesifik araçlar öğrenme, kurslar alma, sertifika edinme gibi somut hedefler.",
+    answers: [
+      {
+        id: "air7-a",
+        text: "Hayır ve böyle bir plan yapmayı düşünmüyorum",
+        score: 90,
+        reasoning:
+          "Öğrenme planı olmaması en yüksek risk göstergesi. Yapay zeka becerileri hızla kariyer zorunluluğu haline geliyor.",
+      },
+      {
+        id: "air7-b",
+        text: "Bir şeyler öğrenmeliyim ama somut bir planım yok",
+        score: 60,
+        reasoning:
+          "Farkındalık var ama aksiyon yok. İyi niyetli plansızlık, planlı eylemsizlik kadar riskli.",
+      },
+      {
+        id: "air7-c",
+        text: "Genel bir fikrim var — birkaç araç öğrenmeyi ve kurs almayı planlıyorum",
+        score: 30,
+        reasoning:
+          "Genel bir plan iyi bir başlangıç. Somut hedeflere ve takvime dönüştürmek etkisini artırır.",
+      },
+      {
+        id: "air7-d",
+        text: "Evet — spesifik araçlar, kurslar ve hedeflerim takvime işlenmiş durumda",
+        score: 5,
+        reasoning:
+          "Somut ve takvime bağlı öğrenme planı en güçlü hazırlık seviyesi. Yapay zeka çağına en hazır kişiler bunlar.",
       },
     ],
   },

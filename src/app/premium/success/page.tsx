@@ -25,7 +25,7 @@ function SuccessContent() {
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = `skillshield-rapor-${scoreId}.pdf`;
+      a.download = `adaptai-rapor-${scoreId}.pdf`;
       a.click();
       URL.revokeObjectURL(url);
     } catch {
@@ -43,7 +43,7 @@ function SuccessContent() {
           Satin alimin tamamlandi!
         </h1>
         <p className="mt-4 text-muted text-lg">
-          SkillShield Pro raporun hazir. Detayli skor analizi,
+          AdaptAI Pro raporun hazir. Detayli skor analizi,
           kisisellestirilmis oneriler ve PDF kariyer raporunu asagidan indirebilirsin.
         </p>
 

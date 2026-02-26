@@ -1,5 +1,5 @@
 /**
- * Ana Sayfa Metinleri — SkillShield
+ * Ana Sayfa Metinleri — AdaptAI
  *
  * Duygusal hedef: Merak + hafif kaygı
  * "Herkes yapay zekanın işleri ele geçireceğinden bahsediyor.
@@ -19,13 +19,13 @@ export const hero = {
     "Maaşın ne kadar güvende?",
   ],
   subheads: [
-    "5 dakikalık testi çöz. Yapay Zeka Kariyer Risk Skorunu al. Tam olarak nerede durduğunu bil.",
+    "7 dakikalık testi çöz. Yapay Zeka Kariyer Risk Skorunu al. Tam olarak nerede durduğunu bil.",
     "İşlerin %67'si 5 yıl içinde yapay zeka tarafından dönüştürülecek. Seninki bunlardan biri mi öğren.",
     "Çoğu insan riskini yanlış tahmin ediyor. Veriye dayalı bir skor, içgüdüsel bir tahminden iyidir.",
   ],
   ctas: [
     "Ücretsiz skorunu al",
-    "5 dakikada öğren",
+    "7 dakikada öğren",
     "Risk skorunu gör",
   ],
 } as const;
@@ -49,14 +49,14 @@ export const socialProof = {
 // ─── NASIL ÇALIŞIR ────────────────────────────────────
 export const howItWorks = {
   headlines: [
-    "Beş dakika. Sıfır tahmin.",
-    "Belirsizlikten netliğe 5 dakikada.",
+    "Yedi dakika. Sıfır tahmin.",
+    "Belirsizlikten netliğe 7 dakikada.",
     "İşte böyle çalışıyor.",
   ],
   steps: [
     {
       number: "01",
-      title: "25 soruyu cevapla",
+      title: "32 soruyu cevapla",
       description:
         "Rolün, günlük görevlerin ve kullandığın araçlar hakkında. Boş laf yok — her soru gerçek bir risk faktörüyle eşleşiyor.",
     },
@@ -120,7 +120,7 @@ export const faq = {
     {
       question: "Ne kadar sürüyor?",
       answer:
-        "Quiz için 5 dakika. Skorun hesaplanması için yaklaşık 10 saniye. Ömür boyu sürecek kariyer netliği.",
+        "Quiz için 7 dakika. Skorun hesaplanması için yaklaşık 10 saniye. Ömür boyu sürecek kariyer netliği.",
     },
     {
       question: "Buna neden genel bir makaleden daha çok güvenmeliyim?",
@@ -135,7 +135,7 @@ export const footerCta = {
   headlines: [
     "Hâlâ kaydırıyor musun? Testi çöz artık.",
     "Yeterince okudun. Öğrenme zamanı.",
-    "Beş dakika, üç yıl merak etmekten iyidir.",
+    "Yedi dakika, üç yıl merak etmekten iyidir.",
   ],
   subheads: [
     "847.000 profesyonel skorunu zaten biliyor. Sen biliyor musun?",

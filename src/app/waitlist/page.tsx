@@ -97,7 +97,7 @@ export default function WaitlistPage() {
             <div className="text-5xl mb-6">🎉</div>
             <h1 className="text-3xl font-bold mb-4">Listedesin!</h1>
             <p className="text-gray-400 mb-6">
-              Bekleme listesinde #{position} sıradasın. SkillShield yayına girince
+              Bekleme listesinde #{position} sıradasın. AdaptAI yayına girince
               sana e-posta göndereceğiz.
             </p>
 

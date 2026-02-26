@@ -19,7 +19,7 @@ function HeroSection() {
           </a>
         </div>
         <p className="mt-4 text-sm text-muted">
-          Ücretsiz. 5 dakika sürer. Kayıt gerekmez.
+          Ücretsiz. 7 dakika sürer. Kayıt gerekmez.
         </p>
       </div>
     </section>

@@ -1,7 +1,7 @@
 import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
-import { kv, keys } from "@/lib/kv";
+import { kv, keys, addEmailScoreAssociation } from "@/lib/kv";
 import type { PremiumRecord } from "@/lib/kv";
 import { sendPremiumConfirmationEmail } from "@/lib/email";
 
@@ -13,7 +13,7 @@ import { sendPremiumConfirmationEmail } from "@/lib/email";
  *
  * Setup:
  *   1. In Stripe Dashboard → Developers → Webhooks → Add endpoint
- *   2. URL: https://skillshield.dev/api/webhooks/stripe
+ *   2. URL: https://adaptai.dev/api/webhooks/stripe
  *   3. Events to listen for: checkout.session.completed
  *   4. Copy the webhook signing secret to STRIPE_WEBHOOK_SECRET env var
  *
@@ -82,6 +82,19 @@ export async function POST(request: Request) {
               keys.stripeCustomer(email),
               session.customer as string
             );
+          }
+
+          // Associate email with score for progress tracking
+          if (scoreId) {
+            const scoreData = await kv.get<{ overallScore: number; jobCategoryId?: string }>(keys.score(scoreId));
+            if (scoreData) {
+              addEmailScoreAssociation(email, {
+                scoreId,
+                overallScore: scoreData.overallScore,
+                jobCategoryId: scoreData.jobCategoryId,
+                createdAt: Date.now(),
+              }).catch((err) => console.error("[Webhook] Email-score association failed:", err));
+            }
           }
 
           // Send confirmation email

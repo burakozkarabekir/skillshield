@@ -1,11 +1,19 @@
 "use client";
 
-import { ScoringResult, RiskLevel } from "@/lib/types";
+import { ScoringResult, RiskLevel, DimensionScore } from "@/lib/types";
 import { premiumCta } from "@/copy/premium";
+import ComparisonBanner from "@/components/ComparisonBanner";
+
+interface PreviousScoreData {
+  overallScore: number;
+  dimensions: DimensionScore[];
+  createdAt: number;
+}
 
 interface ResultsViewProps {
   result: ScoringResult & { scoreId?: string };
   onRetake: () => void;
+  previousScore?: PreviousScoreData;
 }
 
 const riskColors: Record<RiskLevel, string> = {
@@ -152,7 +160,7 @@ function BlurredSection({
       <div className="absolute inset-0 flex flex-col items-center justify-center rounded-2xl bg-[var(--card-bg)]/80 backdrop-blur-sm">
         <p className="text-lg font-bold mb-2">Premium icerik</p>
         <p className="text-sm opacity-70 mb-4 max-w-xs text-center">
-          Detayli analiz ve kisisel oneriler icin SkillShield Pro&apos;ya yukselt.
+          Detayli analiz ve kisisel oneriler icin AdaptAI Pro&apos;ya yukselt.
         </p>
         <a
           href={href}
@@ -165,11 +173,20 @@ function BlurredSection({
   );
 }
 
-export default function ResultsView({ result, onRetake }: ResultsViewProps) {
+export default function ResultsView({ result, onRetake, previousScore }: ResultsViewProps) {
   const scoreId = (result as ScoringResult & { scoreId?: string }).scoreId;
 
   return (
     <div className="max-w-3xl mx-auto">
+      {/* Comparison Banner (if previous score exists) */}
+      {previousScore && (
+        <ComparisonBanner
+          currentScore={result.overallScore}
+          currentDimensions={result.dimensions}
+          previous={previousScore}
+        />
+      )}
+
       {/* Header Score */}
       <div className="text-center mb-12">
         <h1 className="text-3xl font-bold mb-2">Yapay Zeka Kariyer Risk Skorun</h1>

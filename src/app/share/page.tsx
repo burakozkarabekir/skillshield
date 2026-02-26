@@ -28,7 +28,7 @@ function ShareContent() {
   const color = getRiskColor(score);
   const headline = shareCard.cardHeadlines[category][0].replace("{{score}}", String(score));
   const subtext = shareCard.cardSubtext[0];
-  const url = typeof window !== "undefined" ? window.location.origin : "https://skillshield.com";
+  const url = typeof window !== "undefined" ? window.location.origin : "https://adaptai.dev";
 
   function handleCopyLink() {
     const shareUrl = `${url}/quiz`;
@@ -62,7 +62,7 @@ function ShareContent() {
         {/* Share Card Preview */}
         <div className="rounded-2xl border border-border bg-card-bg p-8 text-center">
           <p className="text-sm font-semibold uppercase tracking-widest text-muted">
-            SkillShield
+            AdaptAI
           </p>
           <p
             className="mt-6 text-7xl font-bold"

@@ -1,5 +1,5 @@
 /**
- * Premium CTA & E-posta Toplama Metinleri — SkillShield
+ * Premium CTA & E-posta Toplama Metinleri — AdaptAI
  *
  * Duygusal hedef: Güçlenme + aciliyet
  * "Problemi biliyorsun. İşte kişiselleştirilmiş çözümün."
@@ -15,7 +15,7 @@ export const premiumCta = {
   subheads: [
     "Detaylı skor raporu, kişiselleştirilmiş öneri planı ve PDF kariyer raporu — hepsi bir arada.",
     "Risk profiline özel analiz, gelişim önerileri ve indirilebilir PDF rapor.",
-    "Ücretsiz skorun problemi gösteriyor. SkillShield Pro çözüm yolunu gösteriyor — tam senin durumun için hazırlanmış raporla.",
+    "Ücretsiz skorun problemi gösteriyor. AdaptAI Pro çözüm yolunu gösteriyor — tam senin durumun için hazırlanmış raporla.",
   ],
   ctas: [
     "Raporumu al",
@@ -103,7 +103,7 @@ export const emailUpsell = {
       "Skorun bu ay {{score}}'da sabit kaldı. Rolünü etkileyen yapay zeka yeteneklerinde büyük değişiklik yok. İşte takip ettiğimiz şeylerin hızlı özeti.",
   },
   premiumNudge: [
-    "Spesifik bir plan mı istiyorsun? SkillShield Pro detaylı raporunu oluşturur. →",
+    "Spesifik bir plan mı istiyorsun? AdaptAI Pro detaylı raporunu oluşturur. →",
     "Skoru bilmek birinci adım. Plan yapmak ikinci adım. →",
     "Skor güncellemeleri ücretsiz. Detaylı rapor 149 TL. →",
   ],

@@ -329,7 +329,7 @@ function getPriorityLabel(priority: string): string {
 function PageFooter({ page, total }: { page: number; total: number }) {
   return (
     <View style={styles.footer}>
-      <Text>SkillShield Pro — skillshield.dev</Text>
+      <Text>AdaptAI Pro — adaptai.dev</Text>
       <Text>Sayfa {page}/{total}</Text>
     </View>
   );
@@ -349,7 +349,7 @@ function PremiumPDFDocument({ report }: { report: PremiumReport }) {
       {/* Page 1: Overview + Dimensions */}
       <Page size="A4" style={styles.page}>
         <View style={styles.header}>
-          <Text style={styles.title}>SkillShield Pro Rapor</Text>
+          <Text style={styles.title}>AdaptAI Pro Rapor</Text>
           <Text style={styles.subtitle}>
             Yapay Zeka Kariyer Risk Analizi — {date}
           </Text>
@@ -473,7 +473,7 @@ function EnhancedPremiumPDFDocument({ report }: { report: EnhancedPremiumReport 
       {/* ─── Page 1: Overview + Dimensions ─────────────────────────────── */}
       <Page size="A4" style={styles.page}>
         <View style={styles.header}>
-          <Text style={styles.title}>SkillShield Pro Rapor</Text>
+          <Text style={styles.title}>AdaptAI Pro Rapor</Text>
           <Text style={styles.subtitle}>
             Kisisel Yapay Zeka Kariyer Risk Analizi — {date}
           </Text>
@@ -761,7 +761,7 @@ function EnhancedPremiumPDFDocument({ report }: { report: EnhancedPremiumReport 
         </View>
         <View style={styles.listItem}>
           <Text style={styles.bullet}>4.</Text>
-          <Text style={styles.listText}>3 ay sonra skillshield.dev/quiz adresinden yeniden test coz ve ilerleme olc</Text>
+          <Text style={styles.listText}>3 ay sonra adaptai.dev/quiz adresinden yeniden test coz ve ilerleme olc</Text>
         </View>
 
         <PageFooter page={6} total={totalPages} />

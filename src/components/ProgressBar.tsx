@@ -18,7 +18,7 @@ export default function ProgressBar({ current, total }: ProgressBarProps) {
       </div>
       <div className="h-1.5 w-full overflow-hidden rounded-full bg-gray-800">
         <div
-          className="animate-progress h-full rounded-full bg-gradient-to-r from-shield-600 to-shield-400 transition-all duration-500 ease-out"
+          className="animate-progress h-full rounded-full bg-gradient-to-r from-adapt-600 to-adapt-400 transition-all duration-500 ease-out"
           style={{ width: `${percentage}%` }}
         />
       </div>

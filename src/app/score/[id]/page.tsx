@@ -19,7 +19,7 @@ export async function generateMetadata({ searchParams }: ScorePageProps): Promis
   const ogImageUrl = `/api/og?score=${score}&job=${encodeURIComponent(jobTitle)}&category=${category}`;
 
   return {
-    title: `${jobTitle}: ${score}/100 Yapay Zeka Risk Skoru | SkillShield`,
+    title: `${jobTitle}: ${score}/100 Yapay Zeka Risk Skoru | AdaptAI`,
     description: `${jobTitle} Yapay Zeka Kariyer Risk Değerlendirmesinde ${score}/100 aldı. SENİN skorunu 2 dakikada öğren.`,
     openGraph: {
       title: `${jobTitle} Yapay Zeka Riski: ${score}/100 — Seninki kaç?`,
@@ -60,7 +60,7 @@ export default async function ScorePage({ searchParams }: ScorePageProps) {
     <main className="min-h-screen flex flex-col">
       <nav className="flex items-center justify-between px-6 py-4 max-w-6xl mx-auto w-full">
         <Link href="/" className="text-xl font-bold tracking-tight">
-          <span className="text-accent">Skill</span>Shield
+          AdaptAI
         </Link>
         <Link
           href={quizLink}

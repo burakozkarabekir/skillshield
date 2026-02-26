@@ -1,5 +1,5 @@
 /**
- * Mikro Metinler — Yükleniyor, Hata ve Boş Durumlar — SkillShield
+ * Mikro Metinler — Yükleniyor, Hata ve Boş Durumlar — AdaptAI
  *
  * Kullanıcının karşılaştığı her durum kasıtlı,
  * marka uyumlu ve insani hissettirmeli. Hata mesajları bile.
@@ -166,7 +166,7 @@ export const empty = {
     body: [
       "Yapay Zeka Kariyer Risk Skorunu görmek için önce testi çöz.",
       "Kişiselleştirilmiş risk analizini almak için değerlendirmeyi tamamla.",
-      "5 dakikalık testle başla. Skorun burada görünecek.",
+      "7 dakikalık testle başla. Skorun burada görünecek.",
     ],
     cta: "Testi çöz",
   },
@@ -190,7 +190,7 @@ export const empty = {
       "Rapor üretilmedi.",
     ],
     body: [
-      "Detaylı skor raporu, kişiselleştirilmiş öneriler ve PDF kariyer raporunu almak için SkillShield Pro'ya yükselt.",
+      "Detaylı skor raporu, kişiselleştirilmiş öneriler ve PDF kariyer raporunu almak için AdaptAI Pro'ya yükselt.",
       "Ücretsiz skorun riski gösteriyor. Pro rapor çözüm yolunu gösteriyor.",
       "Detaylı raporunu aç ve bugün riskini azaltmaya başla.",
     ],
@@ -210,7 +210,7 @@ export const validation = {
 // ─── NAVİGASYON & ARAYÜZ ETİKETLERİ ──────────────────────────
 export const nav = {
   quizButton: "Testi Çöz",
-  homeLink: "SkillShield",
+  homeLink: "AdaptAI",
   backToResults: "Sonuçlarıma dön",
   nextQuestion: "İleri",
   previousQuestion: "Geri",

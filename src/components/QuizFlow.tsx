@@ -10,39 +10,17 @@ interface QuizFlowProps {
 }
 
 export default function QuizFlow({ onComplete }: QuizFlowProps) {
-  const [step, setStep] = useState<"job" | "quiz" | "loading">("job");
+  const [step, setStep] = useState<"job" | "quiz" | "email" | "loading">("job");
   const [jobCategoryId, setJobCategoryId] = useState<string>("");
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<QuizAnswer[]>([]);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [email, setEmail] = useState<string>("");
+  const [pendingAnswers, setPendingAnswers] = useState<QuizAnswer[]>([]);
 
   const totalQuestions = quizQuestions.length;
   const question = quizQuestions[currentQuestion];
-
-  async function handleSubmit() {
-    setStep("loading");
-    setError(null);
-
-    try {
-      const res = await fetch("/api/score", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ answers, jobCategoryId }),
-      });
-
-      if (!res.ok) {
-        const data = await res.json();
-        throw new Error(data.error || "Skor hesaplanamadı");
-      }
-
-      const result: ScoringResult = await res.json();
-      onComplete(result);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Bir şeyler yanlış gitti");
-      setStep("quiz");
-    }
-  }
 
   function handleAnswerSelect(answerId: string) {
     setSelectedAnswer(answerId);
@@ -61,10 +39,9 @@ export default function QuizFlow({ onComplete }: QuizFlowProps) {
     if (currentQuestion < totalQuestions - 1) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
-      // Last question answered — submit
-      setStep("loading");
-      // Use newAnswers directly since state update is async
-      submitAnswers(newAnswers);
+      // Last question answered — show email step
+      setPendingAnswers(newAnswers);
+      setStep("email");
     }
   }
 
@@ -79,13 +56,17 @@ export default function QuizFlow({ onComplete }: QuizFlowProps) {
     }
   }
 
-  async function submitAnswers(finalAnswers: QuizAnswer[]) {
+  async function submitAnswers(finalAnswers: QuizAnswer[], userEmail?: string) {
     setError(null);
     try {
+      const payload: Record<string, unknown> = { answers: finalAnswers, jobCategoryId };
+      if (userEmail && userEmail.includes("@")) {
+        payload.email = userEmail;
+      }
       const res = await fetch("/api/score", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ answers: finalAnswers, jobCategoryId }),
+        body: JSON.stringify(payload),
       });
 
       if (!res.ok) {
@@ -144,6 +125,55 @@ export default function QuizFlow({ onComplete }: QuizFlowProps) {
         >
           Değerlendirmeye Devam Et
         </button>
+      </div>
+    );
+  }
+
+  // ─── Email Capture Screen ──────────────────────────────────────────────────
+  if (step === "email") {
+    return (
+      <div className="max-w-2xl mx-auto text-center py-12">
+        <h2 className="text-2xl font-bold mb-2">Neredeyse bitti!</h2>
+        <p className="text-[var(--foreground)] opacity-60 mb-8">
+          İlerleme takibi için e-postan (isteğe bağlı)
+        </p>
+        <div className="max-w-sm mx-auto">
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="senin@emailin.com"
+            className="w-full rounded-xl border-2 border-[var(--card-border)] bg-[var(--card-bg)] px-4 py-3 text-center outline-none focus:border-[var(--accent)] transition-colors"
+          />
+          <p className="mt-2 text-xs opacity-50">
+            E-postan sayesinde skorunu zaman içinde takip edebilir ve ilerlemenle karşılaştırabilirsin.
+          </p>
+        </div>
+        <div className="flex justify-center gap-4 mt-8">
+          <button
+            onClick={() => {
+              setStep("loading");
+              submitAnswers(pendingAnswers);
+            }}
+            className="px-6 py-3 rounded-xl border-2 border-[var(--card-border)] bg-[var(--card-bg)] hover:border-[var(--accent-light)] transition-all duration-200 cursor-pointer"
+          >
+            Atla
+          </button>
+          <button
+            onClick={() => {
+              setStep("loading");
+              submitAnswers(pendingAnswers, email);
+            }}
+            disabled={!email.includes("@")}
+            className={`px-8 py-3 rounded-xl text-lg font-semibold transition-all duration-200 cursor-pointer ${
+              email.includes("@")
+                ? "bg-[var(--accent)] text-white hover:opacity-90"
+                : "bg-gray-300 text-gray-500 cursor-not-allowed"
+            }`}
+          >
+            Skorumu Göster
+          </button>
+        </div>
       </div>
     );
   }

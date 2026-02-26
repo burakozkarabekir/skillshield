@@ -2,7 +2,7 @@ import { jobPages, seoShared } from "@/copy/seo";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Mesleğe Göre Yapay Zeka Kariyer Risk Skorları | SkillShield",
+  title: "Mesleğe Göre Yapay Zeka Kariyer Risk Skorları | AdaptAI",
   description:
     "Yapay zekanın farklı kariyerleri nasıl etkilediğini görün. Muhasebeciler, yazılım mühendisleri, hemşireler, tasarımcılar, pazarlamacılar ve daha fazlası için yapay zeka risk skorlarına göz atın.",
 };
