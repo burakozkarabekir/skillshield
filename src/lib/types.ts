@@ -83,6 +83,8 @@ export interface DimensionScore {
 }
 
 export interface ScoringResult {
+  /** Unique ID for this score (assigned on save) */
+  scoreId?: string;
   /** Overall AI Career Risk Score: 0-100 */
   overallScore: number;
   /** Human-readable risk label */

@@ -1,9 +1,10 @@
 "use client";
 
 import { ScoringResult, RiskLevel } from "@/lib/types";
+import { premiumCta } from "@/copy/premium";
 
 interface ResultsViewProps {
-  result: ScoringResult;
+  result: ScoringResult & { scoreId?: string };
   onRetake: () => void;
 }
 
@@ -94,7 +95,79 @@ function DimensionBar({
   );
 }
 
+function PremiumCTA({ scoreId }: { scoreId?: string }) {
+  const params = new URLSearchParams();
+  if (scoreId) params.set("scoreId", scoreId);
+  const href = `/premium${params.toString() ? `?${params.toString()}` : ""}`;
+
+  return (
+    <div className="relative p-8 rounded-2xl border-2 border-accent bg-[var(--card-bg)] mb-8 text-center overflow-hidden">
+      <h3 className="text-xl font-bold mb-2">{premiumCta.headlines[1]}</h3>
+      <p className="text-sm opacity-70 mb-2 max-w-lg mx-auto">
+        {premiumCta.subheads[0]}
+      </p>
+      <div className="flex flex-wrap justify-center gap-3 my-6">
+        {premiumCta.features.map((f) => (
+          <span
+            key={f.title}
+            className="text-xs px-3 py-1 rounded-full bg-accent/10 text-[var(--accent)] font-medium"
+          >
+            {f.title}
+          </span>
+        ))}
+      </div>
+      <a
+        href={href}
+        className="inline-block rounded-lg bg-accent px-8 py-4 text-lg font-semibold text-white hover:bg-accent-hover transition-colors"
+      >
+        {premiumCta.ctas[0]} — {premiumCta.pricing.amount}
+      </a>
+      <p className="mt-3 text-xs opacity-50">{premiumCta.guarantee[1]}</p>
+    </div>
+  );
+}
+
+function BlurredSection({
+  title,
+  children,
+  scoreId,
+}: {
+  title: string;
+  children: React.ReactNode;
+  scoreId?: string;
+}) {
+  const params = new URLSearchParams();
+  if (scoreId) params.set("scoreId", scoreId);
+  const href = `/premium${params.toString() ? `?${params.toString()}` : ""}`;
+
+  return (
+    <div className="relative mb-8">
+      <div className="p-6 rounded-2xl bg-[var(--card-bg)] border border-[var(--card-border)]">
+        <h2 className="text-lg font-bold mb-6">{title}</h2>
+        <div className="blur-sm pointer-events-none select-none">
+          {children}
+        </div>
+      </div>
+      {/* Overlay */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center rounded-2xl bg-[var(--card-bg)]/80 backdrop-blur-sm">
+        <p className="text-lg font-bold mb-2">Premium icerik</p>
+        <p className="text-sm opacity-70 mb-4 max-w-xs text-center">
+          Detayli analiz ve kisisel oneriler icin SkillShield Pro&apos;ya yukselt.
+        </p>
+        <a
+          href={href}
+          className="rounded-lg bg-accent px-6 py-3 font-semibold text-white hover:bg-accent-hover transition-colors"
+        >
+          {premiumCta.pricing.amount} — Raporu Al
+        </a>
+      </div>
+    </div>
+  );
+}
+
 export default function ResultsView({ result, onRetake }: ResultsViewProps) {
+  const scoreId = (result as ScoringResult & { scoreId?: string }).scoreId;
+
   return (
     <div className="max-w-3xl mx-auto">
       {/* Header Score */}
@@ -117,9 +190,9 @@ export default function ResultsView({ result, onRetake }: ResultsViewProps) {
         <p className="leading-relaxed opacity-80">{result.summary}</p>
       </div>
 
-      {/* Dimension Breakdown */}
+      {/* Dimension Breakdown — free */}
       <div className="p-6 rounded-2xl bg-[var(--card-bg)] border border-[var(--card-border)] mb-8">
-        <h2 className="text-lg font-bold mb-6">Boyuta Göre Risk Analizi</h2>
+        <h2 className="text-lg font-bold mb-6">Boyuta Gore Risk Analizi</h2>
         {result.dimensions.map((dim) => (
           <DimensionBar
             key={dim.dimension}
@@ -130,11 +203,13 @@ export default function ResultsView({ result, onRetake }: ResultsViewProps) {
         ))}
       </div>
 
-      {/* Skill Breakdown */}
-      <div className="p-6 rounded-2xl bg-[var(--card-bg)] border border-[var(--card-border)] mb-8">
-        <h2 className="text-lg font-bold mb-6">Yeteneklerin: Risk Analizi</h2>
+      {/* Premium CTA */}
+      <PremiumCTA scoreId={scoreId} />
+
+      {/* Skill Breakdown — blurred (premium) */}
+      <BlurredSection title="Yeteneklerin: Risk Analizi" scoreId={scoreId}>
         <div className="grid gap-4">
-          {result.skillBreakdown.map((skill) => (
+          {result.skillBreakdown.slice(0, 3).map((skill) => (
             <div
               key={skill.skillName}
               className={`p-4 rounded-xl border ${riskBgClasses[skill.riskLevel]}`}
@@ -147,57 +222,30 @@ export default function ResultsView({ result, onRetake }: ResultsViewProps) {
                   </span>
                   <span
                     className="inline-block w-3 h-3 rounded-full"
-                    style={{
-                      backgroundColor: riskColors[skill.riskLevel],
-                    }}
+                    style={{ backgroundColor: riskColors[skill.riskLevel] }}
                   />
                 </div>
               </div>
               <p className="text-sm opacity-80 mb-2">{skill.explanation}</p>
-              <div className="flex gap-4 text-xs opacity-60">
-                {skill.aiCapability && (
-                  <span>Yapay zeka yeteneği: {skill.aiCapability}</span>
-                )}
-                <span>Zaman çizelgesi: {skill.timeHorizon}</span>
-              </div>
             </div>
           ))}
         </div>
-      </div>
+      </BlurredSection>
 
-      {/* Reskilling Recommendations */}
-      <div className="p-6 rounded-2xl bg-[var(--card-bg)] border border-[var(--card-border)] mb-8">
-        <h2 className="text-lg font-bold mb-2">
-          Yeniden Beceri Kazanma Öncelikleri
-        </h2>
-        <p className="text-sm opacity-60 mb-6">
-          Risk profiline göre, gelişimini odaklanman gereken alanlar.
-        </p>
+      {/* Reskilling Recommendations — blurred (premium) */}
+      <BlurredSection title="Yeniden Beceri Kazanma Oncelikleri" scoreId={scoreId}>
         <div className="grid gap-4">
-          {result.reskillPriorities.map((rec, idx) => (
+          {result.reskillPriorities.slice(0, 2).map((rec, idx) => (
             <div
               key={idx}
               className="p-4 rounded-xl border border-[var(--card-border)] bg-[var(--background)]"
             >
-              <div className="flex justify-between items-start mb-2">
-                <h3 className="font-semibold text-[var(--accent)]">
-                  {rec.skill}
-                </h3>
-                <span className="text-xs px-2 py-1 rounded-full bg-[var(--accent)]/10 text-[var(--accent)] font-medium">
-                  {rec.effort}
-                </span>
-              </div>
-              <p className="text-sm opacity-80 mb-3">{rec.reason}</p>
-              {rec.resources && rec.resources.length > 0 && (
-                <div className="text-xs opacity-60">
-                  <span className="font-medium">Kaynaklar: </span>
-                  {rec.resources.join(" · ")}
-                </div>
-              )}
+              <h3 className="font-semibold text-[var(--accent)]">{rec.skill}</h3>
+              <p className="text-sm opacity-80 mt-2">{rec.reason}</p>
             </div>
           ))}
         </div>
-      </div>
+      </BlurredSection>
 
       {/* Actions */}
       <div className="flex flex-col sm:flex-row gap-4 mb-12">
@@ -205,7 +253,7 @@ export default function ResultsView({ result, onRetake }: ResultsViewProps) {
           onClick={onRetake}
           className="flex-1 py-4 rounded-xl border-2 border-[var(--card-border)] bg-[var(--card-bg)] hover:border-[var(--accent-light)] transition-all duration-200 font-semibold cursor-pointer"
         >
-          Değerlendirmeyi Tekrarla
+          Degerlendirmeyi Tekrarla
         </button>
       </div>
 
@@ -213,9 +261,9 @@ export default function ResultsView({ result, onRetake }: ResultsViewProps) {
       <div className="text-center text-xs opacity-40 pb-8">
         <p>
           Metodoloji Frey &amp; Osborne (Oxford), McKinsey Global
-          Institute, WEF Future of Jobs, O*NET ve güncel yapay zeka yetenek
-          değerlendirmelerine dayanmaktadır. Skorlar tahmindir ve kariyer
-          kararlarını yönlendirmeli — dikte etmemelidir.
+          Institute, WEF Future of Jobs, O*NET ve guncel yapay zeka yetenek
+          degerlendirmelerine dayanmaktadir. Skorlar tahmindir ve kariyer
+          kararlarini yonlendirmeli — dikte etmemelidir.
         </p>
       </div>
     </div>

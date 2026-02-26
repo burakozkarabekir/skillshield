@@ -11,6 +11,7 @@
     "ci": "npm run type-check && npm run lint && npm run build"
   },
   "dependencies": {
+    "@react-pdf/renderer": "^4.3.2",
     "@vercel/analytics": "^1.4.1",
     "@vercel/kv": "^3.0.0",
     "@vercel/og": "^0.6.4",
@@ -20,6 +21,7 @@
     "next": "16.1.6",
     "react": "19.2.3",
     "react-dom": "19.2.3",
+    "resend": "^6.9.2",
     "stripe": "^17.4.0",
     "zod": "^3.23.0"
   },

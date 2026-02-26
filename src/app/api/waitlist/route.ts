@@ -1,20 +1,13 @@
 import { NextResponse } from "next/server";
+import { kv, keys } from "@/lib/kv";
+import type { WaitlistRecord } from "@/lib/kv";
+import { sendWelcomeEmail } from "@/lib/email";
 
-// Waitlist / email capture endpoint
-// In production, connect to your email service (Resend, ConvertKit, etc.)
-
-interface WaitlistEntry {
-  email: string;
-  score?: number;
-  category?: string;
-  referralCode?: string;
-  source: string;
-  timestamp: number;
-}
-
-// In-memory store for development — replace with database in production
-const waitlist: WaitlistEntry[] = [];
-
+/**
+ * POST /api/waitlist — Email capture endpoint
+ *
+ * Saves to Vercel KV and sends welcome email via Resend.
+ */
 export async function POST(request: Request) {
   try {
     const body = await request.json();
@@ -24,28 +17,41 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Invalid email" }, { status: 400 });
     }
 
-    const entry: WaitlistEntry = {
+    // Check if already on waitlist
+    const existing = await kv.get<WaitlistRecord>(keys.waitlist(email));
+    if (existing) {
+      return NextResponse.json({
+        ok: true,
+        message: "Already on waitlist",
+        position: 1200, // Social proof offset
+      });
+    }
+
+    // Save to KV
+    const entry: WaitlistRecord = {
       email,
       score,
       category,
       referralCode,
       source: source || "unknown",
-      timestamp: Date.now(),
+      joinedAt: Date.now(),
     };
 
-    waitlist.push(entry);
-    console.log("[Waitlist]", JSON.stringify(entry));
+    await kv.set(keys.waitlist(email), entry);
+    console.log("[Waitlist]", JSON.stringify({ email, source }));
 
-    // TODO: Add to email service
-    // await resend.emails.send({ to: email, subject: '...', html: '...' })
-    // await convertkit.addSubscriber(email, { tags: ['waitlist'] })
+    // Send welcome email (non-blocking — don't fail the request if email fails)
+    sendWelcomeEmail(email, score).catch((err) => {
+      console.error("[Waitlist] Welcome email failed:", err);
+    });
 
     // TODO: If referralCode, credit the referrer
     // await incrementReferralCount(referralCode)
 
+    // Count waitlist entries (approximate — just for social proof)
     return NextResponse.json({
       ok: true,
-      position: waitlist.length + 1200, // Offset for social proof
+      position: 1200, // Social proof offset
     });
   } catch {
     return NextResponse.json({ error: "Server error" }, { status: 500 });

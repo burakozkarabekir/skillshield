@@ -35,7 +35,7 @@ export const shareCard = {
   // Karttaki alt metin
   cardSubtext: [
     "Ücretsiz Yapay Zeka Kariyer Risk Değerlendirmesi — SkillShield",
-    "3 dakikalık testi skillshield.com'da çöz",
+    "5 dakikalık testi skillshield.com'da çöz",
     "Yapay Zeka Kariyer Risk Puanın kaç? Ücretsiz öğren.",
   ],
 } as const;
@@ -64,12 +64,12 @@ export const sharePrompt = {
 // ─── PAYLAŞIM ŞABLONLARI (ÖN DOLDURULMUŞ GÖNDERİ METNİ) ──────────────
 export const shareTemplates = {
   linkedin: [
-    "SkillShield Yapay Zeka Kariyer Risk Değerlendirmesini çözdüm. Puanım: {{score}}/100.\n\nGörev görev analiz gerçekten göz açıcıydı. Yapay zekanın rolünüzü nasıl etkileyeceğini merak ediyorsanız, 3 dakikaya değer.\n\n{{url}}",
+    "SkillShield Yapay Zeka Kariyer Risk Değerlendirmesini çözdüm. Puanım: {{score}}/100.\n\nGörev görev analiz gerçekten göz açıcıydı. Yapay zekanın rolünüzü nasıl etkileyeceğini merak ediyorsanız, 5 dakikaya değer.\n\n{{url}}",
     "Yıllardır yapay zekanın işleri ele geçireceğini duyuyordum. Sonunda KENDİ rolüm için somut, veriye dayalı bir cevap aldım.\n\nYapay Zeka Kariyer Risk Puanım: {{score}}/100.\n\nAnaliz, günlük görevlerimden hangilerinin en çok risk altında olduğunu gösteriyor. Sen de dene: {{url}}",
     "Herkesin yapay zeka ve işler hakkında bir fikri var. SkillShield sana veri veriyor.\n\nBenim puanım: {{score}}/100. Seninki kaç?\n\n{{url}}",
   ],
   twitter: [
-    "Yapay Zeka Kariyer Risk Puanım: {{score}}/100\n\n3 dakikalık test, veriye dayalı sonuçlar. Laf yok.\n\nSeninki kaç? {{url}}",
+    "Yapay Zeka Kariyer Risk Puanım: {{score}}/100\n\n5 dakikalık test, veriye dayalı sonuçlar. Laf yok.\n\nSeninki kaç? {{url}}",
     "Temel iş görevlerimin %{{score}}'inin yapay zeka tarafından otomatikleştirilebileceğini öğrendim.\n\nBilmek > inkar etmek.\n\n{{url}}",
     "\"Yapay zeka işimi nasıl etkiler?\" belirsiz.\n\"{{score}}/100\" net.\n\nTesti çöz: {{url}}",
   ],

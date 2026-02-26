@@ -1,15 +1,17 @@
 "use client";
 
-import { Suspense } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { scoreReveal, scoreContext, taskBreakdown, skillBreakdown, insights, scoreVisual } from "@/copy/results";
 import { sharePrompt } from "@/copy/share";
 import { premiumCta, emailCapture } from "@/copy/premium";
 import { loading, errors, empty, a11y } from "@/copy/microcopy";
+import type { ScoringResult } from "@/lib/types";
+import ResultsView from "@/components/ResultsView";
 
 /**
- * Simulated score calculation based on quiz answers.
- * In production this would call a backend scoring API.
+ * Simulated score calculation based on quiz answers (fallback).
+ * Used when the API-based score is not available.
  */
 function calculateScore(params: URLSearchParams): number {
   let score = 50;
@@ -89,14 +91,13 @@ function ScoreDisplay({ score }: { score: number }) {
 type RiskLevel = "high" | "medium" | "low" | "safe";
 
 function TaskBreakdownSection({ score }: { score: number }) {
-  // Simulated task breakdown based on score range
   const sampleTasks: { name: string; risk: RiskLevel }[] = [
-    { name: "Veri girişi ve işleme", risk: score > 40 ? "high" : "medium" },
-    { name: "Rapor yazımı ve oluşturma", risk: score > 50 ? "high" : "medium" },
-    { name: "E-posta iletişimi", risk: "medium" },
+    { name: "Veri girisi ve isleme", risk: score > 40 ? "high" : "medium" },
+    { name: "Rapor yazimi ve olusturma", risk: score > 50 ? "high" : "medium" },
+    { name: "E-posta iletisimi", risk: "medium" },
     { name: "Stratejik planlama", risk: score > 75 ? "medium" : "low" },
-    { name: "Müşteri ilişkileri yönetimi", risk: "safe" },
-    { name: "Takım liderliği ve mentorluk", risk: "safe" },
+    { name: "Musteri iliskileri yonetimi", risk: "safe" },
+    { name: "Takim liderligi ve mentorluk", risk: "safe" },
   ];
 
   const riskColors: Record<RiskLevel, string> = {
@@ -138,7 +139,6 @@ function SkillBreakdownSection({ score }: { score: number }) {
         <p className="mt-2 text-muted">{skillBreakdown.subheads[0]}</p>
 
         <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-3">
-          {/* Shield Skills */}
           <div>
             <h3 className="font-semibold text-risk-low">
               {skillBreakdown.categories.shielded.label}
@@ -147,13 +147,11 @@ function SkillBreakdownSection({ score }: { score: number }) {
               {skillBreakdown.categories.shielded.description}
             </p>
             <ul className="mt-4 space-y-2 text-sm">
-              <li>Eleştirel düşünme</li>
-              <li>Paydaş yönetimi</li>
-              <li>Yaratıcı problem çözme</li>
+              <li>Elestirel dusunme</li>
+              <li>Paydas yonetimi</li>
+              <li>Yaratici problem cozme</li>
             </ul>
           </div>
-
-          {/* At Risk */}
           <div>
             <h3 className="font-semibold text-risk-critical">
               {skillBreakdown.categories.atRisk.label}
@@ -163,12 +161,10 @@ function SkillBreakdownSection({ score }: { score: number }) {
             </p>
             <ul className="mt-4 space-y-2 text-sm">
               <li>Veri analizi</li>
-              <li>Rapor oluşturma</li>
+              <li>Rapor olusturma</li>
               <li>Temel kodlama</li>
             </ul>
           </div>
-
-          {/* Emerging */}
           <div>
             <h3 className="font-semibold text-accent">
               {skillBreakdown.categories.emerging.label}
@@ -177,9 +173,9 @@ function SkillBreakdownSection({ score }: { score: number }) {
               {skillBreakdown.categories.emerging.description}
             </p>
             <ul className="mt-4 space-y-2 text-sm">
-              <li>Yapay zeka araç yetkinliği</li>
-              <li>Prompt mühendisliği</li>
-              <li>İnsan-yapay zeka iş akışı tasarımı</li>
+              <li>Yapay zeka arac yetkinligi</li>
+              <li>Prompt muhendisligi</li>
+              <li>Insan-yapay zeka is akisi tasarimi</li>
             </ul>
           </div>
         </div>
@@ -213,13 +209,13 @@ function ShareSection() {
         <h2 className="text-xl font-bold">{sharePrompt.headlines[0]}</h2>
         <p className="mt-2 text-sm text-muted">{sharePrompt.subheads[0]}</p>
         <div className="mt-6 flex flex-wrap gap-3 justify-center">
-          <button className="rounded-lg border border-border px-5 py-2.5 text-sm font-medium hover:bg-card-bg transition-colors">
+          <button className="rounded-lg border border-border px-5 py-2.5 text-sm font-medium hover:bg-card-bg transition-colors cursor-pointer">
             {sharePrompt.buttonLabels.linkedin}
           </button>
-          <button className="rounded-lg border border-border px-5 py-2.5 text-sm font-medium hover:bg-card-bg transition-colors">
+          <button className="rounded-lg border border-border px-5 py-2.5 text-sm font-medium hover:bg-card-bg transition-colors cursor-pointer">
             {sharePrompt.buttonLabels.twitter}
           </button>
-          <button className="rounded-lg border border-border px-5 py-2.5 text-sm font-medium hover:bg-card-bg transition-colors">
+          <button className="rounded-lg border border-border px-5 py-2.5 text-sm font-medium hover:bg-card-bg transition-colors cursor-pointer">
             {sharePrompt.buttonLabels.copy}
           </button>
         </div>
@@ -246,7 +242,7 @@ function EmailCaptureSection() {
           />
           <button
             type="submit"
-            className="rounded-lg bg-accent px-6 py-3 text-sm font-semibold text-white hover:bg-accent-hover transition-colors"
+            className="rounded-lg bg-accent px-6 py-3 text-sm font-semibold text-white hover:bg-accent-hover transition-colors cursor-pointer"
           >
             {emailCapture.ctas[0]}
           </button>
@@ -257,7 +253,11 @@ function EmailCaptureSection() {
   );
 }
 
-function PremiumCtaSection() {
+function PremiumCtaSection({ scoreId }: { scoreId?: string }) {
+  const params = new URLSearchParams();
+  if (scoreId) params.set("scoreId", scoreId);
+  const href = `/premium${params.toString() ? `?${params.toString()}` : ""}`;
+
   return (
     <section className="px-6 py-20">
       <div className="mx-auto max-w-3xl">
@@ -265,7 +265,7 @@ function PremiumCtaSection() {
           <h2 className="text-3xl font-bold">{premiumCta.headlines[0]}</h2>
           <p className="mt-4 text-muted">{premiumCta.subheads[0]}</p>
 
-          <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2">
+          <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3">
             {premiumCta.features.map((feature) => (
               <div key={feature.title}>
                 <h3 className="font-semibold">{feature.title}</h3>
@@ -284,9 +284,12 @@ function PremiumCtaSection() {
             <p className="mt-2 text-sm text-muted">
               {premiumCta.pricing.anchoring[0]}
             </p>
-            <button className="mt-6 rounded-lg bg-accent px-8 py-4 text-lg font-semibold text-white hover:bg-accent-hover transition-colors">
+            <a
+              href={href}
+              className="mt-6 inline-block rounded-lg bg-accent px-8 py-4 text-lg font-semibold text-white hover:bg-accent-hover transition-colors"
+            >
               {premiumCta.ctas[0]}
-            </button>
+            </a>
             <p className="mt-3 text-xs text-muted">
               {premiumCta.guarantee[0]}
             </p>
@@ -297,11 +300,73 @@ function PremiumCtaSection() {
   );
 }
 
+// ─── API-based results (when scoreId is available) ──────────────────────────
+
+function APIResultsContent({ scoreId }: { scoreId: string }) {
+  const [result, setResult] = useState<(ScoringResult & { scoreId?: string }) | null>(null);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    fetch(`/api/score?id=${scoreId}`)
+      .then((res) => {
+        if (!res.ok) throw new Error("Score not found");
+        return res.json();
+      })
+      .then(setResult)
+      .catch(() => setError(true));
+  }, [scoreId]);
+
+  if (error) {
+    return (
+      <div className="px-6 py-20 text-center">
+        <h2 className="text-2xl font-bold">{errors.scoreCalculationFailed.headlines[0]}</h2>
+        <p className="mt-4 text-muted">{errors.scoreCalculationFailed.body[0]}</p>
+        <a href="/quiz" className="mt-8 inline-block rounded-lg bg-accent px-6 py-3 font-semibold text-white hover:bg-accent-hover transition-colors">
+          Testi tekrar coz
+        </a>
+      </div>
+    );
+  }
+
+  if (!result) {
+    return (
+      <div className="px-6 py-20 text-center">
+        <p className="text-muted animate-pulse">{loading.resultsLoading[0]}</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="px-6 py-12">
+      <ResultsView result={result} onRetake={() => (window.location.href = "/quiz")} />
+    </div>
+  );
+}
+
+// ─── Fallback results (URL params) ──────────────────────────────────────────
+
+function FallbackResultsContent({ searchParams }: { searchParams: URLSearchParams }) {
+  const score = calculateScore(searchParams);
+
+  return (
+    <>
+      <ScoreDisplay score={score} />
+      <TaskBreakdownSection score={score} />
+      <SkillBreakdownSection score={score} />
+      <InsightsSection score={score} />
+      <ShareSection />
+      <EmailCaptureSection />
+      <PremiumCtaSection />
+    </>
+  );
+}
+
 function ResultsContent() {
   const searchParams = useSearchParams();
+  const scoreId = searchParams.get("scoreId");
 
-  // Empty state: no quiz answers
-  if (!searchParams || searchParams.toString() === "") {
+  // Empty state: no quiz answers and no scoreId
+  if (!scoreId && (!searchParams || searchParams.toString() === "")) {
     return (
       <div className="px-6 py-20">
         <div className="mx-auto max-w-2xl text-center">
@@ -318,19 +383,13 @@ function ResultsContent() {
     );
   }
 
-  const score = calculateScore(searchParams);
+  // API-based results (when scoreId is available)
+  if (scoreId) {
+    return <APIResultsContent scoreId={scoreId} />;
+  }
 
-  return (
-    <>
-      <ScoreDisplay score={score} />
-      <TaskBreakdownSection score={score} />
-      <SkillBreakdownSection score={score} />
-      <InsightsSection score={score} />
-      <ShareSection />
-      <EmailCaptureSection />
-      <PremiumCtaSection />
-    </>
-  );
+  // Fallback: URL params-based results
+  return <FallbackResultsContent searchParams={searchParams} />;
 }
 
 export default function ResultsPage() {

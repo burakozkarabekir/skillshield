@@ -1,6 +1,9 @@
 import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
+import { kv, keys } from "@/lib/kv";
+import type { PremiumRecord } from "@/lib/kv";
+import { sendPremiumConfirmationEmail } from "@/lib/email";
 
 /**
  * Stripe Webhook Handler
@@ -11,8 +14,7 @@ import Stripe from "stripe";
  * Setup:
  *   1. In Stripe Dashboard → Developers → Webhooks → Add endpoint
  *   2. URL: https://skillshield.dev/api/webhooks/stripe
- *   3. Events to listen for: checkout.session.completed, customer.subscription.updated,
- *      customer.subscription.deleted
+ *   3. Events to listen for: checkout.session.completed
  *   4. Copy the webhook signing secret to STRIPE_WEBHOOK_SECRET env var
  *
  * Local dev:
@@ -61,22 +63,34 @@ export async function POST(request: Request) {
     switch (event.type) {
       case "checkout.session.completed": {
         const session = event.data.object as Stripe.Checkout.Session;
-        // TODO: Fulfill the purchase — unlock premium quiz access, etc.
-        console.log(`Checkout completed: ${session.id}`);
-        break;
-      }
+        const email = session.customer_email;
+        const scoreId = session.metadata?.scoreId;
 
-      case "customer.subscription.updated": {
-        const subscription = event.data.object as Stripe.Subscription;
-        // TODO: Update user's subscription status in KV
-        console.log(`Subscription updated: ${subscription.id}`);
-        break;
-      }
+        if (email) {
+          // Save premium record to KV
+          const premiumRecord: PremiumRecord = {
+            email,
+            scoreId: scoreId || undefined,
+            stripeSessionId: session.id,
+            purchasedAt: Date.now(),
+          };
+          await kv.set(keys.premium(email), premiumRecord);
 
-      case "customer.subscription.deleted": {
-        const subscription = event.data.object as Stripe.Subscription;
-        // TODO: Revoke premium access in KV
-        console.log(`Subscription deleted: ${subscription.id}`);
+          // Save Stripe customer mapping
+          if (session.customer) {
+            await kv.set(
+              keys.stripeCustomer(email),
+              session.customer as string
+            );
+          }
+
+          // Send confirmation email
+          await sendPremiumConfirmationEmail(email, scoreId);
+
+          console.log(`[Webhook] Premium activated for ${email} (score: ${scoreId})`);
+        } else {
+          console.warn(`[Webhook] Checkout completed without email: ${session.id}`);
+        }
         break;
       }
 
@@ -87,7 +101,6 @@ export async function POST(request: Request) {
     const message = err instanceof Error ? err.message : "Unknown error";
     console.error(`Webhook handler error: ${message}`);
     // Return 200 anyway — don't make Stripe retry on our business logic errors
-    // We'll catch these in error monitoring
   }
 
   // Always return 200 quickly to acknowledge receipt

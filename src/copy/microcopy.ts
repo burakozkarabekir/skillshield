@@ -36,9 +36,9 @@ export const loading = {
     "Paylaşılabilir skorun üretiliyor...",
   ],
   premiumLoading: [
-    "Kişiselleştirilmiş yol haritanı hazırlıyor...",
-    "90 günlük planın üretiliyor...",
-    "Eylem planın oluşturuluyor...",
+    "Kişiselleştirilmiş raporun hazırlanıyor...",
+    "Detaylı analizin üretiliyor...",
+    "PDF raporun oluşturuluyor...",
   ],
   generic: [
     "Üzerinde çalışıyoruz...",
@@ -166,7 +166,7 @@ export const empty = {
     body: [
       "Yapay Zeka Kariyer Risk Skorunu görmek için önce testi çöz.",
       "Kişiselleştirilmiş risk analizini almak için değerlendirmeyi tamamla.",
-      "3 dakikalık testle başla. Skorun burada görünecek.",
+      "5 dakikalık testle başla. Skorun burada görünecek.",
     ],
     cta: "Testi çöz",
   },
@@ -185,16 +185,16 @@ export const empty = {
   },
   noPremiumPlan: {
     headlines: [
-      "Henüz eylem planı yok.",
-      "Yol haritanı seni bekliyor.",
-      "Plan üretilmedi.",
+      "Henüz detaylı rapor yok.",
+      "Raporun seni bekliyor.",
+      "Rapor üretilmedi.",
     ],
     body: [
-      "Kişiselleştirilmiş 90 günlük yeniden beceri kazanma yol haritanı almak için SkillShield Pro'ya yükselt.",
-      "Ücretsiz skorun riski gösteriyor. Pro plan ileriye giden yolu gösteriyor.",
-      "Kişiselleştirilmiş eylem planını aç ve bugün riskini azaltmaya başla.",
+      "Detaylı skor raporu, kişiselleştirilmiş öneriler ve PDF kariyer raporunu almak için SkillShield Pro'ya yükselt.",
+      "Ücretsiz skorun riski gösteriyor. Pro rapor çözüm yolunu gösteriyor.",
+      "Detaylı raporunu aç ve bugün riskini azaltmaya başla.",
     ],
-    cta: "Eylem planımı al",
+    cta: "Raporumu al",
   },
 } as const;
 

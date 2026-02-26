@@ -10,47 +10,43 @@ export const premiumCta = {
   headlines: [
     "Skoru biliyorsun. Planı al.",
     "Teşhis tamam. Tedavi burada.",
-    "Skorun ücretsiz. Yol haritanın fiyatı $29.",
+    "Skorun ücretsiz. Raporun fiyatı 149 TL.",
   ],
   subheads: [
-    "Tam risk profiline göre kişiselleştirilmiş 90 günlük eylem planı. Spesifik eğitimler, beceriler ve kariyer hamleleri.",
-    "Sektörüne, deneyim seviyene ve risk alanlarına özel haftalık yeniden beceri kazanma yol haritası.",
-    "Ücretsiz skorun problemi gösteriyor. SkillShield Pro çıkış yolunu gösteriyor — tam senin durumun için yapılmış bir planla.",
+    "Detaylı skor raporu, kişiselleştirilmiş öneri planı ve PDF kariyer raporu — hepsi bir arada.",
+    "Risk profiline özel analiz, gelişim önerileri ve indirilebilir PDF rapor.",
+    "Ücretsiz skorun problemi gösteriyor. SkillShield Pro çözüm yolunu gösteriyor — tam senin durumun için hazırlanmış raporla.",
   ],
   ctas: [
-    "Eylem planımı al",
-    "Yol haritamı aç",
-    "Kariyer planımı oluştur",
+    "Raporumu al",
+    "Detaylı analizi aç",
+    "PDF raporumu oluştur",
   ],
   features: [
     {
-      title: "90 Günlük Yeniden Beceri Kazanma Yol Haritası",
-      description: "Haftalık plan. Spesifik eğitimler ve sertifikalar. Risk alanlarınla eşleştirilmiş.",
+      title: "Detaylı Skor Raporu",
+      description: "Her boyutun derinlemesine analizi. Güçlü ve zayıf yönlerin, karşılaştırmalı verilerle birlikte.",
     },
     {
-      title: "Maaş Etki Projeksiyonları",
-      description: "Farklı beceri kazanma yollarına göre kazanç potansiyelin nasıl değişir. Gerçek rakamlar.",
+      title: "Kişiselleştirilmiş Öneri Planı",
+      description: "Risk profiline göre spesifik beceri geliştirme önerileri, eğitim kaynakları ve kariyer hamleleri.",
     },
     {
-      title: "Yapay Zekaya Dayanıklı İş Eşleştirme",
-      description: "Sektöründe mevcut deneyimini kullanan daha düşük riskli roller.",
-    },
-    {
-      title: "Aylık Risk Güncellemeleri",
-      description: "Yapay zeka yetenekleri değiştikçe skorun aylık yeniden hesaplanır. Eğrinin önünde kal.",
+      title: "PDF Kariyer Raporu",
+      description: "Profesyonel formatta indirilebilir rapor. İstediğin zaman bak, paylaş veya danışmanınla incele.",
     },
   ],
   pricing: {
-    amount: "$29",
+    amount: "149 TL",
     period: "tek seferlik",
     anchoring: [
       "Bir saatlik kariyer koçluğundan daha az.",
-      "Ortalama kariyer değişikliği gelir kaybında $12.000+ mal olur. Bu $29.",
-      "Ayda bir haftalık kahve parası. Veya önümüzdeki on yıl için bir kariyer planı.",
+      "Ortalama kariyer değişikliği gelir kaybında binlerce TL'ye mal olur. Bu sadece 149 TL.",
+      "Bir haftalık kahve parası. Veya önümüzdeki on yıl için bir kariyer planı.",
     ],
   },
   guarantee: [
-    "30 gün para iade garantisi. Plan işe yaramazsa, hiçbir şey ödemezsin.",
+    "30 gün para iade garantisi. Rapor işe yaramazsa, hiçbir şey ödemezsin.",
     "30 gün içinde tam iade. Soru yok, form yok, sürtünme yok.",
     "30 gün risksiz dene. Memnun değil misin? Her kuruşunu geri al.",
   ],
@@ -107,9 +103,9 @@ export const emailUpsell = {
       "Skorun bu ay {{score}}'da sabit kaldı. Rolünü etkileyen yapay zeka yeteneklerinde büyük değişiklik yok. İşte takip ettiğimiz şeylerin hızlı özeti.",
   },
   premiumNudge: [
-    "Spesifik bir plan mı istiyorsun? SkillShield Pro 90 günlük yol haritanı oluşturur. →",
+    "Spesifik bir plan mı istiyorsun? SkillShield Pro detaylı raporunu oluşturur. →",
     "Skoru bilmek birinci adım. Plan yapmak ikinci adım. →",
-    "Skor güncellemeleri ücretsiz. Eylem planları $29. →",
+    "Skor güncellemeleri ücretsiz. Detaylı rapor 149 TL. →",
   ],
 } as const;
 

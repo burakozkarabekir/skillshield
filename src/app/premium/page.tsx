@@ -1,11 +1,36 @@
 "use client";
 
-import { premiumCta, emailCapture } from "@/copy/premium";
-import { errors, empty } from "@/copy/microcopy";
+import { premiumCta } from "@/copy/premium";
+import { errors } from "@/copy/microcopy";
 import { useState } from "react";
 
 export default function PremiumPage() {
   const [paymentError, setPaymentError] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  async function handleCheckout() {
+    setLoading(true);
+    setPaymentError(false);
+    try {
+      const scoreId = new URLSearchParams(window.location.search).get("scoreId");
+      const email = new URLSearchParams(window.location.search).get("email");
+      const res = await fetch("/api/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ scoreId, email }),
+      });
+      const data = await res.json();
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        setPaymentError(true);
+      }
+    } catch {
+      setPaymentError(true);
+    } finally {
+      setLoading(false);
+    }
+  }
 
   return (
     <div className="px-6 py-20">
@@ -21,7 +46,7 @@ export default function PremiumPage() {
         </div>
 
         {/* Features */}
-        <div className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2">
+        <div className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-3">
           {premiumCta.features.map((feature) => (
             <div
               key={feature.title}
@@ -55,15 +80,19 @@ export default function PremiumPage() {
                 {errors.paymentFailed.body[0]}
               </p>
               <button
-                onClick={() => setPaymentError(false)}
-                className="mt-4 rounded-lg bg-accent px-8 py-4 text-lg font-semibold text-white hover:bg-accent-hover transition-colors"
+                onClick={handleCheckout}
+                className="mt-4 rounded-lg bg-accent px-8 py-4 text-lg font-semibold text-white hover:bg-accent-hover transition-colors cursor-pointer"
               >
                 {errors.paymentFailed.cta}
               </button>
             </div>
           ) : (
-            <button className="mt-8 rounded-lg bg-accent px-8 py-4 text-lg font-semibold text-white hover:bg-accent-hover transition-colors">
-              {premiumCta.ctas[0]}
+            <button
+              onClick={handleCheckout}
+              disabled={loading}
+              className="mt-8 rounded-lg bg-accent px-8 py-4 text-lg font-semibold text-white hover:bg-accent-hover transition-colors cursor-pointer disabled:opacity-50"
+            >
+              {loading ? "Yönlendiriliyor..." : premiumCta.ctas[0]}
             </button>
           )}
 

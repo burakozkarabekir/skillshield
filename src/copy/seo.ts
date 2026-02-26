@@ -30,7 +30,7 @@ export const seoTemplates = {
   metaTitle: (jobTitle: string) =>
     `Yapay Zeka ${jobTitle} Yerini Alacak mı? Risk Skorun | SkillShield`,
   metaDescription: (jobTitle: string, avgScore: number) =>
-    `${jobTitle} için ortalama yapay zeka risk skoru ${avgScore}/100. Kişiselleştirilmiş skorunu ve görev görev analizini almak için ücretsiz 3 dakikalık testi çöz.`,
+    `${jobTitle} için ortalama yapay zeka risk skoru ${avgScore}/100. Kişiselleştirilmiş skorunu ve görev görev analizini almak için ücretsiz 5 dakikalık testi çöz.`,
   heroHeadline: (jobTitle: string) =>
     `Yapay zeka ${jobTitle.toLowerCase()} yerini alacak mı?`,
   heroSubhead: (jobTitle: string, avgScore: number) =>
@@ -45,7 +45,7 @@ export const jobPages: JobSEOPage[] = [
     jobTitle: "Muhasebeciler",
     metaTitle: "Yapay Zeka Muhasebecilerin Yerini Alacak mı? Risk Skorun | SkillShield",
     metaDescription:
-      "Muhasebeciler için ortalama yapay zeka risk skoru 72/100. Kişiselleştirilmiş skorunu ve görev görev analizini almak için ücretsiz 3 dakikalık testi çöz.",
+      "Muhasebeciler için ortalama yapay zeka risk skoru 72/100. Kişiselleştirilmiş skorunu ve görev görev analizini almak için ücretsiz 5 dakikalık testi çöz.",
     heroHeadline: "Yapay zeka muhasebecilerin yerini alacak mı?",
     heroSubhead:
       "Ortalama muhasebeci yapay zeka kariyer riskinde 72/100 alıyor. Defter tutma neredeyse tamamen otomatikleştirilebilir. Danışmanlık işi değil. Sen neredesin?",
@@ -71,7 +71,7 @@ export const jobPages: JobSEOPage[] = [
       "Günün çoğunlukla defter tutma ve standart uyumla geçiyorsa, riskin gerçek. Stratejik danışmanlık ve karmaşık müşteri işleri yapıyorsan, daha güçlü bir konumdasın. Çoğu muhasebeci ikisinin arasında bir yerde — kişisel skorunu almanın tam da bu yüzden önemli olduğu yer.",
     ctaHeadline: "Bir muhasebeci olarak SENİN skorun kaç?",
     ctaSubhead:
-      "Ortalama 72/100. Ama günlük görevlerin, deneyim seviyen ve uzmanlık alanın kişisel riskini etkiliyor. 3 dakikada öğren.",
+      "Ortalama 72/100. Ama günlük görevlerin, deneyim seviyen ve uzmanlık alanın kişisel riskini etkiliyor. 5 dakikada öğren.",
   },
   {
     slug: "graphic-designers",
@@ -79,7 +79,7 @@ export const jobPages: JobSEOPage[] = [
     metaTitle:
       "Yapay Zeka Grafik Tasarımcıların Yerini Alacak mı? Risk Skorun | SkillShield",
     metaDescription:
-      "Grafik tasarımcılar için ortalama yapay zeka risk skoru 61/100. Kişiselleştirilmiş skorunu ve görev görev analizini almak için ücretsiz 3 dakikalık testi çöz.",
+      "Grafik tasarımcılar için ortalama yapay zeka risk skoru 61/100. Kişiselleştirilmiş skorunu ve görev görev analizini almak için ücretsiz 5 dakikalık testi çöz.",
     heroHeadline: "Yapay zeka grafik tasarımcıların yerini alacak mı?",
     heroSubhead:
       "Ortalama grafik tasarımcı yapay zeka kariyer riskinde 61/100 alıyor. Şablon işi bitti. Özgün marka düşüncesi bitmedi.",
@@ -113,7 +113,7 @@ export const jobPages: JobSEOPage[] = [
     metaTitle:
       "Yapay Zeka Yazılım Mühendislerinin Yerini Alacak mı? Risk Skorun | SkillShield",
     metaDescription:
-      "Yazılım mühendisleri için ortalama yapay zeka risk skoru 48/100. Kişiselleştirilmiş skorunu ve görev görev analizini almak için ücretsiz 3 dakikalık testi çöz.",
+      "Yazılım mühendisleri için ortalama yapay zeka risk skoru 48/100. Kişiselleştirilmiş skorunu ve görev görev analizini almak için ücretsiz 5 dakikalık testi çöz.",
     heroHeadline: "Yapay zeka yazılım mühendislerinin yerini alacak mı?",
     heroSubhead:
       "Ortalama yazılım mühendisi yapay zeka kariyer riskinde 48/100 alıyor. Şablon kod yapay zeka için kolay. Sistem tasarımı değil.",
@@ -147,7 +147,7 @@ export const jobPages: JobSEOPage[] = [
     metaTitle:
       "Yapay Zeka Hemşirelerin Yerini Alacak mı? Risk Skorun | SkillShield",
     metaDescription:
-      "Hemşireler için ortalama yapay zeka risk skoru 23/100. Kişiselleştirilmiş skorunu ve görev görev analizini almak için ücretsiz 3 dakikalık testi çöz.",
+      "Hemşireler için ortalama yapay zeka risk skoru 23/100. Kişiselleştirilmiş skorunu ve görev görev analizini almak için ücretsiz 5 dakikalık testi çöz.",
     heroHeadline: "Yapay zeka hemşirelerin yerini alacak mı?",
     heroSubhead:
       "Ortalama hemşire yapay zeka kariyer riskinde 23/100 alıyor. Uygulamalı bakım vazgeçilmez. Kayıt tutma değil.",
@@ -180,7 +180,7 @@ export const jobPages: JobSEOPage[] = [
     metaTitle:
       "Yapay Zeka Pazarlama Yöneticilerinin Yerini Alacak mı? Risk Skorun | SkillShield",
     metaDescription:
-      "Pazarlama yöneticileri için ortalama yapay zeka risk skoru 55/100. Kişiselleştirilmiş skorunu ve görev görev analizini almak için ücretsiz 3 dakikalık testi çöz.",
+      "Pazarlama yöneticileri için ortalama yapay zeka risk skoru 55/100. Kişiselleştirilmiş skorunu ve görev görev analizini almak için ücretsiz 5 dakikalık testi çöz.",
     heroHeadline: "Yapay zeka pazarlama yöneticilerinin yerini alacak mı?",
     heroSubhead:
       "Ortalama pazarlama yöneticisi yapay zeka kariyer riskinde 55/100 alıyor. İçerik üretimi zaten otomatikleştirildi. Strateji sağlam duruyor.",

@@ -13,6 +13,9 @@ const serverEnvSchema = z.object({
   STRIPE_SECRET_KEY: z.string().startsWith("sk_"),
   STRIPE_WEBHOOK_SECRET: z.string().startsWith("whsec_"),
 
+  // Resend (optional — email features degrade gracefully without it)
+  RESEND_API_KEY: z.string().startsWith("re_").optional(),
+
   // App
   NODE_ENV: z
     .enum(["development", "production", "test"])

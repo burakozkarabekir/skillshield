@@ -2,7 +2,7 @@ import { QuizQuestion } from "@/lib/types";
 
 /**
  * Quiz soruları puanlama boyutlarıyla eşleştirilmiş.
- * 15 soru — yaklaşık 3-4 dakika sürer.
+ * 25 soru — yaklaşık 5 dakika sürer.
  *
  * Puan anlamı: yüksek puan = yapay zeka otomasyonundan DAHA FAZLA risk altında.
  * Her cevabın puanı (0-100) o boyut için risk katkısını temsil eder.
@@ -124,6 +124,79 @@ export const quizQuestions: QuizQuestion[] = [
     ],
   },
 
+  {
+    id: "tc4",
+    dimension: "taskComposition",
+    question: "İşinde ne sıklıkla aynı anda birden fazla bilgi kaynağını sentezlemen gerekiyor?",
+    helpText: "Farklı kaynaklardan gelen bilgiyi birleştirip yeni bir çıkarım yapma.",
+    answers: [
+      {
+        id: "tc4-a",
+        text: "Nadiren — genellikle tek bir kaynaktan bilgiyle çalışıyorum",
+        score: 80,
+        reasoning:
+          "Tek kaynaklı bilgi işleme yapay zeka için kolay. LLM'ler tek bir veri setini analiz etmekte mükemmel.",
+      },
+      {
+        id: "tc4-b",
+        text: "Bazen — birkaç kaynağı karşılaştırmam gerekiyor",
+        score: 55,
+        reasoning:
+          "Birkaç kaynağı karşılaştırma orta düzey karmaşıklık. Yapay zeka bu alanda gelişiyor ama bağlam geçişleri hâlâ zor.",
+      },
+      {
+        id: "tc4-c",
+        text: "Sıklıkla — farklı alanlardaki bilgileri bir araya getirip özgün sonuçlar çıkarıyorum",
+        score: 25,
+        reasoning:
+          "Çoklu kaynak sentezi ve alanlararası çıkarım yapay zekanın zorlandığı üst düzey bilişsel beceri.",
+      },
+      {
+        id: "tc4-d",
+        text: "Sürekli — işim tamamen farklı disiplinlerin kesişiminde yeni anlam üretmekle ilgili",
+        score: 10,
+        reasoning:
+          "Disiplinlerarası sentez ve yeni anlam üretimi en zorlu bilişsel görevler. Yapay zeka bu düzeyde yaratıcı senteze ulaşamıyor.",
+      },
+    ],
+  },
+  {
+    id: "tc5",
+    dimension: "taskComposition",
+    question: "İşinin çıktısı ne kadar önceden tahmin edilebilir?",
+    helpText: "Sabah başladığında, gün sonunda ne üreteceğini ne kadar biliyorsun?",
+    answers: [
+      {
+        id: "tc5-a",
+        text: "Tamamen tahmin edilebilir — her gün aynı türde çıktılar üretiyorum",
+        score: 90,
+        reasoning:
+          "Tamamen tahmin edilebilir çıktılar otomasyon için ideal hedef. Kalıp sabitse, yapay zeka öğrenip tekrarlayabilir.",
+      },
+      {
+        id: "tc5-b",
+        text: "Çoğunlukla tahmin edilebilir — bazen sürprizler olsa da genel çerçeve aynı",
+        score: 65,
+        reasoning:
+          "Çoğunlukla tahmin edilebilir çıktılar kısmen otomatikleştirilebilir. Sürpriz unsurları insan müdahalesi gerektirir.",
+      },
+      {
+        id: "tc5-c",
+        text: "Değişken — her proje farklı bir çıktı gerektiriyor",
+        score: 30,
+        reasoning:
+          "Değişken çıktılar yapay zekanın her seferinde yeni bir yaklaşım geliştirmesini gerektirir, bu da zorlu.",
+      },
+      {
+        id: "tc5-d",
+        text: "Hiç tahmin edilemez — ne çıkacağını ben bile sabah bilmiyorum",
+        score: 10,
+        reasoning:
+          "Tamamen öngörülemeyen çıktılar yapay zeka için en zor görevler. Sürekli adaptasyon ve yaratıcılık gerektiriyor.",
+      },
+    ],
+  },
+
   // ═══════════════════════════════════════════════════════════════════════════
   // BOYUT: skillReplaceability (ağırlık: 0.25)
   // Araştırma temeli: O*NET görev çözümlemeleri + gerçek dünya yapay zeka
@@ -241,6 +314,79 @@ export const quizQuestions: QuizQuestion[] = [
     ],
   },
 
+  {
+    id: "sr4",
+    dimension: "skillReplaceability",
+    question: "İşinde ne sıklıkla tamamen yeni bir çözüm yaklaşımı icat etmen gerekiyor?",
+    helpText: "Daha önce kimsenin denemediği bir yol bulma.",
+    answers: [
+      {
+        id: "sr4-a",
+        text: "Neredeyse hiç — kanıtlanmış yöntemleri uyguluyorum",
+        score: 80,
+        reasoning:
+          "Kanıtlanmış yöntemlerin uygulanması yapay zekanın güçlü olduğu alan. En iyi pratikleri öğrenip tekrarlamak LLM'ler için kolay.",
+      },
+      {
+        id: "sr4-b",
+        text: "Ara sıra — mevcut yöntemleri duruma göre uyarlıyorum",
+        score: 55,
+        reasoning:
+          "Yöntem uyarlama orta düzey zorluk taşır. Yapay zeka mevcut kalıpları değiştirebilir ama bağlamsal uyarlama hâlâ gelişiyor.",
+      },
+      {
+        id: "sr4-c",
+        text: "Sıklıkla — standart yaklaşımlar işe yaramıyor, yeni yollar bulmam gerekiyor",
+        score: 25,
+        reasoning:
+          "Yeni çözüm yaklaşımları icat etmek yaratıcı problem çözme gerektirir, bu da yapay zekanın en çok zorlandığı alan.",
+      },
+      {
+        id: "sr4-d",
+        text: "Sürekli — işimin özü bilinmeyenlerle başa çıkıp yeni yollar keşfetmek",
+        score: 10,
+        reasoning:
+          "Sürekli yenilik ve keşif yapay zekanın en uzak olduğu alan. Gerçek inovasyon derinden insani bir süreç.",
+      },
+    ],
+  },
+  {
+    id: "sr5",
+    dimension: "skillReplaceability",
+    question: "Yapay zeka aracı kullansaydın, işinin ne kadarını hızlandırırdı?",
+    helpText: "ChatGPT, Copilot gibi araçları düşün — gerçekçi tahmin et.",
+    answers: [
+      {
+        id: "sr5-a",
+        text: "Neredeyse tamamını — çoğu işimi yapay zeka ile çok daha hızlı yapabilirim",
+        score: 85,
+        reasoning:
+          "Yapay zeka ile büyük oranda hızlandırılabilen iş, otomasyona çok yakın demektir. Hızlandırma ile değiştirme arasındaki çizgi incedir.",
+      },
+      {
+        id: "sr5-b",
+        text: "Önemli bir kısmını — belirli görevlerde ciddi hız kazanırdım",
+        score: 60,
+        reasoning:
+          "Kısmi hızlandırma orta düzey risk işareti. Yapay zeka bu görevleri destekleyebilir, zamanla daha fazlasını devralabilir.",
+      },
+      {
+        id: "sr5-c",
+        text: "Çok azını — işim yapay zekanın kolayca yapamayacağı şeyler gerektiriyor",
+        score: 25,
+        reasoning:
+          "Düşük yapay zeka hızlandırma potansiyeli güçlü savunulabilirlik işareti. Bu becerilerin otomasyonu çok daha uzak.",
+      },
+      {
+        id: "sr5-d",
+        text: "Hiçbirini — işim tamamen fiziksel veya insani etkileşim gerektiriyor",
+        score: 5,
+        reasoning:
+          "Yapay zeka tarafından hızlandırılamayan iş en güçlü savunma hattına sahip. Fiziksel ve insani etkileşim otomatikleştirilemez.",
+      },
+    ],
+  },
+
   // ═══════════════════════════════════════════════════════════════════════════
   // BOYUT: industryVelocity (ağırlık: 0.20)
   // Araştırma temeli: McKinsey sektör benimseme eğrileri + Goldman Sachs
@@ -351,6 +497,79 @@ export const quizQuestions: QuizQuestion[] = [
         score: 50,
         reasoning:
           "Sektöründeki yapay zeka gelişmelerini takip etmemek başlı başına bir risk. Bilgi, en iyi savunma hattı.",
+      },
+    ],
+  },
+
+  {
+    id: "iv4",
+    dimension: "industryVelocity",
+    question: "Sektöründe son 2 yılda kaç iş rolü yapay zeka nedeniyle değişti veya ortadan kalktı?",
+    helpText: "Tanıdıklarından veya sektör haberlerinden bildiklerini düşün.",
+    answers: [
+      {
+        id: "iv4-a",
+        text: "Çok sayıda — birçok pozisyon kaldırıldı veya yapay zekaya devredildi",
+        score: 90,
+        reasoning:
+          "Aktif rol eliminasyonu en yüksek hız göstergesi. Sektörün zaten dönüşüm sürecinde ve risk somut.",
+      },
+      {
+        id: "iv4-b",
+        text: "Birkaç tane — bazı roller değişti ama çoğu hâlâ aynı",
+        score: 55,
+        reasoning:
+          "Kısmi rol değişimi sektörün geçiş aşamasında olduğunu gösterir. Trend hızlanıyor.",
+      },
+      {
+        id: "iv4-c",
+        text: "Neredeyse hiç — sektörümde belirgin bir değişiklik olmadı",
+        score: 25,
+        reasoning:
+          "Düşük değişim oranı kısa vadede nefes alma alanı sağlar, ama sektörler arası yayılma hızlanıyor.",
+      },
+      {
+        id: "iv4-d",
+        text: "Bilmiyorum — bu konuyu takip etmiyorum",
+        score: 50,
+        reasoning:
+          "Sektördeki değişimleri takip etmemek başlı başına bir risk. Farkındalık en iyi savunma.",
+      },
+    ],
+  },
+  {
+    id: "iv5",
+    dimension: "industryVelocity",
+    question: "Şirketindeki yönetim yapay zeka yatırımları konusunda ne düşünüyor?",
+    helpText: "Şirketinin yapay zeka stratejisini ve bütçe ayırmasını düşün.",
+    answers: [
+      {
+        id: "iv5-a",
+        text: "Agresif yatırım yapıyorlar — yapay zeka şirketin ana stratejisi",
+        score: 85,
+        reasoning:
+          "Agresif yapay zeka yatırımı yapan şirketler dönüşümü hızlandırır. Bazı roller için bu hızlı değişim demek.",
+      },
+      {
+        id: "iv5-b",
+        text: "Pilot projeler var — deneme aşamasında ama ciddi bütçe ayrılmadı",
+        score: 50,
+        reasoning:
+          "Pilot aşama tipik orta seviye benimseme. Başarılı pilotlar genellikle tam uygulamaya dönüşür.",
+      },
+      {
+        id: "iv5-c",
+        text: "İlgisizler — yapay zeka gündemde değil",
+        score: 20,
+        reasoning:
+          "Düşük kurumsal ilgi kısa vadede koruma sağlar ama sektör baskısı bunu değiştirebilir.",
+      },
+      {
+        id: "iv5-d",
+        text: "Aktif olarak karşılar — düzenleme veya maliyet nedeniyle yapay zekadan kaçınıyorlar",
+        score: 15,
+        reasoning:
+          "Aktif direnç kısa vadede en güçlü koruma. Ama uzun vadede piyasa baskısı değiştirir.",
       },
     ],
   },
@@ -471,6 +690,79 @@ export const quizQuestions: QuizQuestion[] = [
     ],
   },
 
+  {
+    id: "em4",
+    dimension: "experienceMoat",
+    question: "Sektörünü veya şirketini tanımayan biri, işindeki incelikleri ne kadar kavrayabilir?",
+    helpText: "Yazılı olmayan kurallar, kültürel dinamikler, 'işin nasıl gerçekten yapıldığı'.",
+    answers: [
+      {
+        id: "em4-a",
+        text: "Kolayca — işim oldukça standart ve evrensel",
+        score: 80,
+        reasoning:
+          "Standart ve evrensel iş bilgisi yapay zeka için erişilebilir. Bağlam bağımsız görevler otomasyona açık.",
+      },
+      {
+        id: "em4-b",
+        text: "Biraz zorlanır — sektöre özgü terminoloji ve süreçler var",
+        score: 50,
+        reasoning:
+          "Sektöre özgü bilgi orta düzey savunulabilirlik sağlar. Yapay zeka terminolojiyi öğrenebilir ama bağlamı tam kavrayamaz.",
+      },
+      {
+        id: "em4-c",
+        text: "Çok zorlanır — yıllarca içinde olmadan anlaşılamayacak dinamikler var",
+        score: 20,
+        reasoning:
+          "Derin kurumsal ve sektörel bağlam güçlü savunma hattı. Bu bilgi belgelenemiyor ve yapay zekaya aktarılamıyor.",
+      },
+      {
+        id: "em4-d",
+        text: "İmkansız — işim tamamen deneyimle kazanılan sezgiye dayanıyor",
+        score: 5,
+        reasoning:
+          "Tamamen sezgiye dayalı iş yapay zeka için en erişilemez alan. On yılların birikimi kopyalanamaz.",
+      },
+    ],
+  },
+  {
+    id: "em5",
+    dimension: "experienceMoat",
+    question: "İşinde karar verirken ne sıklıkla 'içgüdüne' veya sezgine güveniyorsun?",
+    helpText: "Verilerin yeterli olmadığı, deneyiminin devreye girdiği anlar.",
+    answers: [
+      {
+        id: "em5-a",
+        text: "Nadiren — kararlarım genellikle net verilere ve kurallara dayanıyor",
+        score: 80,
+        reasoning:
+          "Veri ve kural tabanlı kararlar yapay zekanın güçlü alanı. Bu tür kararlar algoritmalara kolayca aktarılabilir.",
+      },
+      {
+        id: "em5-b",
+        text: "Bazen — veriler yetersiz kaldığında deneyimim devreye giriyor",
+        score: 45,
+        reasoning:
+          "Kısmi sezgisel karar verme orta düzey savunulabilirlik sağlar. Yapay zeka veri boşluklarında zorlanır.",
+      },
+      {
+        id: "em5-c",
+        text: "Sıklıkla — işimin büyük kısmı belirsizlikte yol almayı gerektiriyor",
+        score: 20,
+        reasoning:
+          "Belirsizlikte sezgisel karar verme yapay zekanın en zayıf olduğu alan. İnsan sezgisi burada vazgeçilmez.",
+      },
+      {
+        id: "em5-d",
+        text: "Her zaman — veriler yerine sezgim ve deneyimim temel karar aracım",
+        score: 5,
+        reasoning:
+          "Tamamen sezgisel karar verme en güçlü yapay zeka direnci. Uzman sezgisi onlarca yılın birikimi.",
+      },
+    ],
+  },
+
   // ═══════════════════════════════════════════════════════════════════════════
   // BOYUT: humanInteraction (ağırlık: 0.15)
   // Araştırma temeli: WEF Future of Jobs 2025 — empati, fiziksel varlık
@@ -585,6 +877,78 @@ export const quizQuestions: QuizQuestion[] = [
         score: 5,
         reasoning:
           "Sürekli duygusal okuma ve destek en güçlü yapay zeka direnci. Terapi, koçluk ve bakım gibi roller en son otomatikleştirilecek.",
+      },
+    ],
+  },
+  {
+    id: "hi4",
+    dimension: "humanInteraction",
+    question: "İşinde ne sıklıkla beklenmedik insani durumlara anında tepki vermen gerekiyor?",
+    helpText: "Kriz anları, duygusal müşteriler, beklenmeyen çatışmalar.",
+    answers: [
+      {
+        id: "hi4-a",
+        text: "Neredeyse hiç — işim planlanmış ve öngörülebilir",
+        score: 80,
+        reasoning:
+          "Planlanmış ve öngörülebilir etkileşimler yapay zeka tarafından daha kolay yönetilebilir. Spontan tepki gerektirmezler.",
+      },
+      {
+        id: "hi4-b",
+        text: "Ara sıra — arada sırada beklenmedik bir durum çıkıyor",
+        score: 50,
+        reasoning:
+          "Kısmi spontan etkileşim orta düzey savunulabilirlik sağlar. Yapay zeka beklenmedik durumları halletmekte zorlanır.",
+      },
+      {
+        id: "hi4-c",
+        text: "Sıklıkla — işim insanların duygusal tepkilerine hızlı uyum sağlamayı gerektiriyor",
+        score: 20,
+        reasoning:
+          "Duygusal uyum ve hızlı adaptasyon yapay zekanın en zayıf olduğu alan. İnsan empatisi vazgeçilmez.",
+      },
+      {
+        id: "hi4-d",
+        text: "Sürekli — her gün kriz, çatışma veya yoğun duygusal anlar yönetiyorum",
+        score: 5,
+        reasoning:
+          "Sürekli kriz ve duygusal yönetim en güçlü yapay zeka direnci. Bu becerilerin otomasyonu on yıllar uzakta.",
+      },
+    ],
+  },
+  {
+    id: "hi5",
+    dimension: "humanInteraction",
+    question: "İşinde başarılı olmak için insanlarla ne kadar güven ilişkisi kurman gerekiyor?",
+    helpText: "Müşteriler, ekip arkadaşları, paydaşlar ile kişisel güven bağı.",
+    answers: [
+      {
+        id: "hi5-a",
+        text: "Çok az — işim çoğunlukla bireysel ve kişisel güven gerektirmiyor",
+        score: 75,
+        reasoning:
+          "Bireysel ve güven bağımsız iş yapay zeka için daha erişilebilir. İnsan ilişkisi avantajı düşük.",
+      },
+      {
+        id: "hi5-b",
+        text: "Bir miktar — iyi ilişkiler işimi kolaylaştırıyor ama zorunlu değil",
+        score: 45,
+        reasoning:
+          "İsteğe bağlı ilişki bağımlılığı orta düzey savunulabilirlik sağlar. Güven bir artı ama olmasa da iş yürür.",
+      },
+      {
+        id: "hi5-c",
+        text: "Çok — müşteri veya paydaşlarla derin güven ilişkisi kurmalıyım",
+        score: 15,
+        reasoning:
+          "Derin güven ilişkileri yapay zekanın kopyalayamayacağı insani bir avantaj. Güven yıllarla inşa edilir.",
+      },
+      {
+        id: "hi5-d",
+        text: "Her şey güven üzerine — işim tamamen kişisel itibar ve ilişkilere bağlı",
+        score: 5,
+        reasoning:
+          "Tamamen güven ve itibar temelli kariyer yapay zekaya en dirençli. Kişisel marka otomatikleştirilemez.",
       },
     ],
   },

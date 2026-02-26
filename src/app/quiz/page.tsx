@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { quizIntro, progress, questions, quizComplete } from "@/copy/quiz";
 import { loading, errors, validation, nav, a11y } from "@/copy/microcopy";
+import { quizQuestions } from "@/data/quiz-questions";
 
 type QuizState = "intro" | "in-progress" | "submitting" | "error";
 
@@ -28,7 +29,7 @@ export default function QuizPage() {
     setSelectedValue(value);
   }
 
-  function handleNext() {
+  async function handleNext() {
     if (!selectedValue) return;
     const newAnswers = { ...answers, [currentQuestion.id]: selectedValue };
     setAnswers(newAnswers);
@@ -38,11 +39,51 @@ export default function QuizPage() {
       setCurrentIndex(currentIndex + 1);
     } else {
       setState("submitting");
-      // Simulate score calculation, then redirect
-      setTimeout(() => {
+
+      // Map quiz copy answers to scoring engine format
+      const quizAnswerPayload = Object.entries(newAnswers).map(
+        ([questionId, answerId]) => {
+          // Find the matching quiz question from scoring data
+          const scoringQ = quizQuestions.find((q) => {
+            return q.answers.some((a) => a.id === answerId);
+          });
+          if (scoringQ) {
+            return { questionId: scoringQ.id, answerId };
+          }
+          // Fallback for copy-based questions: pass through
+          return { questionId, answerId };
+        }
+      );
+
+      try {
+        const res = await fetch("/api/score", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            answers: quizAnswerPayload,
+            jobCategoryId: "other", // Default; could be derived from answers
+          }),
+        });
+
+        if (res.ok) {
+          const data = await res.json();
+          if (data.scoreId) {
+            window.location.href = `/results?scoreId=${data.scoreId}`;
+          } else {
+            // Fallback: redirect with answers as URL params
+            const params = new URLSearchParams(newAnswers);
+            window.location.href = `/results?${params.toString()}`;
+          }
+        } else {
+          // Fallback: redirect with answers
+          const params = new URLSearchParams(newAnswers);
+          window.location.href = `/results?${params.toString()}`;
+        }
+      } catch {
+        // Fallback: redirect with answers if API fails
         const params = new URLSearchParams(newAnswers);
         window.location.href = `/results?${params.toString()}`;
-      }, 3000);
+      }
     }
   }
 
@@ -67,12 +108,12 @@ export default function QuizPage() {
           </p>
           <button
             onClick={() => setState("in-progress")}
-            className="mt-10 inline-block rounded-lg bg-accent px-8 py-4 text-lg font-semibold text-white hover:bg-accent-hover transition-colors"
+            className="mt-10 inline-block rounded-lg bg-accent px-8 py-4 text-lg font-semibold text-white hover:bg-accent-hover transition-colors cursor-pointer"
           >
             {nav.quizButton}
           </button>
           <p className="mt-4 text-sm text-muted">
-            12 soru. Yaklaşık 3 dakika. Tamamen anonim.
+            25 soru. Yaklasik 5 dakika. Tamamen anonim.
           </p>
         </div>
       </div>
@@ -120,7 +161,7 @@ export default function QuizPage() {
           </p>
           <button
             onClick={() => setState("submitting")}
-            className="mt-8 rounded-lg bg-accent px-6 py-3 font-semibold text-white hover:bg-accent-hover transition-colors"
+            className="mt-8 rounded-lg bg-accent px-6 py-3 font-semibold text-white hover:bg-accent-hover transition-colors cursor-pointer"
           >
             {errors.quizSubmitFailed.cta}
           </button>
@@ -168,7 +209,7 @@ export default function QuizPage() {
             <button
               key={option.value}
               onClick={() => handleSelect(option.value)}
-              className={`w-full text-left rounded-lg border px-5 py-4 transition-colors ${
+              className={`w-full text-left rounded-lg border px-5 py-4 transition-colors cursor-pointer ${
                 selectedValue === option.value
                   ? "border-accent bg-accent/5 font-medium"
                   : "border-border hover:border-accent/50"
@@ -189,14 +230,14 @@ export default function QuizPage() {
           <button
             onClick={handleBack}
             disabled={currentIndex === 0}
-            className="text-sm text-muted hover:text-foreground transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+            className="text-sm text-muted hover:text-foreground transition-colors disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
           >
             {nav.previousQuestion}
           </button>
           <button
             onClick={handleNext}
             disabled={!selectedValue}
-            className="rounded-lg bg-accent px-6 py-3 font-semibold text-white hover:bg-accent-hover transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+            className="rounded-lg bg-accent px-6 py-3 font-semibold text-white hover:bg-accent-hover transition-colors disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
           >
             {currentIndex === totalQuestions - 1 ? nav.submitQuiz : nav.nextQuestion}
           </button>

@@ -6,14 +6,14 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "SkillShield — Yapay Zeka Kariyer Risk Skoru",
   description:
-    "Yapay zekanın işini nasıl etkileyeceğini öğren. Ücretsiz 3 dakikalık testi çöz ve görev bazında analizle kişiselleştirilmiş Yapay Zeka Kariyer Risk Skorunu al.",
+    "Yapay zekanın işini nasıl etkileyeceğini öğren. Ücretsiz 5 dakikalık testi çöz ve görev bazında analizle kişiselleştirilmiş Yapay Zeka Kariyer Risk Skorunu al.",
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_APP_URL || "https://skillshield.dev"
   ),
   openGraph: {
     title: "Yapay Zeka Kariyer Risk Skorun Kaç?",
     description:
-      "Ücretsiz 3 dakikalık testi çöz. Kişiselleştirilmiş skorunu al. Nerede durduğunu tam olarak bil.",
+      "Ücretsiz 5 dakikalık testi çöz. Kişiselleştirilmiş skorunu al. Nerede durduğunu tam olarak bil.",
     type: "website",
     siteName: "SkillShield",
   },
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Yapay Zeka Kariyer Risk Skorun Kaç?",
     description:
-      "Ücretsiz 3 dakikalık testi çöz. Kişiselleştirilmiş skorunu al. Nerede durduğunu tam olarak bil.",
+      "Ücretsiz 5 dakikalık testi çöz. Kişiselleştirilmiş skorunu al. Nerede durduğunu tam olarak bil.",
   },
   robots: {
     index: true,

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { calculateScore } from "@/lib/scoring-engine";
 import { QuizAnswer } from "@/lib/types";
+import { kv, keys } from "@/lib/kv";
 
 interface ScoreRequest {
   answers: QuizAnswer[];
@@ -8,7 +9,7 @@ interface ScoreRequest {
 }
 
 /**
- * GET /api/score?id=<score_id> — Fetch a shareable score result
+ * GET /api/score?id=<score_id> — Fetch a saved score result from KV
  */
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
@@ -21,16 +22,20 @@ export async function GET(request: Request) {
     );
   }
 
-  // TODO: Fetch score from Vercel KV
-  return NextResponse.json({
-    id,
-    score: null,
-    message: "Score API scaffold — connect to KV store",
-  });
+  const score = await kv.get(keys.score(id));
+
+  if (!score) {
+    return NextResponse.json(
+      { error: "Score not found" },
+      { status: 404 }
+    );
+  }
+
+  return NextResponse.json(score);
 }
 
 /**
- * POST /api/score — Calculate a new score from quiz answers
+ * POST /api/score — Calculate a new score from quiz answers and save to KV
  */
 export async function POST(request: NextRequest) {
   try {
@@ -51,7 +56,14 @@ export async function POST(request: NextRequest) {
     }
 
     const result = calculateScore(body.answers, body.jobCategoryId);
-    return NextResponse.json(result);
+
+    // Generate a unique score ID and persist
+    const scoreId = crypto.randomUUID().slice(0, 12);
+    const resultWithId = { ...result, scoreId };
+
+    await kv.set(keys.score(scoreId), resultWithId, { ex: 60 * 60 * 24 * 90 }); // 90 days TTL
+
+    return NextResponse.json(resultWithId);
   } catch (error) {
     const message =
       error instanceof Error ? error.message : "Internal server error";
