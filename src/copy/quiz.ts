@@ -1,193 +1,228 @@
 /**
- * Quiz Page Copy — SkillShield
+ * Quiz Sayfası Metinleri — SkillShield
  *
- * Emotional target: Engagement + growing investment
- * Questions should feel personalized and insightful, not bureaucratic.
+ * Duygusal hedef: Katılım + artan yatırım
+ * Sorular kişiselleştirilmiş ve içgörülü hissettirmeli, bürokratik değil.
  *
- * 12 questions, each with 4–5 answer options.
- * Questions progress from easy/comfortable → more probing/thought-provoking.
+ * 15 soru, her birinde 4–5 cevap seçeneği.
+ * Sorular kolay/rahat → daha araştırıcı/düşündürücü şeklinde ilerler.
  */
 
-// ─── QUIZ INTRO ──────────────────────────────────────────
+// ─── QUIZ GİRİŞ ──────────────────────────────────────────
 export const quizIntro = {
   headlines: [
-    "Let's find your real risk.",
-    "12 questions. Honest answers only.",
-    "Ready to know the truth?",
+    "Gerçek riskini öğrenelim.",
+    "15 soru. Sadece dürüst cevaplar.",
+    "Gerçeği öğrenmeye hazır mısın?",
   ],
   subheads: [
-    "Every answer maps to a real AI capability benchmark. No filler questions.",
-    "Be specific. The more honest your answers, the more useful your score.",
-    "This takes about 3 minutes. Your career clarity lasts a lot longer.",
+    "Her cevap gerçek bir yapay zeka yetenek ölçütüyle eşleşiyor. Boş soru yok.",
+    "Detaylı cevapla. Ne kadar dürüst olursan, skorun o kadar işe yarar.",
+    "Bu yaklaşık 3 dakika sürer. Kariyer netliğin çok daha uzun sürer.",
   ],
 } as const;
 
-// ─── PROGRESS INDICATORS ─────────────────────────────────
+// ─── İLERLEME GÖSTERGELERİ ─────────────────────────────────
 export const progress = {
   labels: [
-    (current: number, total: number) => `${current} of ${total}`,
+    (current: number, total: number) => `${current} / ${total}`,
     (current: number, total: number) =>
-      `Question ${current}/${total}`,
+      `Soru ${current}/${total}`,
     (current: number, total: number) =>
-      `${Math.round((current / total) * 100)}% complete`,
+      `%${Math.round((current / total) * 100)} tamamlandı`,
   ],
   encouragement: {
-    quarter: "Good start. Keep going.",
-    halfway: "Halfway there. Getting interesting.",
-    threeQuarter: "Almost done. The good stuff is next.",
-    final: "Last one. Make it count.",
+    quarter: "İyi başlangıç. Devam et.",
+    halfway: "Yarıya geldin. İlginçleşiyor.",
+    threeQuarter: "Neredeyse bitti. Asıl güzel kısmı şimdi geliyor.",
+    final: "Son soru. Adam gibi cevapla.",
   },
 } as const;
 
-// ─── QUESTIONS ───────────────────────────────────────────
+// ─── SORULAR ───────────────────────────────────────────
 export const questions = [
   {
     id: "role-type",
-    question: "What best describes your work?",
-    context: "Pick the closest match — even if it's not perfect.",
+    question: "İşini en iyi ne tanımlar?",
+    context: "En yakın olanı seç — mükemmel olmasa da olur.",
     options: [
-      { value: "knowledge", label: "I mostly analyze information and make decisions" },
-      { value: "creative", label: "I mostly create original content or designs" },
-      { value: "technical", label: "I mostly build, code, or engineer things" },
-      { value: "interpersonal", label: "I mostly manage people or client relationships" },
-      { value: "physical", label: "I mostly do hands-on or physical work" },
+      { value: "knowledge", label: "Çoğunlukla bilgi analiz edip karar veriyorum" },
+      { value: "creative", label: "Çoğunlukla özgün içerik veya tasarım üretiyorum" },
+      { value: "technical", label: "Çoğunlukla bir şeyler inşa ediyorum, kodluyorum veya mühendislik yapıyorum" },
+      { value: "interpersonal", label: "Çoğunlukla insanları veya müşteri ilişkilerini yönetiyorum" },
+      { value: "physical", label: "Çoğunlukla uygulamalı veya fiziksel iş yapıyorum" },
     ],
   },
   {
     id: "daily-tasks",
-    question: "How much of your day is spent on repetitive tasks?",
-    context: "Think emails, data entry, scheduling, standard reports.",
+    question: "Gününün ne kadarı tekrarlayan işlerle geçiyor?",
+    context: "E-postalar, veri girişi, planlama, standart raporlar gibi düşün.",
     options: [
-      { value: "most", label: "More than 75% — most of my day is routine" },
-      { value: "half", label: "About 50% — a mix of routine and unique work" },
-      { value: "some", label: "About 25% — mostly unique problems" },
-      { value: "rarely", label: "Under 10% — almost everything I do is different" },
+      { value: "most", label: "%75'ten fazla — günümün çoğu rutin" },
+      { value: "half", label: "Yaklaşık %50 — rutin ve özgün iş karışımı" },
+      { value: "some", label: "Yaklaşık %25 — çoğunlukla benzersiz problemler" },
+      { value: "rarely", label: "%10'un altı — neredeyse her yaptığım farklı" },
     ],
   },
   {
     id: "data-work",
-    question: "How often do you work with data or spreadsheets?",
-    context: "Pulling reports, analyzing numbers, making charts.",
+    question: "Ne sıklıkla veri veya tablolarla çalışıyorsun?",
+    context: "Rapor çekmek, sayı analiz etmek, grafik yapmak.",
     options: [
-      { value: "daily", label: "Every day — it's core to my job" },
-      { value: "weekly", label: "A few times a week" },
-      { value: "monthly", label: "Occasionally, maybe monthly" },
-      { value: "rarely", label: "Almost never" },
+      { value: "daily", label: "Her gün — işimin temelinde bu var" },
+      { value: "weekly", label: "Haftada birkaç kez" },
+      { value: "monthly", label: "Ara sıra, belki ayda bir" },
+      { value: "rarely", label: "Neredeyse hiç" },
     ],
   },
   {
     id: "writing-output",
-    question: "How much writing does your job require?",
-    context: "Emails, reports, proposals, documentation, copy.",
+    question: "İşin ne kadar yazı yazmayı gerektiriyor?",
+    context: "E-postalar, raporlar, teklifler, dokümantasyon, metin yazarlığı.",
     options: [
-      { value: "heavy", label: "Writing is my primary output" },
-      { value: "significant", label: "I write a lot but it's not my main job" },
-      { value: "moderate", label: "Some writing, mostly short communications" },
-      { value: "minimal", label: "Very little — I rarely write anything substantial" },
+      { value: "heavy", label: "Yazmak benim ana çıktım" },
+      { value: "significant", label: "Çok yazıyorum ama asıl işim bu değil" },
+      { value: "moderate", label: "Biraz yazı, çoğunlukla kısa iletişimler" },
+      { value: "minimal", label: "Çok az — nadiren ciddi bir şey yazarım" },
     ],
   },
   {
     id: "decision-making",
-    question: "What kind of decisions do you make at work?",
-    context: "Think about the hardest call you made last week.",
+    question: "İşte ne tür kararlar veriyorsun?",
+    context: "Geçen hafta verdiğin en zor kararı düşün.",
     options: [
-      { value: "strategic", label: "High-stakes decisions with incomplete information" },
-      { value: "judgment", label: "Decisions requiring experience and nuanced judgment" },
-      { value: "rule-based", label: "Decisions following clear policies or procedures" },
-      { value: "execution", label: "I mostly execute decisions others have made" },
+      { value: "strategic", label: "Eksik bilgiyle verilen yüksek riskli kararlar" },
+      { value: "judgment", label: "Deneyim ve ince yorum gerektiren kararlar" },
+      { value: "rule-based", label: "Belirli politika veya prosedürlere göre verilen kararlar" },
+      { value: "execution", label: "Çoğunlukla başkalarının aldığı kararları uyguluyorum" },
     ],
   },
   {
     id: "human-interaction",
-    question: "How critical is face-to-face interaction in your role?",
-    context: "Could your job be done without ever meeting anyone in person?",
+    question: "Yüz yüze iletişim rolünde ne kadar kritik?",
+    context: "İşin hiç kimseyle yüz yüze görüşmeden yapılabilir mi?",
     options: [
-      { value: "essential", label: "Impossible without it — I work with people all day" },
-      { value: "important", label: "Very important but not every single day" },
-      { value: "moderate", label: "Helpful but I could do most of my job remotely" },
-      { value: "minimal", label: "I could do 95% of my job without seeing anyone" },
+      { value: "essential", label: "Onsuz imkansız — bütün gün insanlarla çalışıyorum" },
+      { value: "important", label: "Çok önemli ama her gün değil" },
+      { value: "moderate", label: "Faydalı ama işimin çoğunu uzaktan yapabilirim" },
+      { value: "minimal", label: "İşimin %95'ini kimseyi görmeden yapabilirim" },
     ],
   },
   {
     id: "tool-adoption",
-    question: "How quickly does your workplace adopt new technology?",
-    context: "Think about the last major tool or system change.",
+    question: "İş yerin yeni teknolojiyi ne kadar hızlı benimsiyor?",
+    context: "Son büyük araç veya sistem değişikliğini düşün.",
     options: [
-      { value: "leading", label: "We're usually early adopters" },
-      { value: "moderate", label: "We adopt things once they're proven" },
-      { value: "slow", label: "We're behind — still using outdated tools" },
-      { value: "resistant", label: "My industry resists change" },
+      { value: "leading", label: "Genellikle erken benimseyenlerdeniz" },
+      { value: "moderate", label: "Kanıtlandıktan sonra benimsiyoruz" },
+      { value: "slow", label: "Gerideyiz — hâlâ eski araçlar kullanıyoruz" },
+      { value: "resistant", label: "Sektörüm değişime direniyor" },
     ],
   },
   {
     id: "ai-exposure",
-    question: "Are you already using AI tools at work?",
-    context: "ChatGPT, Copilot, Midjourney, or any AI-powered tool.",
+    question: "İşte zaten yapay zeka araçları kullanıyor musun?",
+    context: "ChatGPT, Copilot, Midjourney veya herhangi bir yapay zeka aracı.",
     options: [
-      { value: "daily", label: "Yes, daily — it's part of my workflow" },
-      { value: "experimenting", label: "I've tried a few tools, experimenting" },
-      { value: "aware", label: "I know about them but haven't used them at work" },
-      { value: "no", label: "No, and I don't plan to" },
+      { value: "daily", label: "Evet, her gün — iş akışımın bir parçası" },
+      { value: "experimenting", label: "Birkaç araç denedim, deneme aşamasındayım" },
+      { value: "aware", label: "Biliyorum ama işte kullanmadım" },
+      { value: "no", label: "Hayır, ve kullanmayı düşünmüyorum" },
     ],
   },
   {
     id: "unique-value",
-    question: "What's the hardest part of your job to explain to someone?",
-    context: "This is often the part AI struggles with most.",
+    question: "İşinin birine anlatması en zor kısmı ne?",
+    context: "Genellikle yapay zekanın en çok zorlandığı kısım budur.",
     options: [
-      { value: "relationships", label: "The relationship dynamics and politics" },
-      { value: "intuition", label: "The intuition built from years of experience" },
-      { value: "creativity", label: "The creative leaps and original thinking" },
-      { value: "physical", label: "The physical skill and coordination required" },
-      { value: "nothing", label: "Honestly, most of it is pretty straightforward" },
+      { value: "relationships", label: "İlişki dinamikleri ve ofis politikaları" },
+      { value: "intuition", label: "Yılların deneyimiyle oluşan sezgi" },
+      { value: "creativity", label: "Yaratıcı sıçramalar ve özgün düşünce" },
+      { value: "physical", label: "Gereken fiziksel beceri ve koordinasyon" },
+      { value: "nothing", label: "Açıkçası çoğu oldukça basit" },
     ],
   },
   {
     id: "industry",
-    question: "Which industry are you in?",
-    context: "Pick the closest. This affects your risk profile significantly.",
+    question: "Hangi sektördesin?",
+    context: "En yakın olanı seç. Bu risk profilini ciddi şekilde etkiler.",
     options: [
-      { value: "tech", label: "Technology / Software" },
-      { value: "finance", label: "Finance / Banking / Insurance" },
-      { value: "healthcare", label: "Healthcare / Medical" },
-      { value: "education", label: "Education / Training" },
-      { value: "other", label: "Other (retail, manufacturing, government, etc.)" },
+      { value: "tech", label: "Teknoloji / Yazılım" },
+      { value: "finance", label: "Finans / Bankacılık / Sigortacılık" },
+      { value: "healthcare", label: "Sağlık / Tıp" },
+      { value: "education", label: "Eğitim / Öğretim" },
+      { value: "other", label: "Diğer (perakende, üretim, kamu, vb.)" },
     ],
   },
   {
     id: "experience-level",
-    question: "How many years of experience do you have?",
-    context: "In your current field, not total working years.",
+    question: "Kaç yıllık deneyimin var?",
+    context: "Şu anki alanında, toplam çalışma yılın değil.",
     options: [
-      { value: "junior", label: "0–2 years" },
-      { value: "mid", label: "3–7 years" },
-      { value: "senior", label: "8–15 years" },
-      { value: "veteran", label: "15+ years" },
+      { value: "junior", label: "0–2 yıl" },
+      { value: "mid", label: "3–7 yıl" },
+      { value: "senior", label: "8–15 yıl" },
+      { value: "veteran", label: "15+ yıl" },
     ],
   },
   {
     id: "adaptability",
-    question: "If your role changed dramatically in 12 months, how ready are you?",
-    context: "Be honest — this is between you and your score.",
+    question: "Rolün 12 ay içinde kökten değişse, ne kadar hazırsın?",
+    context: "Dürüst ol — bu seninle skorun arasında.",
     options: [
-      { value: "ready", label: "Bring it on — I adapt fast" },
-      { value: "somewhat", label: "I'd manage, but it would be stressful" },
-      { value: "worried", label: "I'd struggle without significant retraining" },
-      { value: "stuck", label: "I honestly don't know what else I'd do" },
+      { value: "ready", label: "Buyur gelsin — hızlı uyum sağlarım" },
+      { value: "somewhat", label: "Hallederim ama stresli olur" },
+      { value: "worried", label: "Ciddi bir eğitim almadan zorlanırım" },
+      { value: "stuck", label: "Açıkçası başka ne yapardım bilmiyorum" },
+    ],
+  },
+  {
+    id: "remote-work",
+    question: "İşinin ne kadarı tamamen uzaktan yapılabilir?",
+    context: "Fiziksel varlık gerektirmeyen, sadece bilgisayar başında yapılabilen işleri düşün.",
+    options: [
+      { value: "all", label: "Tamamı — bilgisayar ve internet yeterli" },
+      { value: "most", label: "Büyük kısmı — ara sıra fiziksel ortam gerekiyor" },
+      { value: "half", label: "Yaklaşık yarısı — bazı işler yerinde olmalı" },
+      { value: "little", label: "Çok azı — işimin çoğu fiziksel ortamda" },
+      { value: "none", label: "Hiçbiri — işim tamamen sahada veya yüz yüze" },
+    ],
+  },
+  {
+    id: "learning-speed",
+    question: "İşin için ne sıklıkla tamamen yeni beceriler öğrenmen gerekiyor?",
+    context: "Mevcut bilgini güncellemek değil, sıfırdan yeni bir şey öğrenmek.",
+    options: [
+      { value: "constantly", label: "Sürekli — her birkaç ayda yeni bir şey öğreniyorum" },
+      { value: "often", label: "Sık sık — yılda birkaç kez yeni beceri gerekiyor" },
+      { value: "sometimes", label: "Ara sıra — birkaç yılda bir ciddi bir şey öğrenirim" },
+      { value: "rarely", label: "Nadiren — yıllar önce öğrendiklerimle idare ediyorum" },
+    ],
+  },
+  {
+    id: "ai-replacement",
+    question: "Şirketin seni yarın yapay zekayla değiştirse, en çok neyi kaybeder?",
+    context: "Gerçekten düşün — seni vazgeçilmez yapan şey ne?",
+    options: [
+      { value: "relationships", label: "İnsanlarla kurduğum güven ve ilişkileri" },
+      { value: "crisis", label: "Beklenmedik sorunlarda sakin kalıp çözüm bulma yeteneğimi" },
+      { value: "creativity", label: "Hiç düşünülmemiş fikirlere ve yaratıcı çözümlere ulaşmamı" },
+      { value: "context", label: "Yıllardır biriken sektör bilgimi ve bağlam anlayışımı" },
+      { value: "nothing", label: "Açıkçası çok da bir şey kaybetmezler" },
     ],
   },
 ] as const;
 
-// ─── QUIZ COMPLETION / TRANSITION TO RESULTS ─────────────
+// ─── QUIZ TAMAMLANMA / SONUÇLARA GEÇİŞ ─────────────
 export const quizComplete = {
   headlines: [
-    "Done. Crunching your data now.",
-    "Answers locked. Score incoming.",
-    "Got it. Calculating your risk.",
+    "Tamam. Verilerini işliyoruz.",
+    "Cevaplar kilitlendi. Skor yolda.",
+    "Aldık. Riskini hesaplıyoruz.",
   ],
   subheads: [
-    "We're scoring your answers against 1,200+ occupation profiles.",
-    "Analyzing your responses against the latest AI research data.",
-    "Cross-referencing your profile with real labor market data.",
+    "Cevaplarını 1.200'den fazla meslek profiliyle karşılaştırıyoruz.",
+    "Yanıtlarını en güncel yapay zeka araştırma verileriyle analiz ediyoruz.",
+    "Profilini gerçek iş gücü piyasası verileriyle çapraz kontrol ediyoruz.",
   ],
 } as const;

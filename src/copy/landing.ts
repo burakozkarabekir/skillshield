@@ -1,150 +1,150 @@
 /**
- * Landing Page Copy — SkillShield
+ * Ana Sayfa Metinleri — SkillShield
  *
- * Emotional target: Curiosity + mild anxiety
- * "Everyone's talking about AI replacing jobs.
- *  But nobody's telling you what to actually DO about it."
+ * Duygusal hedef: Merak + hafif kaygı
+ * "Herkes yapay zekanın işleri ele geçireceğinden bahsediyor.
+ *  Ama kimse sana gerçekten ne yapman gerektiğini söylemiyor."
  *
- * All copy follows brand rules:
- *   Headlines: max 8 words | Subheads: max 15 words
- *   Body: max 3 sentences | CTAs: max 5 words, action-oriented
- *   3 variations per element for A/B testing
+ * Tüm metinler marka kurallarına uyar:
+ *   Başlıklar: max 8 kelime | Alt başlıklar: max 15 kelime
+ *   Metin: max 3 cümle | CTA'ler: max 5 kelime, aksiyon odaklı
+ *   Her eleman için 3 varyasyon (A/B testi)
  */
 
-// ─── HERO SECTION ────────────────────────────────────────
+// ─── HERO BÖLÜMÜ ────────────────────────────────────────
 export const hero = {
   headlines: [
-    "AI is coming for your job.",
-    "Your career has an expiration date.",
-    "How safe is your paycheck?",
+    "Yapay zeka işine göz dikti.",
+    "Kariyerinin bir son kullanma tarihi var.",
+    "Maaşın ne kadar güvende?",
   ],
   subheads: [
-    "Take the 3-minute quiz. Get your AI Career Risk Score. Know exactly where you stand.",
-    "67% of jobs will be transformed by AI within 5 years. Find out if yours is one of them.",
-    "Most people guess wrong about their risk. A data-backed score beats a gut feeling.",
+    "3 dakikalık testi çöz. Yapay Zeka Kariyer Risk Skorunu al. Tam olarak nerede durduğunu bil.",
+    "İşlerin %67'si 5 yıl içinde yapay zeka tarafından dönüştürülecek. Seninki bunlardan biri mi öğren.",
+    "Çoğu insan riskini yanlış tahmin ediyor. Veriye dayalı bir skor, içgüdüsel bir tahminden iyidir.",
   ],
   ctas: [
-    "Get your free score",
-    "Find out in 3 minutes",
-    "See your risk score",
+    "Ücretsiz skorunu al",
+    "3 dakikada öğren",
+    "Risk skorunu gör",
   ],
 } as const;
 
-// ─── SOCIAL PROOF / STATS BAR ────────────────────────────
+// ─── SOSYAL KANIT / İSTATİSTİK BARI ────────────────────────────
 export const socialProof = {
   headlines: [
-    "The numbers don't lie.",
-    "What 2.4 million data points reveal.",
-    "Built on real labor market data.",
+    "Rakamlar yalan söylemez.",
+    "2,4 milyon veri noktası ne ortaya koyuyor.",
+    "Gerçek işgücü piyasası verileri üzerine kurulu.",
   ],
   stats: [
-    { value: "847K+", label: "scores calculated" },
-    { value: "4.8/5", label: "average user rating" },
-    { value: "92%", label: "say it changed their career plan" },
+    { value: "847K+", label: "skor hesaplandı" },
+    { value: "4.8/5", label: "ortalama kullanıcı puanı" },
+    { value: "%92", label: "kariyer planını değiştirdiğini söylüyor" },
   ],
   sourceNote:
-    "Analysis based on O*NET task data, BLS projections, and AI capability benchmarks.",
+    "Analiz O*NET görev verileri, BLS projeksiyonları ve yapay zeka yetenek ölçütlerine dayanmaktadır.",
 } as const;
 
-// ─── HOW IT WORKS ────────────────────────────────────────
+// ─── NASIL ÇALIŞIR ────────────────────────────────────
 export const howItWorks = {
   headlines: [
-    "Three minutes. Zero guesswork.",
-    "From clueless to clear in 180 seconds.",
-    "Here's how it works.",
+    "Üç dakika. Sıfır tahmin.",
+    "Belirsizlikten netliğe 180 saniyede.",
+    "İşte böyle çalışıyor.",
   ],
   steps: [
     {
       number: "01",
-      title: "Answer 12 questions",
+      title: "15 soruyu cevapla",
       description:
-        "About your role, daily tasks, and the tools you use. No fluff — every question maps to a real risk factor.",
+        "Rolün, günlük görevlerin ve kullandığın araçlar hakkında. Boş laf yok — her soru gerçek bir risk faktörüyle eşleşiyor.",
     },
     {
       number: "02",
-      title: "We crunch the data",
+      title: "Verileri işliyoruz",
       description:
-        "Your answers are scored against 1,200+ occupation profiles and the latest AI capability research.",
+        "Cevapların 1.200'den fazla meslek profili ve en güncel yapay zeka yetenek araştırmalarıyla karşılaştırılıyor.",
     },
     {
       number: "03",
-      title: "Get your score and plan",
+      title: "Skorunu ve planını al",
       description:
-        "A 0–100 risk score, a task-by-task breakdown, and the specific skills that make you harder to replace.",
+        "0–100 risk skoru, görev görev analiz ve seni değiştirmesi zor kılan spesifik beceriler.",
     },
   ],
 } as const;
 
-// ─── TRUST / "WHY THIS MATTERS" SECTION ──────────────────
+// ─── GÜVEN / "NEDEN ÖNEMLİ" BÖLÜMÜ ──────────────────
 export const whyThisMatters = {
   headlines: [
-    "Denial is not a career strategy.",
-    "Hope is not a plan.",
-    "Ignoring AI won't make it ignore you.",
+    "İnkar bir kariyer stratejisi değil.",
+    "Umut bir plan değil.",
+    "Yapay zekayı görmezden gelmek, onun seni görmezden gelmesini sağlamaz.",
   ],
   body: [
-    "40% of working hours across all industries can now be automated by large language models. That number was 15% two years ago. The question isn't whether your job will change — it's whether you'll be ready when it does.",
-    "McKinsey estimates 12 million Americans will need to switch occupations by 2030. Most don't know they're on the list. Your AI Career Risk Score gives you the clarity to act before you have to react.",
-    "Companies aren't waiting. 78% of Fortune 500 firms are actively deploying AI to reduce headcount in specific roles. Knowing your risk isn't pessimism — it's the first step toward staying relevant.",
+    "Tüm sektörlerdeki çalışma saatlerinin %40'ı artık büyük dil modelleri tarafından otomatikleştirilebiliyor. Bu rakam iki yıl önce %15'ti. Soru işinin değişip değişmeyeceği değil — değiştiğinde hazır olup olmayacağın.",
+    "McKinsey, 2030'a kadar 12 milyon kişinin meslek değiştirmesi gerekeceğini tahmin ediyor. Çoğu listede olduğunu bilmiyor. Yapay Zeka Kariyer Risk Skorun, tepki vermek zorunda kalmadan önce harekete geçmen için gereken netliği veriyor.",
+    "Şirketler beklemiyor. Fortune 500 firmalarının %78'i belirli rollerde çalışan sayısını azaltmak için aktif olarak yapay zeka dağıtıyor. Riskini bilmek karamsarlık değil — ilgili kalmaya doğru atılan ilk adım.",
   ],
 } as const;
 
-// ─── FAQ SECTION ─────────────────────────────────────────
+// ─── SSS BÖLÜMÜ ─────────────────────────────────────
 export const faq = {
   headlines: [
-    "Questions we get a lot.",
-    "You're wondering. We'll answer.",
-    "Straight answers only.",
+    "Çok sorulan sorular.",
+    "Merak ediyorsun. Cevaplıyoruz.",
+    "Sadece düz cevaplar.",
   ],
   items: [
     {
-      question: "How accurate is the score?",
+      question: "Skor ne kadar doğru?",
       answer:
-        "We cross-reference your answers against O*NET occupational task data, Bureau of Labor Statistics projections, and published AI benchmark research. No model is perfect, but this is the most data-backed assessment publicly available.",
+        "Cevaplarını O*NET mesleki görev verileri, Çalışma İstatistikleri Bürosu projeksiyonları ve yayınlanmış yapay zeka benchmark araştırmalarıyla çapraz kontrol ediyoruz. Hiçbir model mükemmel değil, ama bu kamuya açık en veriye dayalı değerlendirme.",
     },
     {
-      question: "Is my data sold or shared?",
+      question: "Verilerim satılıyor veya paylaşılıyor mu?",
       answer:
-        "No. Your quiz responses are used only to generate your score. We don't sell data to third parties. Period.",
+        "Hayır. Quiz cevapların sadece skorunu üretmek için kullanılıyor. Verileri üçüncü taraflara satmıyoruz. Nokta.",
     },
     {
-      question: "What does the score actually mean?",
+      question: "Skor gerçekte ne anlama geliyor?",
       answer:
-        "Your score from 0–100 reflects the percentage of your core job tasks that current or near-term AI systems can perform. A 73 means roughly 73% of your key tasks are automatable. The breakdown shows exactly which ones.",
+        "0–100 arası skorun, mevcut veya yakın vadeli yapay zeka sistemlerinin temel iş görevlerinin yüzde kaçını yapabileceğini yansıtır. 73 demek kabaca temel görevlerinin %73'ünün otomatikleştirilebilir olduğu anlamına gelir. Analiz tam olarak hangilerini gösteriyor.",
     },
     {
-      question: "Is this just trying to scare me?",
+      question: "Bu sadece beni korkutmaya mı çalışıyor?",
       answer:
-        "The opposite. Fear comes from not knowing. Your score gives you a clear picture and — if you go premium — a concrete action plan. Knowledge is the antidote to anxiety.",
+        "Tam tersi. Korku bilmemekten gelir. Skorun sana net bir resim veriyor ve — premium'a geçersen — somut bir eylem planı. Bilgi, kaygının panzehiridir.",
     },
     {
-      question: "How long does it take?",
+      question: "Ne kadar sürüyor?",
       answer:
-        "3 minutes for the quiz. About 10 seconds for the score to calculate. A lifetime of career clarity.",
+        "Quiz için 3 dakika. Skorun hesaplanması için yaklaşık 10 saniye. Ömür boyu sürecek kariyer netliği.",
     },
     {
-      question: "Why should I trust this over a generic article?",
+      question: "Buna neden genel bir makaleden daha çok güvenmeliyim?",
       answer:
-        "Generic articles tell you 'AI might affect some jobs.' We tell you which of YOUR specific daily tasks are most at risk and what to do about each one.",
+        "Genel makaleler 'yapay zeka bazı işleri etkileyebilir' diyor. Biz SENİN spesifik günlük görevlerinden hangilerinin en çok risk altında olduğunu ve her biri için ne yapman gerektiğini söylüyoruz.",
     },
   ],
 } as const;
 
-// ─── FOOTER CTA (BOTTOM OF LANDING PAGE) ────────────────
+// ─── ALT CTA (ANA SAYFA ALT KISMI) ────────────────
 export const footerCta = {
   headlines: [
-    "Still scrolling? Just take the quiz.",
-    "You've read enough. Time to find out.",
-    "Three minutes beats three years of wondering.",
+    "Hâlâ kaydırıyor musun? Testi çöz artık.",
+    "Yeterince okudun. Öğrenme zamanı.",
+    "Üç dakika, üç yıl merak etmekten iyidir.",
   ],
   subheads: [
-    "847,000 professionals already know their score. Do you?",
-    "Free. Anonymous. Takes less time than your last coffee order.",
-    "The quiz is free. The peace of mind is priceless.",
+    "847.000 profesyonel skorunu zaten biliyor. Sen biliyor musun?",
+    "Ücretsiz. Anonim. Son kahve siparişinden daha kısa sürer.",
+    "Quiz ücretsiz. Huzur paha biçilemez.",
   ],
   ctas: [
-    "Get your free score",
-    "Take the quiz now",
-    "Start the quiz",
+    "Ücretsiz skorunu al",
+    "Şimdi testi çöz",
+    "Teste başla",
   ],
 } as const;

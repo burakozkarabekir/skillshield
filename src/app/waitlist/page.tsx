@@ -42,18 +42,18 @@ export default function WaitlistPage() {
         {!submitted ? (
           <>
             <div className="inline-flex items-center gap-2 bg-warning/10 border border-warning/30 rounded-full px-4 py-1.5 text-sm text-warning mb-8 fade-in-up">
-              Launching March 2026
+              Mart 2026 Lansmanı
             </div>
 
             <h1 className="text-3xl sm:text-5xl font-bold leading-tight mb-4 fade-in-up fade-in-up-delay-1">
-              AI is changing careers.
+              Yapay zeka kariyerleri değiştiriyor.
               <br />
-              <span className="text-accent">Are you ready?</span>
+              <span className="text-accent">Sen hazır mısın?</span>
             </h1>
 
             <p className="text-gray-400 mb-8 fade-in-up fade-in-up-delay-2">
-              Be the first to get your AI Career Risk Score. Free assessment
-              launching soon — join 2,400+ professionals on the waitlist.
+              Yapay Zeka Kariyer Risk Skorunu ilk alan sen ol. Ücretsiz değerlendirme
+              yakında başlıyor — bekleme listesindeki 2.400+ profesyonele katıl.
             </p>
 
             <form onSubmit={handleSubmit} className="w-full max-w-sm space-y-3 fade-in-up fade-in-up-delay-3">
@@ -61,7 +61,7 @@ export default function WaitlistPage() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="your@email.com"
+                placeholder="email@adresin.com"
                 className="w-full bg-card-bg border border-card-border rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-accent"
                 required
               />
@@ -69,10 +69,10 @@ export default function WaitlistPage() {
                 type="submit"
                 className="w-full bg-accent hover:bg-accent-hover text-white font-semibold py-3 rounded-xl transition-colors"
               >
-                Join the Waitlist
+                Bekleme Listesine Katıl
               </button>
               <p className="text-xs text-gray-600">
-                No spam. Just a launch notification and your free score.
+                Spam yok. Sadece lansman bildirimi ve ücretsiz skorun.
               </p>
             </form>
 
@@ -80,45 +80,45 @@ export default function WaitlistPage() {
             <div className="mt-12 grid grid-cols-3 gap-6 text-center fade-in-up fade-in-up-delay-4">
               <div>
                 <div className="text-xl font-bold text-accent">2,400+</div>
-                <div className="text-xs text-gray-500">On waitlist</div>
+                <div className="text-xs text-gray-500">Bekleme listesinde</div>
               </div>
               <div>
                 <div className="text-xl font-bold text-accent">24</div>
-                <div className="text-xs text-gray-500">Job categories</div>
+                <div className="text-xs text-gray-500">Meslek kategorisi</div>
               </div>
               <div>
-                <div className="text-xl font-bold text-accent">Free</div>
-                <div className="text-xs text-gray-500">Risk assessment</div>
+                <div className="text-xl font-bold text-accent">Ücretsiz</div>
+                <div className="text-xs text-gray-500">Risk değerlendirmesi</div>
               </div>
             </div>
           </>
         ) : (
           <div className="fade-in-up">
             <div className="text-5xl mb-6">🎉</div>
-            <h1 className="text-3xl font-bold mb-4">You&apos;re in!</h1>
+            <h1 className="text-3xl font-bold mb-4">Listedesin!</h1>
             <p className="text-gray-400 mb-6">
-              You&apos;re #{position} on the waitlist. We&apos;ll email you when
-              SkillShield launches.
+              Bekleme listesinde #{position} sıradasın. SkillShield yayına girince
+              sana e-posta göndereceğiz.
             </p>
 
             {/* Referral boost */}
             <div className="bg-card-bg border border-card-border rounded-2xl p-6 mb-8">
-              <h3 className="font-bold mb-2">Move up the waitlist</h3>
+              <h3 className="font-bold mb-2">Listede yüksel</h3>
               <p className="text-sm text-gray-400 mb-4">
-                Share with friends to get early access + premium features
+                Erken erişim ve premium özellikler için arkadaşlarınla paylaş
               </p>
               <div className="grid grid-cols-3 gap-3 text-sm">
                 <div className="bg-background rounded-lg p-3 text-center">
-                  <div className="font-bold text-accent">3 refs</div>
-                  <div className="text-xs text-gray-500">Early access</div>
+                  <div className="font-bold text-accent">3 davet</div>
+                  <div className="text-xs text-gray-500">Erken erişim</div>
                 </div>
                 <div className="bg-background rounded-lg p-3 text-center">
-                  <div className="font-bold text-accent">5 refs</div>
-                  <div className="text-xs text-gray-500">Free trial</div>
+                  <div className="font-bold text-accent">5 davet</div>
+                  <div className="text-xs text-gray-500">Ücretsiz deneme</div>
                 </div>
                 <div className="bg-background rounded-lg p-3 text-center">
-                  <div className="font-bold text-accent">10 refs</div>
-                  <div className="text-xs text-gray-500">Free month</div>
+                  <div className="font-bold text-accent">10 davet</div>
+                  <div className="text-xs text-gray-500">Ücretsiz ay</div>
                 </div>
               </div>
             </div>
@@ -127,7 +127,7 @@ export default function WaitlistPage() {
               href="/quiz"
               className="inline-block bg-accent hover:bg-accent-hover text-white font-semibold px-6 py-3 rounded-xl transition-colors"
             >
-              Take the Quiz Now (Beta)
+              Testi Şimdi Çöz (Beta)
             </Link>
           </div>
         )}

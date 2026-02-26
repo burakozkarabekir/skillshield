@@ -56,7 +56,7 @@ export default function QuizQuestion({
         {question.subtitle}
         {isMulti && question.maxSelections && (
           <span className="ml-1 text-shield-400">
-            ({currentSelections}/{question.maxSelections} selected)
+            ({currentSelections}/{question.maxSelections} seçildi)
           </span>
         )}
       </p>
@@ -68,7 +68,7 @@ export default function QuizQuestion({
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search for your role..."
+            placeholder="Rolünü ara..."
             className="w-full rounded-xl border border-gray-800 bg-gray-900/50 px-4 py-3 text-sm text-white placeholder-gray-500 outline-none transition-colors focus:border-shield-600 focus:ring-1 focus:ring-shield-600/30"
           />
         </div>
@@ -135,7 +135,7 @@ export default function QuizQuestion({
 
       {filteredOptions.length === 0 && (
         <p className="py-8 text-center text-sm text-gray-500">
-          No roles found. Try a different search term.
+          Rol bulunamadı. Farklı bir arama terimi dene.
         </p>
       )}
     </div>

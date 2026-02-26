@@ -65,8 +65,8 @@ export default async function CareerPage({ params }: PageProps) {
             {job.averageScore}
           </span>
           <div>
-            <p className="text-sm font-medium">Average Risk Score</p>
-            <p className="text-xs text-muted">for {job.jobTitle.toLowerCase()}</p>
+            <p className="text-sm font-medium">Ortalama Risk Skoru</p>
+            <p className="text-xs text-muted">{job.jobTitle.toLowerCase()} için</p>
           </div>
         </div>
 
@@ -76,7 +76,7 @@ export default async function CareerPage({ params }: PageProps) {
         {/* Tasks at Risk */}
         <div className="mt-12 grid grid-cols-1 gap-10 sm:grid-cols-2">
           <div>
-            <h2 className="text-lg font-bold text-risk-critical">Tasks AI Can Do</h2>
+            <h2 className="text-lg font-bold text-risk-critical">Yapay Zekanın Yapabildiği Görevler</h2>
             <ul className="mt-4 space-y-3">
               {job.tasksAtRisk.map((task) => (
                 <li key={task} className="flex items-start gap-2 text-sm text-muted">
@@ -87,7 +87,7 @@ export default async function CareerPage({ params }: PageProps) {
             </ul>
           </div>
           <div>
-            <h2 className="text-lg font-bold text-risk-low">Tasks AI Can&apos;t</h2>
+            <h2 className="text-lg font-bold text-risk-low">Yapay Zekanın Yapamadığı Görevler</h2>
             <ul className="mt-4 space-y-3">
               {job.tasksSafe.map((task) => (
                 <li key={task} className="flex items-start gap-2 text-sm text-muted">

@@ -18,92 +18,92 @@ const JOB_SEO_DATA: Record<string, {
   reskillingSuggestions: string[];
 }> = {
   "software-engineer": {
-    title: "Software Engineer",
+    title: "Yazılım Mühendisi",
     risk: 35,
     category: "moderate",
-    description: "Software engineering faces moderate AI disruption. While AI coding assistants are transforming how code is written, the creative problem-solving, system design, and stakeholder communication aspects remain distinctly human.",
-    keyTasks: ["Writing code", "System design", "Code review", "Debugging", "Requirements gathering"],
-    aiThreats: ["AI code generation (Copilot, Claude)", "Automated testing", "No-code/low-code platforms", "AI-powered debugging"],
-    safeAspects: ["Complex system architecture", "Cross-team collaboration", "Ambiguous problem solving", "Strategic technical decisions"],
-    timeline: "5-8 years before significant role transformation",
-    reskillingSuggestions: ["Master AI-assisted development", "Focus on system design & architecture", "Build leadership and mentoring skills", "Learn AI/ML fundamentals"],
+    description: "Yazılım mühendisliği orta düzeyde yapay zeka etkisiyle karşı karşıya. Yapay zeka kodlama asistanları kodun yazılma şeklini dönüştürürken, yaratıcı problem çözme, sistem tasarımı ve paydaş iletişimi yönleri belirgin şekilde insana özgü kalmaya devam ediyor.",
+    keyTasks: ["Kod yazma", "Sistem tasarımı", "Kod inceleme", "Hata ayıklama", "Gereksinim toplama"],
+    aiThreats: ["Yapay zeka kod üretimi (Copilot, Claude)", "Otomatik test", "No-code/low-code platformları", "Yapay zeka destekli hata ayıklama"],
+    safeAspects: ["Karmaşık sistem mimarisi", "Ekipler arası işbirliği", "Belirsiz problem çözme", "Stratejik teknik kararlar"],
+    timeline: "Önemli rol dönüşümüne 5-8 yıl",
+    reskillingSuggestions: ["Yapay zeka destekli geliştirmede ustalaş", "Sistem tasarımı ve mimariye odaklan", "Liderlik ve mentorluk becerileri geliştir", "Yapay zeka/makine öğrenimi temellerini öğren"],
   },
   "copywriter": {
-    title: "Copywriter",
+    title: "Metin Yazarı",
     risk: 72,
     category: "high",
-    description: "Copywriting faces significant AI disruption. AI can now generate marketing copy, blog posts, and social media content at scale. However, brand strategy, emotional storytelling, and audience insight remain human strengths.",
-    keyTasks: ["Writing marketing copy", "Blog content", "Social media posts", "Email campaigns", "Brand voice development"],
-    aiThreats: ["AI content generation", "Automated A/B copy testing", "AI translation and localization", "Template-based content at scale"],
-    safeAspects: ["Brand strategy", "Emotional storytelling", "Audience research", "Creative direction"],
-    timeline: "2-4 years before significant role transformation",
-    reskillingSuggestions: ["Become an AI-augmented content strategist", "Master prompt engineering for content", "Develop brand strategy expertise", "Build video/multimedia skills"],
+    description: "Metin yazarlığı önemli bir yapay zeka etkisiyle karşı karşıya. Yapay zeka artık pazarlama metinleri, blog yazıları ve sosyal medya içeriklerini ölçekli olarak üretebiliyor. Ancak marka stratejisi, duygusal hikaye anlatımı ve kitle içgörüsü insana özgü güçlü yönler olmaya devam ediyor.",
+    keyTasks: ["Pazarlama metni yazma", "Blog içeriği", "Sosyal medya paylaşımları", "E-posta kampanyaları", "Marka sesi geliştirme"],
+    aiThreats: ["Yapay zeka içerik üretimi", "Otomatik A/B metin testi", "Yapay zeka çeviri ve yerelleştirme", "Ölçekli şablon tabanlı içerik"],
+    safeAspects: ["Marka stratejisi", "Duygusal hikaye anlatımı", "Kitle araştırması", "Yaratıcı yönetim"],
+    timeline: "Önemli rol dönüşümüne 2-4 yıl",
+    reskillingSuggestions: ["Yapay zeka destekli içerik stratejisti ol", "İçerik için prompt mühendisliğinde ustalaş", "Marka stratejisi uzmanlığı geliştir", "Video/multimedya becerileri edin"],
   },
   "data-analyst": {
-    title: "Data Analyst",
+    title: "Veri Analisti",
     risk: 68,
     category: "high",
-    description: "Data analysis faces high AI disruption risk. AI can now process, visualize, and interpret data faster than humans. However, asking the right questions, communicating insights to stakeholders, and contextual business understanding are harder to automate.",
-    keyTasks: ["Data cleaning", "Building dashboards", "Writing SQL queries", "Statistical analysis", "Presenting insights"],
-    aiThreats: ["AI-powered analytics platforms", "Natural language data querying", "Automated reporting", "AI pattern recognition"],
-    safeAspects: ["Business context interpretation", "Stakeholder communication", "Strategic question framing", "Cross-functional collaboration"],
-    timeline: "3-5 years before significant role transformation",
-    reskillingSuggestions: ["Learn AI/ML model building", "Develop business strategy skills", "Master data storytelling", "Build product analytics expertise"],
+    description: "Veri analizi yüksek yapay zeka etki riskiyle karşı karşıya. Yapay zeka artık verileri insanlardan daha hızlı işleyebiliyor, görselleştirebiliyor ve yorumlayabiliyor. Ancak doğru soruları sormak, paydaşlara içgörüleri iletmek ve bağlamsal iş anlayışı otomatikleştirmesi daha zor.",
+    keyTasks: ["Veri temizleme", "Dashboard oluşturma", "SQL sorguları yazma", "İstatistiksel analiz", "İçgörü sunumu"],
+    aiThreats: ["Yapay zeka destekli analitik platformları", "Doğal dil veri sorgulama", "Otomatik raporlama", "Yapay zeka örüntü tanıma"],
+    safeAspects: ["İş bağlamı yorumlama", "Paydaş iletişimi", "Stratejik soru çerçeveleme", "Fonksiyonlar arası işbirliği"],
+    timeline: "Önemli rol dönüşümüne 3-5 yıl",
+    reskillingSuggestions: ["Yapay zeka/makine öğrenimi model oluşturmayı öğren", "İş stratejisi becerileri geliştir", "Veri hikaye anlatımında ustalaş", "Ürün analitiği uzmanlığı edin"],
   },
   "graphic-designer": {
-    title: "Graphic Designer",
+    title: "Grafik Tasarımcı",
     risk: 65,
     category: "high",
-    description: "Graphic design faces substantial disruption from AI image generation tools. While AI can create stunning visuals, human designers excel at brand consistency, creative direction, and understanding nuanced client needs.",
-    keyTasks: ["Creating visual assets", "Brand identity design", "UI/UX design", "Layout and typography", "Client presentations"],
-    aiThreats: ["AI image generation (Midjourney, DALL-E)", "Automated layout tools", "AI logo generators", "Template-based design platforms"],
-    safeAspects: ["Brand strategy and consistency", "Creative direction", "Client relationship management", "UX research and strategy"],
-    timeline: "3-5 years before significant role transformation",
-    reskillingSuggestions: ["Master AI design tools", "Pivot toward UX/product design", "Develop brand strategy skills", "Build motion design capabilities"],
+    description: "Grafik tasarım, yapay zeka görsel üretim araçlarından önemli bir etki yaşıyor. Yapay zeka etkileyici görseller oluşturabilirken, insan tasarımcılar marka tutarlılığı, yaratıcı yönetim ve nüanslı müşteri ihtiyaçlarını anlama konusunda öne çıkıyor.",
+    keyTasks: ["Görsel varlık oluşturma", "Marka kimliği tasarımı", "UI/UX tasarımı", "Düzen ve tipografi", "Müşteri sunumları"],
+    aiThreats: ["Yapay zeka görsel üretimi (Midjourney, DALL-E)", "Otomatik düzen araçları", "Yapay zeka logo oluşturucular", "Şablon tabanlı tasarım platformları"],
+    safeAspects: ["Marka stratejisi ve tutarlılığı", "Yaratıcı yönetim", "Müşteri ilişkileri yönetimi", "UX araştırması ve stratejisi"],
+    timeline: "Önemli rol dönüşümüne 3-5 yıl",
+    reskillingSuggestions: ["Yapay zeka tasarım araçlarında ustalaş", "UX/ürün tasarımına yönel", "Marka stratejisi becerileri geliştir", "Hareket tasarımı yetenekleri edin"],
   },
   "accountant": {
-    title: "Accountant",
+    title: "Muhasebeci",
     risk: 75,
     category: "critical",
-    description: "Accounting faces high automation risk. Routine bookkeeping, tax preparation, and financial reporting are increasingly handled by AI. Advisory, strategic planning, and complex regulatory navigation remain human-centric.",
-    keyTasks: ["Bookkeeping", "Tax preparation", "Financial reporting", "Auditing", "Compliance"],
-    aiThreats: ["Automated bookkeeping software", "AI tax preparation", "Real-time financial reporting", "AI audit tools"],
-    safeAspects: ["Strategic financial advisory", "Complex tax planning", "Regulatory navigation", "Client relationship management"],
-    timeline: "3-5 years before significant role transformation",
-    reskillingSuggestions: ["Move toward financial advisory", "Specialize in complex tax strategy", "Learn data analytics", "Develop client consulting skills"],
+    description: "Muhasebe yüksek otomasyon riskiyle karşı karşıya. Rutin defter tutma, vergi hazırlığı ve finansal raporlama giderek daha fazla yapay zeka tarafından yürütülüyor. Danışmanlık, stratejik planlama ve karmaşık mevzuat yönetimi insana özgü kalmaya devam ediyor.",
+    keyTasks: ["Defter tutma", "Vergi hazırlığı", "Finansal raporlama", "Denetim", "Uyumluluk"],
+    aiThreats: ["Otomatik defter tutma yazılımları", "Yapay zeka vergi hazırlığı", "Gerçek zamanlı finansal raporlama", "Yapay zeka denetim araçları"],
+    safeAspects: ["Stratejik finansal danışmanlık", "Karmaşık vergi planlaması", "Mevzuat yönetimi", "Müşteri ilişkileri yönetimi"],
+    timeline: "Önemli rol dönüşümüne 3-5 yıl",
+    reskillingSuggestions: ["Finansal danışmanlığa yönel", "Karmaşık vergi stratejisinde uzmanlaş", "Veri analitiği öğren", "Müşteri danışmanlığı becerileri geliştir"],
   },
   "marketing-manager": {
-    title: "Marketing Manager",
+    title: "Pazarlama Müdürü",
     risk: 45,
     category: "moderate",
-    description: "Marketing management faces moderate disruption. While AI automates content creation, ad optimization, and analytics, the strategic thinking, brand building, and cross-functional leadership aspects are harder to replace.",
-    keyTasks: ["Campaign strategy", "Team management", "Budget allocation", "Brand development", "Performance analysis"],
-    aiThreats: ["AI content generation", "Automated ad optimization", "AI-powered analytics", "Programmatic marketing"],
-    safeAspects: ["Strategic brand building", "Team leadership", "Cross-functional collaboration", "Creative campaign vision"],
-    timeline: "5-8 years before significant role transformation",
-    reskillingSuggestions: ["Master AI marketing tools", "Focus on brand strategy", "Develop leadership skills", "Build data-driven decision-making"],
+    description: "Pazarlama yönetimi orta düzeyde etkiyle karşı karşıya. Yapay zeka içerik üretimi, reklam optimizasyonu ve analitiği otomatikleştirirken, stratejik düşünme, marka inşası ve fonksiyonlar arası liderlik yönlerinin yerini almak daha zor.",
+    keyTasks: ["Kampanya stratejisi", "Ekip yönetimi", "Bütçe dağılımı", "Marka geliştirme", "Performans analizi"],
+    aiThreats: ["Yapay zeka içerik üretimi", "Otomatik reklam optimizasyonu", "Yapay zeka destekli analitik", "Programatik pazarlama"],
+    safeAspects: ["Stratejik marka inşası", "Ekip liderliği", "Fonksiyonlar arası işbirliği", "Yaratıcı kampanya vizyonu"],
+    timeline: "Önemli rol dönüşümüne 5-8 yıl",
+    reskillingSuggestions: ["Yapay zeka pazarlama araçlarında ustalaş", "Marka stratejisine odaklan", "Liderlik becerileri geliştir", "Veriye dayalı karar alma becerisi edin"],
   },
   "customer-service-rep": {
-    title: "Customer Service Representative",
+    title: "Müşteri Hizmetleri Temsilcisi",
     risk: 78,
     category: "critical",
-    description: "Customer service roles face very high AI disruption. AI chatbots and voice assistants handle increasing volumes of customer queries. Complex escalations and emotional situations still require human touch.",
-    keyTasks: ["Answering customer queries", "Resolving complaints", "Processing returns", "Upselling", "Documentation"],
-    aiThreats: ["AI chatbots", "Voice AI assistants", "Automated ticket routing", "Self-service portals"],
-    safeAspects: ["Complex emotional situations", "High-value customer relationships", "Creative problem resolution", "Escalation handling"],
-    timeline: "2-4 years before significant role transformation",
-    reskillingSuggestions: ["Move into customer success management", "Develop sales skills", "Learn CRM and data analysis", "Build specialized product expertise"],
+    description: "Müşteri hizmetleri rolleri çok yüksek yapay zeka etkisiyle karşı karşıya. Yapay zeka sohbet botları ve sesli asistanlar giderek artan müşteri sorgularını karşılıyor. Karmaşık yönlendirmeler ve duygusal durumlar hâlâ insan dokunuşu gerektiriyor.",
+    keyTasks: ["Müşteri sorularını yanıtlama", "Şikayetleri çözme", "İade işleme", "Üst satış", "Dokümantasyon"],
+    aiThreats: ["Yapay zeka sohbet botları", "Sesli yapay zeka asistanları", "Otomatik talep yönlendirme", "Self-servis portallar"],
+    safeAspects: ["Karmaşık duygusal durumlar", "Yüksek değerli müşteri ilişkileri", "Yaratıcı problem çözümü", "Yönlendirme yönetimi"],
+    timeline: "Önemli rol dönüşümüne 2-4 yıl",
+    reskillingSuggestions: ["Müşteri başarısı yönetimine geç", "Satış becerileri geliştir", "CRM ve veri analizi öğren", "Uzmanlaşmış ürün bilgisi edin"],
   },
   "product-manager": {
-    title: "Product Manager",
+    title: "Ürün Yöneticisi",
     risk: 30,
     category: "moderate",
-    description: "Product management has relatively low AI disruption risk. The role is fundamentally about human judgment, stakeholder management, and strategic decision-making — areas where AI assists but doesn't replace.",
-    keyTasks: ["Product strategy", "Roadmap planning", "Stakeholder alignment", "User research", "Prioritization"],
-    aiThreats: ["AI-powered user analytics", "Automated A/B testing", "AI product recommendations", "Automated market research"],
-    safeAspects: ["Strategic vision", "Cross-functional leadership", "Ambiguous decision-making", "Stakeholder influence"],
-    timeline: "8-10 years before significant role transformation",
-    reskillingSuggestions: ["Master AI product features", "Deepen data science understanding", "Build AI strategy expertise", "Develop stronger technical skills"],
+    description: "Ürün yönetimi görece düşük yapay zeka etki riskine sahip. Rol temelde insan yargısı, paydaş yönetimi ve stratejik karar verme üzerine kurulu — yapay zekanın desteklediği ama yerini alamadığı alanlar.",
+    keyTasks: ["Ürün stratejisi", "Yol haritası planlaması", "Paydaş uyumu", "Kullanıcı araştırması", "Önceliklendirme"],
+    aiThreats: ["Yapay zeka destekli kullanıcı analitiği", "Otomatik A/B testi", "Yapay zeka ürün önerileri", "Otomatik pazar araştırması"],
+    safeAspects: ["Stratejik vizyon", "Fonksiyonlar arası liderlik", "Belirsiz karar verme", "Paydaş etkisi"],
+    timeline: "Önemli rol dönüşümüne 8-10 yıl",
+    reskillingSuggestions: ["Yapay zeka ürün özelliklerinde ustalaş", "Veri bilimi anlayışını derinleştir", "Yapay zeka strateji uzmanlığı edin", "Daha güçlü teknik beceriler geliştir"],
   },
 };
 
@@ -119,10 +119,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!job) return {};
 
   return {
-    title: `${job.title} AI Risk Score: ${job.risk}/100 — Will AI Replace ${job.title}s? | SkillShield`,
-    description: `${job.title} AI automation risk is ${job.risk}/100 (${job.category}). ${job.description.slice(0, 120)}... Get your personalized score.`,
+    title: `${job.title} Yapay Zeka Risk Skoru: ${job.risk}/100 — Yapay Zeka ${job.title} Mesleğinin Yerini Alacak mı? | SkillShield`,
+    description: `${job.title} yapay zeka otomasyon riski ${job.risk}/100 (${job.category}). ${job.description.slice(0, 120)}... Kişiselleştirilmiş skorunu al.`,
     openGraph: {
-      title: `${job.title} AI Risk: ${job.risk}/100 — Is Your Job Safe?`,
+      title: `${job.title} Yapay Zeka Riski: ${job.risk}/100 — Mesleğin Güvende mi?`,
       description: `${job.description.slice(0, 200)}...`,
     },
   };
@@ -151,7 +151,7 @@ export default async function JobSEOPage({ params }: { params: Promise<{ slug: s
           href="/quiz"
           className="text-sm bg-accent hover:bg-accent-hover text-white px-4 py-2 rounded-lg transition-colors"
         >
-          Get Your Score
+          Skorunu Al
         </Link>
       </nav>
 
@@ -164,15 +164,15 @@ export default async function JobSEOPage({ params }: { params: Promise<{ slug: s
             : job.category === "moderate" ? "bg-accent/10 border-accent/30 text-accent"
             : "bg-success/10 border-success/30 text-success"
           }`}>
-            {job.category.toUpperCase()} RISK
+            {job.category.toUpperCase()} RİSK
           </div>
 
           <h1 className="text-3xl sm:text-5xl font-bold mb-4">
-            Will AI Replace{" "}
-            <span className={categoryColor}>{job.title}s</span>?
+            Yapay Zeka {" "}
+            <span className={categoryColor}>{job.title}</span> Mesleğinin Yerini Alacak mı?
           </h1>
           <p className="text-gray-400 text-lg">
-            AI Career Risk Score: <span className={`font-bold text-2xl ${categoryColor}`}>{job.risk}/100</span>
+            Yapay Zeka Kariyer Risk Skoru: <span className={`font-bold text-2xl ${categoryColor}`}>{job.risk}/100</span>
           </p>
         </div>
 
@@ -185,7 +185,7 @@ export default async function JobSEOPage({ params }: { params: Promise<{ slug: s
         {/* Two columns: Threats vs Safe */}
         <div className="grid sm:grid-cols-2 gap-4 mb-8">
           <div className="bg-card-bg border border-danger/30 rounded-2xl p-6">
-            <h2 className="font-bold text-danger mb-4">AI Threats</h2>
+            <h2 className="font-bold text-danger mb-4">Yapay Zeka Tehditleri</h2>
             <ul className="space-y-2">
               {job.aiThreats.map((threat, i) => (
                 <li key={i} className="text-sm text-gray-300 flex items-start gap-2">
@@ -195,7 +195,7 @@ export default async function JobSEOPage({ params }: { params: Promise<{ slug: s
             </ul>
           </div>
           <div className="bg-card-bg border border-success/30 rounded-2xl p-6">
-            <h2 className="font-bold text-success mb-4">Safe Aspects</h2>
+            <h2 className="font-bold text-success mb-4">Güvenli Yönler</h2>
             <ul className="space-y-2">
               {job.safeAspects.map((aspect, i) => (
                 <li key={i} className="text-sm text-gray-300 flex items-start gap-2">
@@ -208,7 +208,7 @@ export default async function JobSEOPage({ params }: { params: Promise<{ slug: s
 
         {/* Reskilling suggestions */}
         <div className="bg-card-bg border border-card-border rounded-2xl p-8 mb-8">
-          <h2 className="font-bold mb-4">How to Future-Proof Your Career</h2>
+          <h2 className="font-bold mb-4">Kariyerini Geleceğe Nasıl Hazırlarsın?</h2>
           <ol className="space-y-3">
             {job.reskillingSuggestions.map((suggestion, i) => (
               <li key={i} className="text-sm text-gray-300 flex items-start gap-3">
@@ -224,25 +224,25 @@ export default async function JobSEOPage({ params }: { params: Promise<{ slug: s
         {/* CTA */}
         <div className="bg-accent/10 border border-accent/30 rounded-2xl p-8 text-center">
           <h2 className="text-xl font-bold mb-2">
-            This is the average {job.title} score.
+            Bu ortalama {job.title} skoru.
             <br />
-            What&apos;s yours?
+            Seninki kaç?
           </h2>
           <p className="text-gray-400 text-sm mb-6">
-            Your personal score depends on your specific tasks, AI adoption, and career trajectory.
+            Kişisel skorun, görevlerine, yapay zeka kullanımına ve kariyer yoluna bağlı.
           </p>
           <Link
             href="/quiz"
             className="inline-block bg-accent hover:bg-accent-hover text-white font-semibold px-8 py-4 rounded-xl transition-colors text-lg"
           >
-            Get Your Personal Score →
+            Kişisel Skorunu Al →
           </Link>
-          <p className="text-xs text-gray-500 mt-3">Free · 2 minutes · No signup required</p>
+          <p className="text-xs text-gray-500 mt-3">Ücretsiz · 2 dakika · Kayıt gerekmez</p>
         </div>
 
         {/* Other jobs (internal linking for SEO) */}
         <div className="mt-12">
-          <h2 className="text-lg font-bold mb-4">Other Job AI Risk Scores</h2>
+          <h2 className="text-lg font-bold mb-4">Diğer Mesleklerin Yapay Zeka Risk Skorları</h2>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             {Object.entries(JOB_SEO_DATA)
               .filter(([s]) => s !== slug)
@@ -274,7 +274,7 @@ export default async function JobSEOPage({ params }: { params: Promise<{ slug: s
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Article",
-              headline: `Will AI Replace ${job.title}s? AI Risk Score: ${job.risk}/100`,
+              headline: `Yapay Zeka ${job.title} Mesleğinin Yerini Alacak mı? Yapay Zeka Risk Skoru: ${job.risk}/100`,
               description: job.description,
               author: {
                 "@type": "Organization",
@@ -287,9 +287,9 @@ export default async function JobSEOPage({ params }: { params: Promise<{ slug: s
         {/* Browse all categories */}
         <div className="mt-8 text-center">
           <p className="text-sm text-gray-500">
-            See all{" "}
+            Analiz edilen tüm{" "}
             <span className="text-accent">{jobCategories.length}</span>{" "}
-            job categories analyzed
+            meslek kategorisini gör
           </p>
         </div>
       </article>

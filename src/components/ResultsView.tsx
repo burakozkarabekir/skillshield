@@ -58,7 +58,7 @@ function ScoreGauge({ score }: { score: number }) {
         <span className="text-5xl font-bold" style={{ color }}>
           {score}
         </span>
-        <span className="text-sm opacity-60">out of 100</span>
+        <span className="text-sm opacity-60">/ 100</span>
       </div>
     </div>
   );
@@ -99,7 +99,7 @@ export default function ResultsView({ result, onRetake }: ResultsViewProps) {
     <div className="max-w-3xl mx-auto">
       {/* Header Score */}
       <div className="text-center mb-12">
-        <h1 className="text-3xl font-bold mb-2">Your AI Career Risk Score</h1>
+        <h1 className="text-3xl font-bold mb-2">Yapay Zeka Kariyer Risk Skorun</h1>
         <div className="inline-block px-4 py-1 rounded-full text-sm font-semibold mb-6"
           style={{
             backgroundColor: `color-mix(in srgb, ${getScoreColor(result.overallScore)} 15%, transparent)`,
@@ -113,13 +113,13 @@ export default function ResultsView({ result, onRetake }: ResultsViewProps) {
 
       {/* Summary */}
       <div className="p-6 rounded-2xl bg-[var(--card-bg)] border border-[var(--card-border)] mb-8">
-        <h2 className="text-lg font-bold mb-3">What This Means</h2>
+        <h2 className="text-lg font-bold mb-3">Bu Ne Anlama Geliyor</h2>
         <p className="leading-relaxed opacity-80">{result.summary}</p>
       </div>
 
       {/* Dimension Breakdown */}
       <div className="p-6 rounded-2xl bg-[var(--card-bg)] border border-[var(--card-border)] mb-8">
-        <h2 className="text-lg font-bold mb-6">Risk Breakdown by Dimension</h2>
+        <h2 className="text-lg font-bold mb-6">Boyuta Göre Risk Analizi</h2>
         {result.dimensions.map((dim) => (
           <DimensionBar
             key={dim.dimension}
@@ -132,7 +132,7 @@ export default function ResultsView({ result, onRetake }: ResultsViewProps) {
 
       {/* Skill Breakdown */}
       <div className="p-6 rounded-2xl bg-[var(--card-bg)] border border-[var(--card-border)] mb-8">
-        <h2 className="text-lg font-bold mb-6">Your Skills: Risk Analysis</h2>
+        <h2 className="text-lg font-bold mb-6">Yeteneklerin: Risk Analizi</h2>
         <div className="grid gap-4">
           {result.skillBreakdown.map((skill) => (
             <div
@@ -143,7 +143,7 @@ export default function ResultsView({ result, onRetake }: ResultsViewProps) {
                 <h3 className="font-semibold">{skill.skillName}</h3>
                 <div className="flex items-center gap-2">
                   <span className="text-xs font-medium uppercase">
-                    {skill.riskLevel} risk
+                    {skill.riskLevel} risk seviyesi
                   </span>
                   <span
                     className="inline-block w-3 h-3 rounded-full"
@@ -156,9 +156,9 @@ export default function ResultsView({ result, onRetake }: ResultsViewProps) {
               <p className="text-sm opacity-80 mb-2">{skill.explanation}</p>
               <div className="flex gap-4 text-xs opacity-60">
                 {skill.aiCapability && (
-                  <span>AI capability: {skill.aiCapability}</span>
+                  <span>Yapay zeka yeteneği: {skill.aiCapability}</span>
                 )}
-                <span>Timeline: {skill.timeHorizon}</span>
+                <span>Zaman çizelgesi: {skill.timeHorizon}</span>
               </div>
             </div>
           ))}
@@ -168,10 +168,10 @@ export default function ResultsView({ result, onRetake }: ResultsViewProps) {
       {/* Reskilling Recommendations */}
       <div className="p-6 rounded-2xl bg-[var(--card-bg)] border border-[var(--card-border)] mb-8">
         <h2 className="text-lg font-bold mb-2">
-          Reskilling Priorities
+          Yeniden Beceri Kazanma Öncelikleri
         </h2>
         <p className="text-sm opacity-60 mb-6">
-          Based on your risk profile, here&apos;s where to focus your development.
+          Risk profiline göre, gelişimini odaklanman gereken alanlar.
         </p>
         <div className="grid gap-4">
           {result.reskillPriorities.map((rec, idx) => (
@@ -190,7 +190,7 @@ export default function ResultsView({ result, onRetake }: ResultsViewProps) {
               <p className="text-sm opacity-80 mb-3">{rec.reason}</p>
               {rec.resources && rec.resources.length > 0 && (
                 <div className="text-xs opacity-60">
-                  <span className="font-medium">Resources: </span>
+                  <span className="font-medium">Kaynaklar: </span>
                   {rec.resources.join(" · ")}
                 </div>
               )}
@@ -205,17 +205,17 @@ export default function ResultsView({ result, onRetake }: ResultsViewProps) {
           onClick={onRetake}
           className="flex-1 py-4 rounded-xl border-2 border-[var(--card-border)] bg-[var(--card-bg)] hover:border-[var(--accent-light)] transition-all duration-200 font-semibold cursor-pointer"
         >
-          Retake Assessment
+          Değerlendirmeyi Tekrarla
         </button>
       </div>
 
       {/* Methodology note */}
       <div className="text-center text-xs opacity-40 pb-8">
         <p>
-          Methodology based on Frey &amp; Osborne (Oxford), McKinsey Global
-          Institute, WEF Future of Jobs, O*NET, and current AI capability
-          assessments. Scores are estimates and should inform — not dictate —
-          career decisions.
+          Metodoloji Frey &amp; Osborne (Oxford), McKinsey Global
+          Institute, WEF Future of Jobs, O*NET ve güncel yapay zeka yetenek
+          değerlendirmelerine dayanmaktadır. Skorlar tahmindir ve kariyer
+          kararlarını yönlendirmeli — dikte etmemelidir.
         </p>
       </div>
     </div>

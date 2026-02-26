@@ -15,66 +15,66 @@ import { skillRiskMap } from "@/data/skill-risk-map";
 // ─── Dimension Labels ───────────────────────────────────────────────────────
 
 const DIMENSION_LABELS: Record<Dimension, string> = {
-  taskComposition: "Task Composition",
-  skillReplaceability: "Skill Replaceability",
-  industryVelocity: "Industry Adoption Speed",
-  experienceMoat: "Experience & Expertise Moat",
-  humanInteraction: "Human Interaction Dependency",
+  taskComposition: "Görev Yapısı",
+  skillReplaceability: "Beceri Değiştirilebilirliği",
+  industryVelocity: "Sektör Benimseme Hızı",
+  experienceMoat: "Deneyim & Uzmanlık Kalkanı",
+  humanInteraction: "İnsan Etkileşimi Bağımlılığı",
 };
 
 const DIMENSION_EXPLANATIONS: Record<Dimension, (score: number) => string> = {
   taskComposition: (s) =>
     s >= 70
-      ? "Your daily tasks are heavily routine and procedural — the category most vulnerable to AI automation."
+      ? "Günlük görevlerin ağırlıklı olarak rutin ve prosedürel — yapay zeka otomasyonuna en açık kategori."
       : s >= 40
-        ? "Your work mix includes both routine and non-routine tasks. The routine portions are at risk, but variety provides some protection."
-        : "Your work involves significant creativity, improvisation, or novel problem-solving — tasks AI struggles with most.",
+        ? "İş karışımın hem rutin hem de rutin olmayan görevleri içeriyor. Rutin kısımlar risk altında, ama çeşitlilik bir miktar koruma sağlıyor."
+        : "İşin önemli ölçüde yaratıcılık, doğaçlama veya yeni problem çözme içeriyor — yapay zekanın en çok zorlandığı görevler.",
   skillReplaceability: (s) =>
     s >= 70
-      ? "Your core skills overlap significantly with current AI capabilities. These tasks can already be partially or fully automated."
+      ? "Temel becerilerin mevcut yapay zeka yetenekleriyle önemli ölçüde örtüşüyor. Bu görevler zaten kısmen veya tamamen otomatikleştirilebilir."
       : s >= 40
-        ? "Some of your skills are in AI's reach, but others require judgment, creativity, or interpersonal abilities that provide defensibility."
-        : "Your most important skills involve deeply human capabilities — relationship building, complex judgment, or physical expertise — that AI cannot replicate.",
+        ? "Becerilerinin bazıları yapay zekanın erişim alanında, ama diğerleri yargı, yaratıcılık veya kişilerarası beceriler gerektiriyor."
+        : "En önemli becerilerin derinden insani yetenekleri içeriyor — ilişki kurma, karmaşık yargı veya fiziksel uzmanlık — yapay zekanın kopyalayamadığı şeyler.",
   industryVelocity: (s) =>
     s >= 70
-      ? "Your industry is adopting AI aggressively. Companies in your sector are already deploying AI to replace tasks and roles."
+      ? "Sektörün yapay zekayı agresif şekilde benimsiyor. Sektöründeki şirketler görevleri ve rolleri değiştirmek için zaten yapay zeka dağıtıyor."
       : s >= 40
-        ? "Your industry is exploring AI but hasn't fully committed. You have time to adapt, but the pressure is building."
-        : "Your industry adopts AI slowly due to regulation, physical constraints, or institutional inertia. This buys time but doesn't eliminate long-term risk.",
+        ? "Sektörün yapay zekayı keşfediyor ama tam olarak benimsemedi. Uyum sağlamak için zamanın var, ama baskı artıyor."
+        : "Sektörün düzenleme, fiziksel kısıtlamalar veya kurumsal atalet nedeniyle yapay zekayı yavaş benimsiyor. Bu zaman kazandırır ama uzun vadeli riski ortadan kaldırmaz.",
   experienceMoat: (s) =>
     s >= 70
-      ? "Your role could be learned quickly and doesn't rely on deep tacit knowledge. This makes it easier for AI (or anyone) to replace."
+      ? "Rolün hızla öğrenilebilir ve derin zımni bilgiye dayanmıyor. Bu, yapay zekanın (veya herhangi birinin) değiştirmesini kolaylaştırıyor."
       : s >= 40
-        ? "You've built moderate expertise and institutional knowledge. This creates some defensibility, but it may not be enough long-term."
-        : "Your deep expertise, credentials, and institutional knowledge create a strong moat. AI would need years of context to approach your judgment.",
+        ? "Orta düzey uzmanlık ve kurumsal bilgi biriktirdin. Bu bir miktar savunulabilirlik yaratıyor, ama uzun vadede yeterli olmayabilir."
+        : "Derin uzmanlığın, yetkinliklerin ve kurumsal bilgin güçlü bir savunma hattı oluşturuyor. Yapay zekanın yargına yaklaşması için yılların bağlamına ihtiyacı olur.",
   humanInteraction: (s) =>
     s >= 70
-      ? "Your work is primarily digital and remote-capable, making it more exposed to AI automation since it already flows through machines."
+      ? "İşin ağırlıklı olarak dijital ve uzaktan yapılabilir, bu da yapay zeka otomasyonuna daha açık kılıyor çünkü zaten makineler üzerinden akıyor."
       : s >= 40
-        ? "Your job has a mix of digital and in-person components. The in-person elements add defensibility against automation."
-        : "Your work fundamentally requires human presence, empathy, or physical skill — the strongest protection against AI automation.",
+        ? "İşinin dijital ve yüz yüze bileşenleri karışık. Yüz yüze unsurlar otomasyona karşı savunulabilirlik ekliyor."
+        : "İşin temelde insan varlığı, empati veya fiziksel beceri gerektiriyor — yapay zeka otomasyonuna karşı en güçlü koruma.",
 };
 
 // ─── Risk Labels & Summaries ────────────────────────────────────────────────
 
 function getRiskLabel(score: number): string {
-  if (score >= 75) return "High Risk";
-  if (score >= 55) return "Moderate-High Risk";
-  if (score >= 35) return "Moderate Risk";
-  if (score >= 20) return "Low-Moderate Risk";
-  return "Low Risk";
+  if (score >= 75) return "Yüksek Risk";
+  if (score >= 55) return "Orta-Yüksek Risk";
+  if (score >= 35) return "Orta Risk";
+  if (score >= 20) return "Düşük-Orta Risk";
+  return "Düşük Risk";
 }
 
 function getSummary(score: number, jobLabel: string): string {
   if (score >= 75)
-    return `Your career profile in ${jobLabel} shows significant exposure to AI automation. Many of your daily tasks and core skills are in areas where AI is already capable or will be within 2-3 years. This doesn't mean your job disappears tomorrow, but it does mean proactive reskilling is important. Focus on developing skills AI can't easily replicate — relationship building, creative strategy, and complex judgment.`;
+    return `${jobLabel} alanındaki kariyer profilin yapay zeka otomasyonuna önemli ölçüde açık. Günlük görevlerinin ve temel becerilerinin çoğu yapay zekanın zaten yapabildiği veya 2-3 yıl içinde yapabileceği alanlarda. Bu işinin yarın yok olacağı anlamına gelmiyor, ama proaktif beceri kazanmanın önemli olduğu anlamına geliyor. Yapay zekanın kolayca kopyalayamadığı becerilere odaklan — ilişki kurma, yaratıcı strateji ve karmaşık yargı.`;
   if (score >= 55)
-    return `Your career profile in ${jobLabel} has notable automation exposure, particularly in routine and digital aspects of your work. However, you have some defensible skills and elements that provide breathing room. Now is the ideal time to lean into the human, creative, and interpersonal parts of your role while building expertise in areas AI will augment rather than replace.`;
+    return `${jobLabel} alanındaki kariyer profilin, özellikle işinin rutin ve dijital yönlerinde belirgin otomasyon maruziyetine sahip. Ancak nefes alma alanı sağlayan bazı savunulabilir becerilerin ve unsurların var. Şimdi rolünün insani, yaratıcı ve kişilerarası kısımlarına yüklenmenin tam zamanı — yapay zekanın destekleyeceği alanlarda uzmanlık geliştirirken.`;
   if (score >= 35)
-    return `Your career profile in ${jobLabel} has moderate AI exposure. Some of your tasks could be augmented or partially automated, but your role has meaningful elements that require human judgment, creativity, or interpersonal skill. Stay aware of AI tools entering your field and focus on becoming an expert at using AI to amplify your distinctly human contributions.`;
+    return `${jobLabel} alanındaki kariyer profilin orta düzeyde yapay zeka maruziyetine sahip. Görevlerinin bazıları desteklenebilir veya kısmen otomatikleştirilebilir, ama rolünde insan yargısı, yaratıcılık veya kişilerarası beceri gerektiren anlamlı unsurlar var. Alanına giren yapay zeka araçlarının farkında ol ve yapay zekayı benzersiz insani katkılarını güçlendirmek için kullanma konusunda uzman olmaya odaklan.`;
   if (score >= 20)
-    return `Your career profile in ${jobLabel} is relatively well-protected from AI automation. Your work involves significant human judgment, interpersonal skill, or physical expertise that AI cannot replicate. Continue deepening your expertise and relationships. Your biggest opportunity is using AI tools to become more productive in your already-defensible role.`;
-  return `Your career profile in ${jobLabel} is highly resistant to AI automation. Your work is fundamentally built on human qualities — empathy, physical skill, creative vision, or deep expertise — that represent AI's hardest challenges. Keep building on these strengths. AI will likely become a useful tool in your arsenal, not a competitor.`;
+    return `${jobLabel} alanındaki kariyer profilin yapay zeka otomasyonundan nispeten iyi korunuyor. İşin, yapay zekanın kopyalayamadığı önemli insan yargısı, kişilerarası beceri veya fiziksel uzmanlık içeriyor. Uzmanlığını ve ilişkilerini derinleştirmeye devam et. En büyük fırsatın, zaten savunulabilir rolünde daha üretken olmak için yapay zeka araçlarını kullanmak.`;
+  return `${jobLabel} alanındaki kariyer profilin yapay zeka otomasyonuna karşı son derece dirençli. İşin temelde insani nitelikler üzerine kurulu — empati, fiziksel beceri, yaratıcı vizyon veya derin uzmanlık — yapay zekanın en zorlu meydan okumaları. Bu güçlü yönlerin üzerine inşa etmeye devam et. Yapay zeka muhtemelen cephaneliğinde rakip değil, faydalı bir araç olacak.`;
 }
 
 // ─── Core Scoring Algorithm ─────────────────────────────────────────────────
@@ -204,7 +204,7 @@ function buildSkillBreakdown(
       skillName,
       riskLevel: scoreToRiskLevel(estimatedScore),
       riskScore: estimatedScore,
-      explanation: `This skill's automation risk is estimated based on your overall career profile. More specific assessment requires detailed task analysis.`,
+      explanation: `Bu becerinin otomasyon riski genel kariyer profiline göre tahmin edilmiştir. Daha spesifik değerlendirme detaylı görev analizi gerektirir.`,
       timeHorizon: estimatedScore > 60 ? "2-3 years" : "5+ years" as const,
     };
   });
@@ -226,9 +226,9 @@ function generateReskillRecommendations(
 
   // Always add universal recommendations
   recommendations.push({
-    skill: "AI Tool Proficiency",
+    skill: "Yapay Zeka Araç Yetkinliği",
     reason:
-      "Regardless of your role, becoming an expert AI user makes you more valuable. Learn to prompt effectively, evaluate AI output critically, and integrate AI into your workflows.",
+      "Rolün ne olursa olsun, uzman bir yapay zeka kullanıcısı olmak seni daha değerli kılar. Etkili prompt yazmayı, yapay zeka çıktısını eleştirel değerlendirmeyi ve yapay zekayı iş akışlarına entegre etmeyi öğren.",
     effort: "weeks",
     resources: [
       "Coursera: AI For Everyone (Andrew Ng)",

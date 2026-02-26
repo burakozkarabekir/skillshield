@@ -54,7 +54,7 @@ export default function ScoreCard({ result }: ScoreCardProps) {
             <span className="text-4xl font-black text-white">
               {result.overallScore}
             </span>
-            <span className="text-xs font-medium text-gray-400">out of 100</span>
+            <span className="text-xs font-medium text-gray-400">/ 100</span>
           </div>
         </div>
 
@@ -73,7 +73,7 @@ export default function ScoreCard({ result }: ScoreCardProps) {
                 result.riskLevel
               )}`}
             />
-            {result.riskLevel} Risk
+            {result.riskLevel} Risk Seviyesi
           </span>
         </div>
       </div>
@@ -89,7 +89,7 @@ export default function ScoreCard({ result }: ScoreCardProps) {
       {/* Skill Breakdown */}
       <div className="rounded-2xl border border-gray-800 bg-gray-900/50 p-5">
         <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-gray-400">
-          Risk Breakdown
+          Risk Analizi
         </h3>
         <div className="space-y-3">
           {result.skillBreakdown.map((item, idx) => (

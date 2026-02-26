@@ -34,7 +34,7 @@ export default function ResultsPage() {
     return (
       <main className="min-h-screen flex items-center justify-center">
         <div className="animate-pulse text-slate-400">
-          Calculating your score...
+          Skorun hesaplanıyor...
         </div>
       </main>
     );
@@ -44,15 +44,15 @@ export default function ResultsPage() {
     return (
       <main className="min-h-screen flex items-center justify-center px-4">
         <div className="text-center">
-          <h1 className="text-2xl font-bold mb-4">Result not found</h1>
+          <h1 className="text-2xl font-bold mb-4">Sonuç bulunamadı</h1>
           <p className="text-slate-400 mb-6">
-            This result may have expired or the link is invalid.
+            Bu sonucun süresi dolmuş olabilir veya bağlantı geçersiz.
           </p>
           <Link
             href="/quiz"
             className="inline-flex items-center gap-2 px-6 py-3 bg-electric hover:bg-electric-dark text-white font-medium rounded-xl transition-colors"
           >
-            Take the Quiz
+            Testi Çöz
           </Link>
         </div>
       </main>
@@ -90,7 +90,7 @@ export default function ResultsPage() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <p className="text-sm text-slate-400 mb-1">Your AI Career Risk Score</p>
+          <p className="text-sm text-slate-400 mb-1">Yapay Zeka Kariyer Risk Skorun</p>
           <h1 className="text-2xl sm:text-3xl font-bold mb-8">
             {result.jobTitle}
           </h1>
@@ -142,7 +142,7 @@ export default function ResultsPage() {
           className="mb-12"
         >
           <h2 className="text-lg sm:text-xl font-bold mb-4">
-            Skill Breakdown
+            Yetenek Analizi
           </h2>
           <div className="space-y-3">
             {result.skills
@@ -161,7 +161,7 @@ export default function ResultsPage() {
           className="mb-12"
         >
           <h2 className="text-lg sm:text-xl font-bold mb-4">
-            Recommendations
+            Öneriler
           </h2>
           <div className="space-y-3">
             {result.recommendations.map((rec, i) => (
@@ -196,18 +196,18 @@ export default function ResultsPage() {
                 Premium
               </div>
               <h3 className="text-xl sm:text-2xl font-bold mb-2">
-                Get your 90-day AI-proof plan
+                90 günlük yapay zekaya karşı planını al
               </h3>
               <p className="text-slate-400 text-sm sm:text-base mb-6 max-w-md">
-                Personalized weekly action items, curated learning resources, and
-                skill-building exercises tailored to your specific risk profile.
+                Kişiselleştirilmiş haftalık aksiyon adımları, seçilmiş öğrenme kaynakları ve
+                risk profiline özel yetenek geliştirme egzersizleri.
               </p>
               <ul className="space-y-2 mb-6">
                 {[
-                  "Personalized 90-day skill development roadmap",
-                  "Weekly action items delivered to your inbox",
-                  "AI tool recommendations for your specific role",
-                  "Quarterly score reassessment",
+                  "Kişiselleştirilmiş 90 günlük yetenek geliştirme yol haritası",
+                  "Her hafta gelen kutuna gönderilen aksiyon adımları",
+                  "Rolüne özel yapay zeka araç önerileri",
+                  "Üç aylık skor yeniden değerlendirmesi",
                 ].map((item) => (
                   <li
                     key={item}
@@ -221,7 +221,7 @@ export default function ResultsPage() {
                 ))}
               </ul>
               <button className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-electric hover:bg-electric-dark text-white font-semibold rounded-xl transition-all duration-200 shadow-lg shadow-electric/25 hover:shadow-electric/40">
-                Unlock Premium — $19
+                Premium&apos;u Aç — $19
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                 </svg>
@@ -238,7 +238,7 @@ export default function ResultsPage() {
           className="text-center pb-12"
         >
           <p className="text-slate-400 text-sm mb-4">
-            Share your score and see how you compare
+            Skorunu paylaş ve kendini karşılaştır
           </p>
           <div className="flex justify-center">
             <ShareButton
@@ -252,7 +252,7 @@ export default function ResultsPage() {
               href="/quiz"
               className="text-sm text-slate-500 hover:text-slate-300 transition-colors"
             >
-              Retake the quiz
+              Testi tekrar çöz
             </Link>
           </div>
         </motion.section>

@@ -1,139 +1,139 @@
 /**
- * Premium CTA & Email Capture Copy — SkillShield
+ * Premium CTA & E-posta Toplama Metinleri — SkillShield
  *
- * Emotional target: Empowerment + urgency
- * "You know the problem. Here's your personalized fix."
+ * Duygusal hedef: Güçlenme + aciliyet
+ * "Problemi biliyorsun. İşte kişiselleştirilmiş çözümün."
  */
 
-// ─── PREMIUM CTA (ON RESULTS PAGE) ──────────────────────
+// ─── PREMIUM CTA (SONUÇ SAYFASINDA) ──────────────────
 export const premiumCta = {
   headlines: [
-    "You know the score. Get the plan.",
-    "Diagnosis: done. Treatment: here.",
-    "Your score is free. Your roadmap is $29.",
+    "Skoru biliyorsun. Planı al.",
+    "Teşhis tamam. Tedavi burada.",
+    "Skorun ücretsiz. Yol haritanın fiyatı $29.",
   ],
   subheads: [
-    "A personalized 90-day action plan based on your exact risk profile. Specific courses, skills, and career moves.",
-    "Get a week-by-week reskilling roadmap tailored to your industry, experience level, and risk areas.",
-    "Your free score shows the problem. SkillShield Pro shows the way out — with a plan built for your exact situation.",
+    "Tam risk profiline göre kişiselleştirilmiş 90 günlük eylem planı. Spesifik eğitimler, beceriler ve kariyer hamleleri.",
+    "Sektörüne, deneyim seviyene ve risk alanlarına özel haftalık yeniden beceri kazanma yol haritası.",
+    "Ücretsiz skorun problemi gösteriyor. SkillShield Pro çıkış yolunu gösteriyor — tam senin durumun için yapılmış bir planla.",
   ],
   ctas: [
-    "Get my action plan",
-    "Unlock my roadmap",
-    "Build my career plan",
+    "Eylem planımı al",
+    "Yol haritamı aç",
+    "Kariyer planımı oluştur",
   ],
   features: [
     {
-      title: "90-Day Reskilling Roadmap",
-      description: "Week-by-week plan. Specific courses and certifications. Matched to your risk areas.",
+      title: "90 Günlük Yeniden Beceri Kazanma Yol Haritası",
+      description: "Haftalık plan. Spesifik eğitimler ve sertifikalar. Risk alanlarınla eşleştirilmiş.",
     },
     {
-      title: "Salary Impact Projections",
-      description: "How your earning potential changes based on different reskilling paths. Real numbers.",
+      title: "Maaş Etki Projeksiyonları",
+      description: "Farklı beceri kazanma yollarına göre kazanç potansiyelin nasıl değişir. Gerçek rakamlar.",
     },
     {
-      title: "AI-Proof Job Matching",
-      description: "Roles in your industry with lower risk scores that use your existing experience.",
+      title: "Yapay Zekaya Dayanıklı İş Eşleştirme",
+      description: "Sektöründe mevcut deneyimini kullanan daha düşük riskli roller.",
     },
     {
-      title: "Monthly Risk Updates",
-      description: "Your score recalculated monthly as AI capabilities change. Stay ahead of the curve.",
+      title: "Aylık Risk Güncellemeleri",
+      description: "Yapay zeka yetenekleri değiştikçe skorun aylık yeniden hesaplanır. Eğrinin önünde kal.",
     },
   ],
   pricing: {
     amount: "$29",
-    period: "one-time",
+    period: "tek seferlik",
     anchoring: [
-      "Less than one hour of career coaching.",
-      "The average career pivot costs $12,000+ in lost income. This costs $29.",
-      "One coffee a week for a month. Or a career plan for the next decade.",
+      "Bir saatlik kariyer koçluğundan daha az.",
+      "Ortalama kariyer değişikliği gelir kaybında $12.000+ mal olur. Bu $29.",
+      "Ayda bir haftalık kahve parası. Veya önümüzdeki on yıl için bir kariyer planı.",
     ],
   },
   guarantee: [
-    "30-day money-back guarantee. If the plan isn't useful, you pay nothing.",
-    "Full refund within 30 days. No questions, no forms, no friction.",
-    "Try it risk-free for 30 days. Not happy? Get every penny back.",
+    "30 gün para iade garantisi. Plan işe yaramazsa, hiçbir şey ödemezsin.",
+    "30 gün içinde tam iade. Soru yok, form yok, sürtünme yok.",
+    "30 gün risksiz dene. Memnun değil misin? Her kuruşunu geri al.",
   ],
 } as const;
 
-// ─── EMAIL CAPTURE (POST-SCORE, PRE-PREMIUM) ────────────
+// ─── E-POSTA TOPLAMA (SKOR SONRASI, PREMİUM ÖNCESİ) ────────────
 export const emailCapture = {
   headlines: [
-    "Your score will change. We'll tell you when.",
-    "AI capabilities shift monthly. Your risk does too.",
-    "Want to know when your score changes?",
+    "Skorun değişecek. Değiştiğinde söyleriz.",
+    "Yapay zeka yetenekleri her ay değişiyor. Riskin de.",
+    "Skorun değiştiğinde bilmek ister misin?",
   ],
   subheads: [
-    "Drop your email. We'll notify you when new AI developments affect your specific risk profile.",
-    "Get a free monthly update when AI breakthroughs impact your job category. No spam. Unsubscribe anytime.",
-    "We track AI capability updates daily. When something affects your score, you'll be the first to know.",
+    "E-postanı bırak. Yeni yapay zeka gelişmeleri risk profilini etkilediğinde seni bilgilendiririz.",
+    "Yapay zeka atılımları iş kategorini etkilediğinde ücretsiz aylık güncelleme al. Spam yok. İstediğin zaman abonelikten çık.",
+    "Yapay zeka yetenek güncellemelerini her gün takip ediyoruz. Skorunu etkileyen bir şey olduğunda, ilk bilen sen olursun.",
   ],
   ctas: [
-    "Notify me",
-    "Keep me updated",
-    "Track my score",
+    "Beni bilgilendir",
+    "Beni güncel tut",
+    "Skorumu takip et",
   ],
-  placeholder: "your@email.com",
+  placeholder: "senin@emailin.com",
   disclaimer: [
-    "One email per month, max. Unsubscribe in one click.",
-    "We'll only email when your risk profile changes. That's it.",
-    "No spam. No newsletters. Just your score updates.",
+    "Ayda en fazla bir e-posta. Tek tıkla abonelikten çık.",
+    "Sadece risk profilin değiştiğinde e-posta atarız. Hepsi bu.",
+    "Spam yok. Haber bülteni yok. Sadece skor güncellemelerin.",
   ],
   success: [
-    "You're in. We'll watch your risk so you don't have to.",
-    "Saved. You'll hear from us when something changes.",
-    "Done. Your career radar is now active.",
+    "Tamam. Riskini biz takip ederiz, sen etmek zorunda kalma.",
+    "Kaydedildi. Bir şey değiştiğinde senden haber alırsın.",
+    "Tamam. Kariyer radarın şimdi aktif.",
   ],
 } as const;
 
-// ─── PREMIUM UPSELL IN EMAIL ─────────────────────────────
+// ─── E-POSTA ÜST SATIŞ ─────────────────────────────
 export const emailUpsell = {
   subject: [
-    "Your AI risk score just changed.",
-    "Update: your career risk moved {{direction}}.",
-    "New AI development affects your role.",
+    "Yapay zeka risk skorun değişti.",
+    "Güncelleme: kariyer riskin {{direction}} hareket etti.",
+    "Yeni yapay zeka gelişmesi rolünü etkiliyor.",
   ],
   preheader: [
-    "Your score went from {{oldScore}} to {{newScore}}. Here's why.",
-    "A new AI model can now do something you do daily.",
-    "Important update for your career risk profile.",
+    "Skorun {{oldScore}}'dan {{newScore}}'a gitti. İşte nedeni.",
+    "Yeni bir yapay zeka modeli artık günlük yaptığın bir şeyi yapabiliyor.",
+    "Kariyer risk profili için önemli güncelleme.",
   ],
   body: {
     scoreIncrease:
-      "Your AI Career Risk Score increased from {{oldScore}} to {{newScore}} this month. A new AI capability now overlaps with one of your core tasks. Here's what changed and what you can do about it.",
+      "Yapay Zeka Kariyer Risk Skorun bu ay {{oldScore}}'dan {{newScore}}'a yükseldi. Yeni bir yapay zeka yeteneği artık temel görevlerinden biriyle örtüşüyor. İşte ne değişti ve bu konuda ne yapabilirsin.",
     scoreDecrease:
-      "Good news: your risk score dropped from {{oldScore}} to {{newScore}}. The AI capabilities affecting your role haven't advanced as fast as projected. But don't get comfortable — here's the current landscape.",
+      "İyi haber: risk skorun {{oldScore}}'dan {{newScore}}'a düştü. Rolünü etkileyen yapay zeka yetenekleri tahmin edildiği kadar hızlı ilerlemedi. Ama rahat durma — işte mevcut manzara.",
     noChange:
-      "Your score held steady at {{score}} this month. No major shifts in AI capabilities affecting your role. Here's a quick summary of what we're watching.",
+      "Skorun bu ay {{score}}'da sabit kaldı. Rolünü etkileyen yapay zeka yeteneklerinde büyük değişiklik yok. İşte takip ettiğimiz şeylerin hızlı özeti.",
   },
   premiumNudge: [
-    "Want a specific plan? SkillShield Pro builds your 90-day roadmap. →",
-    "Knowing the score is step one. Getting a plan is step two. →",
-    "Score updates are free. Action plans are $29. →",
+    "Spesifik bir plan mı istiyorsun? SkillShield Pro 90 günlük yol haritanı oluşturur. →",
+    "Skoru bilmek birinci adım. Plan yapmak ikinci adım. →",
+    "Skor güncellemeleri ücretsiz. Eylem planları $29. →",
   ],
 } as const;
 
-// ─── NOTIFICATION COPY FOR PREMIUM USERS ─────────────────
+// ─── PREMİUM KULLANICILAR İÇİN BİLDİRİM METİNLERİ ─────────────────
 export const premiumNotifications = {
   weeklyCheckIn: {
-    subject: "Your week {{weekNumber}} action item",
-    body: "This week's focus: {{skillName}}. Here's your task and the resource to complete it.",
+    subject: "Hafta {{weekNumber}} eylem maddesi",
+    body: "Bu haftanın odağı: {{skillName}}. İşte görevin ve tamamlaman gereken kaynak.",
   },
   milestoneReached: {
-    subject: "Milestone: {{milestoneName}} complete",
-    body: "You've finished {{milestoneName}}. Your projected risk reduction: {{reduction}} points. Next up: {{nextStep}}.",
+    subject: "Kilometre taşı: {{milestoneName}} tamamlandı",
+    body: "{{milestoneName}} adımını tamamladın. Öngörülen risk azalması: {{reduction}} puan. Sıradaki: {{nextStep}}.",
   },
   scoreUpdate: {
-    subject: "Your score dropped {{points}} points",
-    body: "Your reskilling is working. You went from {{oldScore}} to {{newScore}}. The specific impact came from {{skillName}}. Keep going.",
+    subject: "Skorun {{points}} puan düştü",
+    body: "Yeniden beceri kazanman işe yarıyor. {{oldScore}}'dan {{newScore}}'a düştün. Spesifik etki {{skillName}}'den geldi. Devam et.",
   },
   inactivityNudge: {
     subject: [
-      "Your plan is waiting.",
-      "7 days since your last action.",
-      "Quick check-in on your progress.",
+      "Planın seni bekliyor.",
+      "Son eyleminden 7 gün geçti.",
+      "İlerlemenle ilgili kısa bir kontrol.",
     ],
-    body: "You're on week {{weekNumber}} of your 90-day plan. The next step takes about {{timeEstimate}} minutes. Pick it back up?",
-    cta: "Resume my plan",
+    body: "90 günlük planının {{weekNumber}}. haftasındasın. Sonraki adım yaklaşık {{timeEstimate}} dakika sürer. Devam edecek misin?",
+    cta: "Planıma devam et",
   },
 } as const;

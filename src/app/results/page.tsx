@@ -49,7 +49,7 @@ function ScoreDisplay({ score }: { score: number }) {
     <section className="px-6 pt-16 pb-12 text-center">
       <div className="mx-auto max-w-2xl">
         <p className="text-sm font-semibold uppercase tracking-widest text-muted">
-          Your AI Career Risk Score
+          Yapay Zeka Kariyer Risk Skorun
         </p>
         <div className="mt-6 relative inline-block">
           <p
@@ -91,12 +91,12 @@ type RiskLevel = "high" | "medium" | "low" | "safe";
 function TaskBreakdownSection({ score }: { score: number }) {
   // Simulated task breakdown based on score range
   const sampleTasks: { name: string; risk: RiskLevel }[] = [
-    { name: "Data entry and processing", risk: score > 40 ? "high" : "medium" },
-    { name: "Report writing and generation", risk: score > 50 ? "high" : "medium" },
-    { name: "Email communication", risk: "medium" },
-    { name: "Strategic planning", risk: score > 75 ? "medium" : "low" },
-    { name: "Client relationship management", risk: "safe" },
-    { name: "Team leadership and mentoring", risk: "safe" },
+    { name: "Veri girişi ve işleme", risk: score > 40 ? "high" : "medium" },
+    { name: "Rapor yazımı ve oluşturma", risk: score > 50 ? "high" : "medium" },
+    { name: "E-posta iletişimi", risk: "medium" },
+    { name: "Stratejik planlama", risk: score > 75 ? "medium" : "low" },
+    { name: "Müşteri ilişkileri yönetimi", risk: "safe" },
+    { name: "Takım liderliği ve mentorluk", risk: "safe" },
   ];
 
   const riskColors: Record<RiskLevel, string> = {
@@ -147,9 +147,9 @@ function SkillBreakdownSection({ score }: { score: number }) {
               {skillBreakdown.categories.shielded.description}
             </p>
             <ul className="mt-4 space-y-2 text-sm">
-              <li>Critical thinking</li>
-              <li>Stakeholder management</li>
-              <li>Creative problem-solving</li>
+              <li>Eleştirel düşünme</li>
+              <li>Paydaş yönetimi</li>
+              <li>Yaratıcı problem çözme</li>
             </ul>
           </div>
 
@@ -162,9 +162,9 @@ function SkillBreakdownSection({ score }: { score: number }) {
               {skillBreakdown.categories.atRisk.description}
             </p>
             <ul className="mt-4 space-y-2 text-sm">
-              <li>Data analysis</li>
-              <li>Report generation</li>
-              <li>Basic coding</li>
+              <li>Veri analizi</li>
+              <li>Rapor oluşturma</li>
+              <li>Temel kodlama</li>
             </ul>
           </div>
 
@@ -177,9 +177,9 @@ function SkillBreakdownSection({ score }: { score: number }) {
               {skillBreakdown.categories.emerging.description}
             </p>
             <ul className="mt-4 space-y-2 text-sm">
-              <li>AI tool proficiency</li>
-              <li>Prompt engineering</li>
-              <li>Human-AI workflow design</li>
+              <li>Yapay zeka araç yetkinliği</li>
+              <li>Prompt mühendisliği</li>
+              <li>İnsan-yapay zeka iş akışı tasarımı</li>
             </ul>
           </div>
         </div>

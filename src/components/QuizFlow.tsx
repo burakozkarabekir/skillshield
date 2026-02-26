@@ -33,13 +33,13 @@ export default function QuizFlow({ onComplete }: QuizFlowProps) {
 
       if (!res.ok) {
         const data = await res.json();
-        throw new Error(data.error || "Failed to calculate score");
+        throw new Error(data.error || "Skor hesaplanamadı");
       }
 
       const result: ScoringResult = await res.json();
       onComplete(result);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Something went wrong");
+      setError(err instanceof Error ? err.message : "Bir şeyler yanlış gitti");
       setStep("quiz");
     }
   }
@@ -90,13 +90,13 @@ export default function QuizFlow({ onComplete }: QuizFlowProps) {
 
       if (!res.ok) {
         const data = await res.json();
-        throw new Error(data.error || "Failed to calculate score");
+        throw new Error(data.error || "Skor hesaplanamadı");
       }
 
       const result: ScoringResult = await res.json();
       onComplete(result);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Something went wrong");
+      setError(err instanceof Error ? err.message : "Bir şeyler yanlış gitti");
       setStep("quiz");
     }
   }
@@ -107,11 +107,11 @@ export default function QuizFlow({ onComplete }: QuizFlowProps) {
       <div className="max-w-2xl mx-auto">
         <div className="mb-8">
           <h2 className="text-2xl font-bold mb-2">
-            First, what do you do for work?
+            Öncelikle, ne iş yapıyorsun?
           </h2>
           <p className="text-[var(--foreground)] opacity-60">
-            Pick the closest match. This helps us calibrate your score against
-            research data for your field.
+            En yakın eşleşmeyi seç. Bu, skorunu alanındaki
+            araştırma verileriyle kalibre etmemize yardımcı olur.
           </p>
         </div>
 
@@ -142,7 +142,7 @@ export default function QuizFlow({ onComplete }: QuizFlowProps) {
               : "bg-gray-300 text-gray-500 cursor-not-allowed"
           }`}
         >
-          Continue to Assessment
+          Değerlendirmeye Devam Et
         </button>
       </div>
     );
@@ -153,9 +153,9 @@ export default function QuizFlow({ onComplete }: QuizFlowProps) {
     return (
       <div className="max-w-2xl mx-auto text-center py-20">
         <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-[var(--accent)] border-t-transparent mb-6" />
-        <h2 className="text-2xl font-bold mb-2">Analyzing your profile...</h2>
+        <h2 className="text-2xl font-bold mb-2">Profilin analiz ediliyor...</h2>
         <p className="text-[var(--foreground)] opacity-60">
-          Comparing your responses against automation research data
+          Yanıtların otomasyon araştırma verileriyle karşılaştırılıyor
         </p>
         {error && (
           <div className="mt-6 p-4 bg-red-100 text-red-700 rounded-xl">
@@ -175,10 +175,10 @@ export default function QuizFlow({ onComplete }: QuizFlowProps) {
       <div className="mb-8">
         <div className="flex justify-between items-center mb-2">
           <span className="text-sm opacity-60">
-            Question {currentQuestion + 1} of {totalQuestions}
+            Soru {currentQuestion + 1} / {totalQuestions}
           </span>
           <span className="text-sm opacity-60">
-            {Math.round(progress)}% complete
+            %{Math.round(progress)} tamamlandı
           </span>
         </div>
         <div className="w-full h-2 rounded-full bg-[var(--card-border)]">
@@ -228,7 +228,7 @@ export default function QuizFlow({ onComplete }: QuizFlowProps) {
           onClick={handleBack}
           className="px-6 py-3 rounded-xl border-2 border-[var(--card-border)] bg-[var(--card-bg)] hover:border-[var(--accent-light)] transition-all duration-200 cursor-pointer"
         >
-          Back
+          Geri
         </button>
         <button
           onClick={handleNext}
@@ -239,7 +239,7 @@ export default function QuizFlow({ onComplete }: QuizFlowProps) {
               : "bg-gray-300 text-gray-500 cursor-not-allowed"
           }`}
         >
-          {currentQuestion < totalQuestions - 1 ? "Next" : "Get My Score"}
+          {currentQuestion < totalQuestions - 1 ? "İleri" : "Skorumu Göster"}
         </button>
       </div>
     </div>

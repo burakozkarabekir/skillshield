@@ -72,7 +72,7 @@ export default function QuizPage() {
             {nav.quizButton}
           </button>
           <p className="mt-4 text-sm text-muted">
-            12 questions. About 3 minutes. All anonymous.
+            12 soru. Yaklaşık 3 dakika. Tamamen anonim.
           </p>
         </div>
       </div>

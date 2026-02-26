@@ -1,189 +1,189 @@
 /**
- * Results / Score Reveal Page Copy — SkillShield
+ * Sonuçlar / Skor Açıklama Sayfası Metinleri — SkillShield
  *
- * Emotional target: Emotional spike (relief or urgency)
- *   → then desire to share
- *   → then feeling informed and in-control
+ * Duygusal hedef: Duygusal zirve (rahatlama veya aciliyet)
+ *   → sonra paylaşma isteği
+ *   → sonra bilgilendirilmiş ve kontrol altında hissetme
  *
- * The moment they see "73/100" should hit them in the gut.
- * Then the breakdown should immediately make them feel informed.
+ * "73/100" gördükleri an onları derinden etkilemeli.
+ * Sonra analiz hemen bilgilendirilmiş hissetmelerini sağlamalı.
  */
 
-// ─── SCORE REVEAL ────────────────────────────────────────
-// Dynamic headlines based on score ranges
+// ─── SKOR AÇIKLAMA ────────────────────────────────────────
+// Skor aralıklarına göre dinamik başlıklar
 export const scoreReveal = {
   ranges: [
     {
       min: 0,
       max: 25,
-      label: "Low Risk",
-      color: "#22c55e", // green
+      label: "Düşük Risk",
+      color: "#22c55e", // yeşil
       headlines: [
-        "You're in good shape.",
-        "AI isn't coming for you. Yet.",
-        "Breathe. Your career is solid.",
+        "İyi durumdasın.",
+        "Yapay zeka henüz sana gelmiyor.",
+        "Rahat ol. Kariyer sağlam.",
       ],
       subheads: [
-        "Your role has strong defenses against automation. Here's why — and how to keep it that way.",
-        "Only a small portion of your core tasks overlap with current AI capabilities.",
-        "You're in the safest quartile. But 'safe' doesn't mean 'forever.' Here's your breakdown.",
+        "Rolün otomasyona karşı güçlü savunmalara sahip. İşte nedeni — ve böyle tutmanın yolu.",
+        "Temel görevlerinin sadece küçük bir kısmı mevcut yapay zeka yetenekleriyle örtüşüyor.",
+        "En güvenli çeyrekte yer alıyorsun. Ama 'güvenli', 'sonsuza kadar' demek değil. İşte analizin.",
       ],
     },
     {
       min: 26,
       max: 50,
-      label: "Moderate Risk",
-      color: "#eab308", // yellow
+      label: "Orta Risk",
+      color: "#eab308", // sarı
       headlines: [
-        "You've got time. Use it.",
-        "Not urgent. Not safe either.",
-        "The window is still open.",
+        "Zamanın var. İyi kullan.",
+        "Acil değil. Güvenli de değil.",
+        "Pencere hâlâ açık.",
       ],
       subheads: [
-        "About a third of your core tasks are automatable. That's manageable — if you act now.",
-        "You're in the middle of the pack. Some of your tasks are already being automated elsewhere.",
-        "Your role will change, not disappear. The question is whether you lead that change or follow it.",
+        "Temel görevlerinin yaklaşık üçte biri otomatikleştirilebilir. Şimdi harekete geçersen yönetilebilir.",
+        "Ortalamanın tam ortasındasın. Görevlerinin bazıları başka yerlerde zaten otomatikleştiriliyor.",
+        "Rolün değişecek, yok olmayacak. Soru bu değişikliğe öncülük mü edeceksin yoksa takip mi.",
       ],
     },
     {
       min: 51,
       max: 75,
-      label: "High Risk",
-      color: "#f97316", // orange
+      label: "Yüksek Risk",
+      color: "#f97316", // turuncu
       headlines: [
-        "This is your wake-up call.",
-        "The clock is ticking.",
-        "Time to make some moves.",
+        "Bu senin uyandırma çağrın.",
+        "Saat işliyor.",
+        "Hamle yapma zamanı.",
       ],
       subheads: [
-        "More than half of your daily tasks overlap with what AI can do right now. Not next year — now.",
-        "Your role is in the top 40% most affected by AI. The specific breakdown below shows where.",
-        "This score is a signal, not a sentence. The difference between risk and ruin is what you do next.",
+        "Günlük görevlerinin yarısından fazlası yapay zekanın şu an yapabildiğiyle örtüşüyor. Gelecek yıl değil — şu an.",
+        "Rolün yapay zekadan en çok etkilenen %40'ın içinde. Aşağıdaki detaylı analiz tam olarak nerede olduğunu gösteriyor.",
+        "Bu skor bir sinyal, mahkumiyet değil. Risk ile yıkım arasındaki fark, bundan sonra ne yapacağın.",
       ],
     },
     {
       min: 76,
       max: 100,
-      label: "Critical Risk",
-      color: "#ef4444", // red
+      label: "Kritik Risk",
+      color: "#ef4444", // kırmızı
       headlines: [
-        "You need to see this.",
-        "Let's be real with you.",
-        "This is serious. But fixable.",
+        "Bunu görmen gerekiyor.",
+        "Seninle açık konuşalım.",
+        "Bu ciddi. Ama düzeltilebilir.",
       ],
       subheads: [
-        "The majority of your core tasks are already within AI's capability range. Your timeline is months, not years.",
-        "You're in the highest risk category. That's not a death sentence — it's a starting gun.",
-        "Most of your daily work overlaps with what AI systems can do today. Here's exactly what that means.",
+        "Temel görevlerinin büyük çoğunluğu zaten yapay zekanın yetenek aralığında. Zaman çizelgen yıllar değil, aylar.",
+        "En yüksek risk kategorisindeysin. Bu bir ölüm cezası değil — bir başlangıç tabancası.",
+        "Günlük işinin çoğu bugünkü yapay zeka sistemlerinin yapabildiğiyle örtüşüyor. İşte bunun tam olarak ne anlama geldiği.",
       ],
     },
   ],
 } as const;
 
-// ─── SCORE CONTEXT BAR ───────────────────────────────────
+// ─── SKOR BAĞLAM BARI ───────────────────────────────────
 export const scoreContext = {
   comparisonLabels: [
     (score: number, percentile: number) =>
-      `Your score of ${score} puts you in the ${percentile}th percentile of risk.`,
+      `${score} puanın seni risk sıralamasında ${percentile}. yüzdelik dilime koyuyor.`,
     (score: number, percentile: number) =>
-      `${score}/100 — higher than ${percentile}% of people who've taken this quiz.`,
+      `${score}/100 — bu testi çözenlerin %${percentile}'inden yüksek.`,
     (score: number, percentile: number) =>
-      `${percentile}% of professionals scored lower than your ${score}.`,
+      `Profesyonellerin %${percentile}'i senin ${score} puanından daha düşük aldı.`,
   ],
   industryComparison: (industry: string, avgScore: number) =>
-    `The average score in ${industry} is ${avgScore}. Here's how your tasks compare.`,
+    `${industry} sektöründe ortalama skor ${avgScore}. İşte görevlerinin karşılaştırması.`,
 } as const;
 
-// ─── TASK BREAKDOWN SECTION ──────────────────────────────
+// ─── GÖREV ANALİZİ BÖLÜMÜ ──────────────────────────────
 export const taskBreakdown = {
   sectionHeadlines: [
-    "Here's what AI can do — and can't.",
-    "Your task-by-task breakdown.",
-    "Where exactly is your risk?",
+    "İşte yapay zekanın yapabildiği — ve yapamadığı.",
+    "Görev görev analizin.",
+    "Riskin tam olarak nerede?",
   ],
   riskLabels: {
-    high: "High Automation Risk",
-    medium: "Partial Automation Risk",
-    low: "Low Automation Risk",
-    safe: "Human Advantage",
+    high: "Yüksek Otomasyon Riski",
+    medium: "Kısmi Otomasyon Riski",
+    low: "Düşük Otomasyon Riski",
+    safe: "İnsan Avantajı",
   },
   riskDescriptions: {
-    high: "AI can perform this task at or above average human level today.",
-    medium: "AI can assist but still needs human oversight for quality.",
-    low: "AI has limited capability here. Human skill is still dominant.",
-    safe: "This task requires uniquely human qualities AI can't replicate.",
+    high: "Yapay zeka bu görevi bugün ortalama insan seviyesinde veya üzerinde yapabiliyor.",
+    medium: "Yapay zeka yardımcı olabilir ama kalite için hâlâ insan denetimine ihtiyaç var.",
+    low: "Yapay zekanın burada sınırlı yeteneği var. İnsan becerisi hâlâ baskın.",
+    safe: "Bu görev yapay zekanın kopyalayamadığı benzersiz insani nitelikler gerektiriyor.",
   },
 } as const;
 
-// ─── SKILL BREAKDOWN SECTION ─────────────────────────────
+// ─── BECERİ ANALİZİ BÖLÜMÜ ─────────────────────────────
 export const skillBreakdown = {
   sectionHeadlines: [
-    "Skills that protect you.",
-    "Your career armor, ranked.",
-    "What makes you hard to replace.",
+    "Seni koruyan beceriler.",
+    "Kariyer zırhın, sıralanmış.",
+    "Seni değiştirmesi zor kılan ne.",
   ],
   subheads: [
-    "These are the specific skills that lower your risk. Double down on the green ones.",
-    "Skills in green are your moat. Skills in red are where AI is closing the gap fastest.",
-    "Focus your upskilling here. These are the skills with the highest return on investment.",
+    "Bunlar riskini düşüren spesifik beceriler. Yeşil olanlara yüklen.",
+    "Yeşildeki beceriler senin savunma hattın. Kırmızıdakiler yapay zekanın en hızlı kapattığı açıklar.",
+    "Beceri geliştirmeni buraya odakla. Bunlar yatırım getirisi en yüksek beceriler.",
   ],
   categories: {
     shielded: {
-      label: "Your Shield Skills",
-      description: "AI can't touch these. They make you irreplaceable.",
+      label: "Kalkan Becerilerin",
+      description: "Yapay zeka bunlara dokunamaz. Seni vazgeçilmez yapıyorlar.",
     },
     atRisk: {
-      label: "Skills Under Threat",
+      label: "Tehdit Altındaki Beceriler",
       description:
-        "AI is getting good at these. Start transitioning away from relying on them.",
+        "Yapay zeka bunlarda iyileşiyor. Bunlara bağımlılıktan geçiş yapmaya başla.",
     },
     emerging: {
-      label: "Skills to Build",
+      label: "Geliştirmen Gereken Beceriler",
       description:
-        "You don't have these yet, but they'd drop your score significantly.",
+        "Bunlara henüz sahip değilsin, ama skorunu ciddi şekilde düşürürler.",
     },
   },
 } as const;
 
-// ─── INSIGHT PARAGRAPHS ──────────────────────────────────
-// These are generated dynamically but here are template patterns
+// ─── İÇGÖRÜ PARAGRAFLARI ──────────────────────────────
+// Bunlar dinamik olarak üretilir ama işte şablon kalıpları
 export const insights = {
   sectionHeadlines: [
-    "What this means for you.",
-    "The bottom line.",
-    "Your situation, decoded.",
+    "Bu senin için ne anlama geliyor.",
+    "Sonuç.",
+    "Durumun, çözülmüş.",
   ],
   templates: {
     highRisk:
-      "Your role's core value is concentrated in tasks that AI systems can already handle. This doesn't mean your job disappears tomorrow — adoption takes time. But the trajectory is clear, and professionals who reskill early will have the strongest negotiating position.",
+      "Rolünün temel değeri, yapay zeka sistemlerinin zaten halledebildiği görevlerde yoğunlaşmış. Bu, işinin yarın yok olacağı anlamına gelmiyor — benimseme zaman alır. Ama yörünge net ve erken beceri kazanan profesyoneller en güçlü müzakere pozisyonuna sahip olacak.",
     moderateRisk:
-      "You're in a transitional zone. Parts of your role will be augmented by AI, making you more productive if you adopt the tools — or more replaceable if you don't. The key is becoming the person who uses AI, not the person AI replaces.",
+      "Geçiş bölgesindesin. Rolünün bazı kısımları yapay zeka tarafından desteklenecek — araçları benimsersen seni daha üretken, benimsemezsen daha değiştirilebilir yapacak. Anahtar, yapay zekayı kullanan kişi olmak, yapay zekanın yerini aldığı kişi değil.",
     lowRisk:
-      "Your work relies heavily on capabilities that AI still struggles with — whether that's physical presence, nuanced human judgment, or deep relationship management. Stay sharp on these strengths and keep monitoring which AI capabilities improve year over year.",
+      "İşin ağırlıklı olarak yapay zekanın hâlâ zorlandığı yeteneklere dayanıyor — ister fiziksel varlık, ister incelikli insan yargısı, ister derin ilişki yönetimi olsun. Bu güçlü yönlerinde keskin kal ve hangi yapay zeka yeteneklerinin yıldan yıla geliştiğini takip et.",
     adaptable:
-      "Your willingness to adapt is one of your biggest assets. Pair that with the specific skill recommendations below and you'll be well ahead of most people in your field.",
+      "Uyum sağlama isteğin en büyük varlıklarından biri. Bunu aşağıdaki spesifik beceri önerileriyle birleştir ve alanındaki çoğu insanın çok önünde olursun.",
     resistant:
-      "You mentioned your industry is slow to adopt new technology. That might feel safe now, but it also means disruption — when it comes — will be more sudden. Industries that delay AI adoption tend to experience sharper, not slower, transitions.",
+      "Sektörünün yeni teknolojiyi yavaş benimsediğini belirttin. Bu şimdilik güvenli hissettirebilir, ama aynı zamanda yıkım — geldiğinde — daha ani olacak demek. Yapay zeka benimsemesini erteleyen sektörler daha yavaş değil, daha keskin geçişler yaşama eğiliminde.",
   },
 } as const;
 
-// ─── SCORE VISUAL LABELS ─────────────────────────────────
+// ─── SKOR GÖRSEL ETİKETLERİ ─────────────────────────────
 export const scoreVisual = {
   meterLabels: {
-    low: "Low Risk",
-    moderate: "Moderate",
-    high: "High Risk",
-    critical: "Critical",
+    low: "Düşük Risk",
+    moderate: "Orta",
+    high: "Yüksek Risk",
+    critical: "Kritik",
   },
-  // Shown under the big score number
+  // Büyük skor sayısının altında gösterilir
   taglines: [
     (score: number) =>
       score <= 25
-        ? "Your career is well-positioned."
+        ? "Kariyer iyi konumlanmış."
         : score <= 50
-          ? "Attention needed. Not urgent."
+          ? "Dikkat gerekli. Acil değil."
           : score <= 75
-            ? "Action required soon."
-            : "Immediate action recommended.",
+            ? "Yakında aksiyon gerekli."
+            : "Acil aksiyon önerilir.",
   ],
 } as const;

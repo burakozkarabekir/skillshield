@@ -4,12 +4,12 @@ import { motion } from "framer-motion";
 
 export default function HeroAnimation() {
   const mockSkills = [
-    { label: "Creative Thinking", score: 82, color: "#10B981" },
-    { label: "Technical Depth", score: 45, color: "#F59E0B" },
-    { label: "Human Connection", score: 91, color: "#10B981" },
-    { label: "Adaptability", score: 67, color: "#3B82F6" },
-    { label: "Domain Expertise", score: 58, color: "#3B82F6" },
-    { label: "Leadership", score: 73, color: "#3B82F6" },
+    { label: "Yaratıcı Düşünme", score: 82, color: "#10B981" },
+    { label: "Teknik Derinlik", score: 45, color: "#F59E0B" },
+    { label: "İnsan Bağlantısı", score: 91, color: "#10B981" },
+    { label: "Uyum Yeteneği", score: 67, color: "#3B82F6" },
+    { label: "Alan Uzmanlığı", score: 58, color: "#3B82F6" },
+    { label: "Liderlik", score: 73, color: "#3B82F6" },
   ];
 
   return (
@@ -26,7 +26,7 @@ export default function HeroAnimation() {
         <div className="relative z-10">
           <div className="text-center mb-5">
             <div className="text-xs text-slate-500 uppercase tracking-wider mb-1">
-              AI Career Risk Score
+              Yapay Zeka Kariyer Risk Skoru
             </div>
             <motion.div
               initial={{ scale: 0.5, opacity: 0 }}
@@ -36,7 +36,7 @@ export default function HeroAnimation() {
             >
               72
             </motion.div>
-            <div className="text-sm text-slate-400 mt-1">Moderate Risk</div>
+            <div className="text-sm text-slate-400 mt-1">Orta Risk</div>
           </div>
 
           <div className="space-y-3">

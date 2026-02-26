@@ -1,235 +1,234 @@
 /**
- * Microcopy — Loading, Error, and Empty States — SkillShield
+ * Mikro Metinler — Yükleniyor, Hata ve Boş Durumlar — SkillShield
  *
- * Every state the user encounters should feel intentional,
- * on-brand, and human. Even the error messages.
+ * Kullanıcının karşılaştığı her durum kasıtlı,
+ * marka uyumlu ve insani hissettirmeli. Hata mesajları bile.
  */
 
-// ─── LOADING STATES ──────────────────────────────────────
+// ─── YÜKLEME DURUMLARI ──────────────────────────────────
 export const loading = {
   quizLoading: [
-    "Loading your questions...",
-    "Preparing your assessment...",
-    "Getting things ready...",
+    "Soruların yükleniyor...",
+    "Değerlendirmen hazırlanıyor...",
+    "Her şey hazırlanıyor...",
   ],
   scoreCalculating: [
-    "Crunching 1,200+ data points...",
-    "Cross-referencing your profile...",
-    "Analyzing your responses against real labor data...",
+    "1.200'den fazla veri noktası işleniyor...",
+    "Profilin çapraz kontrol ediliyor...",
+    "Yanıtların gerçek işgücü verileriyle analiz ediliyor...",
   ],
-  // Sequential messages shown during score calculation (cycle through these)
   scoreCalculatingSequence: [
-    "Mapping your tasks to AI capability benchmarks...",
-    "Comparing against 1,200+ occupation profiles...",
-    "Calculating your task-by-task risk breakdown...",
-    "Cross-referencing Bureau of Labor Statistics data...",
-    "Generating your personalized insights...",
-    "Almost there...",
+    "Görevlerin yapay zeka yetenek ölçütleriyle eşleştiriliyor...",
+    "1.200'den fazla meslek profiliyle karşılaştırılıyor...",
+    "Görev görev risk analizin hesaplanıyor...",
+    "Çalışma İstatistikleri Bürosu verileriyle çapraz kontrol ediliyor...",
+    "Kişiselleştirilmiş içgörülerin üretiliyor...",
+    "Neredeyse tamam...",
   ],
   resultsLoading: [
-    "Building your breakdown...",
-    "Preparing your results...",
-    "Generating your report...",
+    "Analizin hazırlanıyor...",
+    "Sonuçların hazırlanıyor...",
+    "Raporun üretiliyor...",
   ],
   shareCardGenerating: [
-    "Creating your share card...",
-    "Building your results card...",
-    "Generating your shareable score...",
+    "Paylaşım kartın oluşturuluyor...",
+    "Sonuç kartın hazırlanıyor...",
+    "Paylaşılabilir skorun üretiliyor...",
   ],
   premiumLoading: [
-    "Building your personalized roadmap...",
-    "Generating your 90-day plan...",
-    "Creating your action plan...",
+    "Kişiselleştirilmiş yol haritanı hazırlıyor...",
+    "90 günlük planın üretiliyor...",
+    "Eylem planın oluşturuluyor...",
   ],
   generic: [
-    "Working on it...",
-    "One moment...",
-    "Almost there...",
+    "Üzerinde çalışıyoruz...",
+    "Bir saniye...",
+    "Neredeyse tamam...",
   ],
 } as const;
 
-// ─── ERROR STATES ────────────────────────────────────────
+// ─── HATA DURUMLARI ────────────────────────────────────
 export const errors = {
   generic: {
     headlines: [
-      "Something broke.",
-      "That didn't work.",
-      "Hit a snag.",
+      "Bir şey bozuldu.",
+      "Bu işe yaramadı.",
+      "Bir sorunla karşılaştık.",
     ],
     body: [
-      "Not your fault. Try refreshing the page.",
-      "Something went wrong on our end. A refresh usually fixes it.",
-      "We hit an error. Refresh the page and try again.",
+      "Senin hatan değil. Sayfayı yenilemeyi dene.",
+      "Bizim tarafımızda bir şeyler ters gitti. Yenileme genellikle düzeltir.",
+      "Bir hatayla karşılaştık. Sayfayı yenile ve tekrar dene.",
     ],
-    cta: "Refresh page",
+    cta: "Sayfayı yenile",
   },
   quizSubmitFailed: {
     headlines: [
-      "Your answers didn't go through.",
-      "Submission failed.",
-      "We couldn't save your answers.",
+      "Cevapların gönderilemedi.",
+      "Gönderme başarısız.",
+      "Cevaplarını kaydedemedik.",
     ],
     body: [
-      "Your answers are still here. Hit submit again and we'll retry.",
-      "Connection issue. Don't worry — nothing's lost. Try submitting again.",
-      "Something went wrong during submission. Your answers are safe. Try once more.",
+      "Cevapların hâlâ burada. Tekrar gönder butonuna bas.",
+      "Bağlantı sorunu. Merak etme — hiçbir şey kaybolmadı. Tekrar göndermeyi dene.",
+      "Gönderme sırasında bir şeyler ters gitti. Cevapların güvende. Bir kez daha dene.",
     ],
-    cta: "Try again",
+    cta: "Tekrar dene",
   },
   scoreCalculationFailed: {
     headlines: [
-      "Score calculation failed.",
-      "We couldn't generate your score.",
-      "Something went wrong with your results.",
+      "Skor hesaplama başarısız.",
+      "Skorunu üretememiz.",
+      "Sonuçlarında bir sorun oldu.",
     ],
     body: [
-      "Your answers are saved. We'll try calculating your score again.",
-      "The scoring engine hit an issue. Retrying now — your answers are safe.",
-      "We're having trouble generating your results. Hang tight.",
+      "Cevapların kaydedildi. Skorunu tekrar hesaplamayı deneyeceğiz.",
+      "Puanlama motoru bir sorunla karşılaştı. Şimdi tekrar deniyoruz — cevapların güvende.",
+      "Sonuçlarını üretmekte sorun yaşıyoruz. Biraz bekle.",
     ],
-    cta: "Retry calculation",
+    cta: "Hesaplamayı tekrarla",
   },
   emailSubmitFailed: {
     headlines: [
-      "That email didn't go through.",
-      "Couldn't save your email.",
-      "Email signup failed.",
+      "E-posta gönderilemedi.",
+      "E-postanı kaydedemedik.",
+      "E-posta kaydı başarısız.",
     ],
     body: [
-      "Check the address and try again.",
-      "Double-check your email and give it another shot.",
-      "Something went wrong. Make sure the email is correct and retry.",
+      "Adresi kontrol edip tekrar dene.",
+      "E-postanı bir daha kontrol et ve tekrar dene.",
+      "Bir şeyler ters gitti. E-postanın doğru olduğundan emin ol ve tekrar dene.",
     ],
-    cta: "Try again",
+    cta: "Tekrar dene",
   },
   paymentFailed: {
     headlines: [
-      "Payment didn't go through.",
-      "Transaction failed.",
-      "We couldn't process your payment.",
+      "Ödeme gerçekleşmedi.",
+      "İşlem başarısız.",
+      "Ödemeni işleyemedik.",
     ],
     body: [
-      "Check your card details and try again. You won't be charged twice.",
-      "Your card was declined. Try a different payment method.",
-      "Something went wrong with the payment. No charge was made. Try again.",
+      "Kart bilgilerini kontrol edip tekrar dene. İki kez ücret alınmaz.",
+      "Kartın reddedildi. Farklı bir ödeme yöntemi dene.",
+      "Ödemede bir sorun oldu. Ücret alınmadı. Tekrar dene.",
     ],
-    cta: "Retry payment",
+    cta: "Ödemeyi tekrarla",
   },
   networkError: {
     headlines: [
-      "You seem to be offline.",
-      "No connection detected.",
-      "Can't reach our servers.",
+      "Çevrimdışı görünüyorsun.",
+      "Bağlantı algılanamadı.",
+      "Sunucularımıza ulaşamıyoruz.",
     ],
     body: [
-      "Check your internet connection and try again.",
-      "We can't connect right now. Make sure you're online and refresh.",
-      "Looks like a connection issue. We'll retry when you're back online.",
+      "İnternet bağlantını kontrol edip tekrar dene.",
+      "Şu anda bağlanamıyoruz. Çevrimiçi olduğundan emin ol ve yenile.",
+      "Bağlantı sorunu gibi görünüyor. Tekrar çevrimiçi olduğunda deneyeceğiz.",
     ],
-    cta: "Retry connection",
+    cta: "Bağlantıyı tekrarla",
   },
   notFound: {
     headlines: [
-      "Page not found.",
-      "This page doesn't exist.",
-      "Nothing here.",
+      "Sayfa bulunamadı.",
+      "Bu sayfa mevcut değil.",
+      "Burada hiçbir şey yok.",
     ],
     body: [
-      "The page you're looking for was moved or deleted.",
-      "This URL doesn't lead anywhere. Head back to the homepage.",
-      "Whatever you were looking for, it's not here. Try starting over.",
+      "Aradığın sayfa taşınmış veya silinmiş.",
+      "Bu URL bir yere götürmüyor. Ana sayfaya geri dön.",
+      "Aradığın her neyse, burada değil. Baştan başlamayı dene.",
     ],
-    cta: "Go to homepage",
+    cta: "Ana sayfaya git",
   },
   rateLimit: {
     headlines: [
-      "Slow down a bit.",
-      "Too many requests.",
-      "Give us a second.",
+      "Biraz yavaşla.",
+      "Çok fazla istek.",
+      "Bize bir saniye ver.",
     ],
     body: [
-      "You're moving faster than our servers. Wait a moment and try again.",
-      "We got too many requests at once. Take a breath and retry in a few seconds.",
-      "Our servers need a moment. Try again in 30 seconds.",
+      "Sunucularımızdan daha hızlı hareket ediyorsun. Bir an bekle ve tekrar dene.",
+      "Aynı anda çok fazla istek aldık. Bir nefes al ve birkaç saniye sonra tekrar dene.",
+      "Sunucularımızın bir anlık nefes alması gerekiyor. 30 saniye sonra tekrar dene.",
     ],
-    cta: "Wait and retry",
+    cta: "Bekle ve tekrar dene",
   },
 } as const;
 
-// ─── EMPTY STATES ────────────────────────────────────────
+// ─── BOŞ DURUMLAR ────────────────────────────────────
 export const empty = {
   noResults: {
     headlines: [
-      "No results yet.",
-      "Nothing to show here.",
-      "Your results are waiting.",
+      "Henüz sonuç yok.",
+      "Burada gösterecek bir şey yok.",
+      "Sonuçların seni bekliyor.",
     ],
     body: [
-      "Take the quiz first to see your AI Career Risk Score.",
-      "Complete the assessment to get your personalized risk breakdown.",
-      "Start with the 3-minute quiz. Your score will appear here.",
+      "Yapay Zeka Kariyer Risk Skorunu görmek için önce testi çöz.",
+      "Kişiselleştirilmiş risk analizini almak için değerlendirmeyi tamamla.",
+      "3 dakikalık testle başla. Skorun burada görünecek.",
     ],
-    cta: "Take the quiz",
+    cta: "Testi çöz",
   },
   noSavedScores: {
     headlines: [
-      "No saved scores.",
-      "Your score history is empty.",
-      "Nothing tracked yet.",
+      "Kayıtlı skor yok.",
+      "Skor geçmişin boş.",
+      "Henüz takip edilen bir şey yok.",
     ],
     body: [
-      "Take the quiz and enter your email to start tracking your score over time.",
-      "Once you've completed the assessment, your score history will appear here.",
-      "Complete the quiz to see your first score.",
+      "Testi çöz ve skorunu zaman içinde takip etmeye başlamak için e-postanı gir.",
+      "Değerlendirmeyi tamamladığında, skor geçmişin burada görünecek.",
+      "İlk skorunu görmek için testi tamamla.",
     ],
-    cta: "Get your first score",
+    cta: "İlk skorunu al",
   },
   noPremiumPlan: {
     headlines: [
-      "No action plan yet.",
-      "Your roadmap is waiting.",
-      "No plan generated.",
+      "Henüz eylem planı yok.",
+      "Yol haritanı seni bekliyor.",
+      "Plan üretilmedi.",
     ],
     body: [
-      "Upgrade to SkillShield Pro to get your personalized 90-day reskilling roadmap.",
-      "Your free score shows the risk. The Pro plan shows the path forward.",
-      "Unlock your personalized action plan and start reducing your risk today.",
+      "Kişiselleştirilmiş 90 günlük yeniden beceri kazanma yol haritanı almak için SkillShield Pro'ya yükselt.",
+      "Ücretsiz skorun riski gösteriyor. Pro plan ileriye giden yolu gösteriyor.",
+      "Kişiselleştirilmiş eylem planını aç ve bugün riskini azaltmaya başla.",
     ],
-    cta: "Get my action plan",
+    cta: "Eylem planımı al",
   },
 } as const;
 
-// ─── FORM VALIDATION ─────────────────────────────────────
+// ─── FORM DOĞRULAMA ─────────────────────────────────
 export const validation = {
-  emailRequired: "We need your email to send updates.",
-  emailInvalid: "That doesn't look like a valid email.",
-  questionRequired: "Pick one to continue.",
-  quizIncomplete: "You've got unanswered questions. Scroll up to find them.",
-  genericRequired: "This field is required.",
+  emailRequired: "Güncellemeleri göndermek için e-postana ihtiyacımız var.",
+  emailInvalid: "Bu geçerli bir e-posta gibi görünmüyor.",
+  questionRequired: "Devam etmek için birini seç.",
+  quizIncomplete: "Cevaplanmamış soruların var. Bulmak için yukarı kaydır.",
+  genericRequired: "Bu alan zorunlu.",
 } as const;
 
-// ─── NAVIGATION & UI LABELS ──────────────────────────────
+// ─── NAVİGASYON & ARAYÜZ ETİKETLERİ ──────────────────────────
 export const nav = {
-  quizButton: "Take the Quiz",
+  quizButton: "Testi Çöz",
   homeLink: "SkillShield",
-  backToResults: "Back to my results",
-  nextQuestion: "Next",
-  previousQuestion: "Back",
-  submitQuiz: "See my score",
-  skipForNow: "Maybe later",
-  learnMore: "Learn more",
-  viewBreakdown: "See full breakdown",
-  startOver: "Retake the quiz",
+  backToResults: "Sonuçlarıma dön",
+  nextQuestion: "İleri",
+  previousQuestion: "Geri",
+  submitQuiz: "Skorumu gör",
+  skipForNow: "Şimdilik geç",
+  learnMore: "Daha fazla bilgi",
+  viewBreakdown: "Tam analizi gör",
+  startOver: "Testi tekrar çöz",
 } as const;
 
-// ─── ACCESSIBILITY / SCREEN READER TEXT ──────────────────
+// ─── ERİŞİLEBİLİRLİK / EKRAN OKUYUCU METNİ ──────────────────
 export const a11y = {
   scoreAnnouncement: (score: number) =>
-    `Your AI Career Risk Score is ${score} out of 100.`,
+    `Yapay Zeka Kariyer Risk Skorun 100 üzerinden ${score}.`,
   progressAnnouncement: (current: number, total: number) =>
-    `Question ${current} of ${total}.`,
-  loadingAnnouncement: "Your score is being calculated. Please wait.",
-  errorAnnouncement: "An error occurred. Please check the message on screen.",
-  chartLabel: "Task-by-task risk breakdown chart",
-  skillChartLabel: "Skills ranked by protection value",
+    `${total} sorudan ${current}. soru.`,
+  loadingAnnouncement: "Skorun hesaplanıyor. Lütfen bekle.",
+  errorAnnouncement: "Bir hata oluştu. Lütfen ekrandaki mesajı kontrol et.",
+  chartLabel: "Görev görev risk analizi grafiği",
+  skillChartLabel: "Koruma değerine göre sıralanmış beceriler",
 } as const;

@@ -103,7 +103,7 @@ export default function ScoreGauge({
           {displayScore}
         </span>
         <span className={`${config.labelSize} text-slate-400 mt-1`}>
-          out of 100
+          / 100
         </span>
       </div>
     </div>

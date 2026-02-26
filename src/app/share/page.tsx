@@ -110,7 +110,7 @@ function ShareContent() {
             href={`/results?score=${score}`}
             className="text-sm text-accent hover:underline"
           >
-            Back to my results
+            Sonuçlarıma dön
           </a>
         </div>
       </div>

@@ -1,51 +1,51 @@
 import { QuizQuestion } from "@/lib/types";
 
 /**
- * Quiz questions mapped to scoring dimensions.
- * 10 questions total — should take ~2-3 minutes.
+ * Quiz soruları puanlama boyutlarıyla eşleştirilmiş.
+ * 15 soru — yaklaşık 3-4 dakika sürer.
  *
- * Score semantics: higher score = MORE at risk from AI automation.
- * Each answer's score (0-100) represents risk contribution for that dimension.
+ * Puan anlamı: yüksek puan = yapay zeka otomasyonundan DAHA FAZLA risk altında.
+ * Her cevabın puanı (0-100) o boyut için risk katkısını temsil eder.
  */
 export const quizQuestions: QuizQuestion[] = [
   // ═══════════════════════════════════════════════════════════════════════════
-  // DIMENSION: taskComposition (weight: 0.30)
-  // Research basis: Frey & Osborne's bottleneck framework — routine cognitive
-  // tasks are most automatable, followed by routine manual, then non-routine.
+  // BOYUT: taskComposition (ağırlık: 0.30)
+  // Araştırma temeli: Frey & Osborne'un darboğaz çerçevesi — rutin bilişsel
+  // görevler en çok otomatikleştirilebilir, ardından rutin manuel, sonra rutin olmayan.
   // ═══════════════════════════════════════════════════════════════════════════
   {
     id: "tc1",
     dimension: "taskComposition",
-    question: "What does a typical day at work look like for you?",
-    helpText: "Think about the tasks you spend the most time on.",
+    question: "İşte tipik bir günün nasıl geçiyor?",
+    helpText: "En çok zaman harcadığın görevleri düşün.",
     answers: [
       {
         id: "tc1-a",
-        text: "Mostly processing information — data entry, filing, sorting, or formatting",
+        text: "Çoğunlukla bilgi işleme — veri girişi, dosyalama, sıralama veya biçimlendirme",
         score: 90,
         reasoning:
-          "Routine information processing is the #1 category AI automates. LLMs and RPA can handle data entry, classification, and formatting with high accuracy.",
+          "Rutin bilgi işleme, yapay zekanın otomatikleştirdiği 1 numaralı kategori. LLM'ler ve RPA, veri girişi, sınıflandırma ve biçimlendirmeyi yüksek doğrulukla yapabiliyor.",
       },
       {
         id: "tc1-b",
-        text: "Analyzing data, writing reports, or making decisions based on rules",
+        text: "Veri analiz etmek, rapor yazmak veya kurallara göre karar vermek",
         score: 70,
         reasoning:
-          "Rule-based analysis and report generation are increasingly handled by AI. Tools like GPT-4 can already draft reports and apply decision trees.",
+          "Kural tabanlı analiz ve rapor üretimi giderek yapay zeka tarafından yapılıyor. GPT-4 gibi araçlar zaten rapor taslağı hazırlayıp karar ağaçları uygulayabiliyor.",
       },
       {
         id: "tc1-c",
-        text: "A mix of desk work and working directly with people or physical tasks",
+        text: "Masa başı iş ile doğrudan insanlarla veya fiziksel görevlerle çalışmanın karışımı",
         score: 45,
         reasoning:
-          "Hybrid roles have partial automation exposure. The desk-work portion is at risk, but the in-person component provides some defensibility.",
+          "Hibrit roller kısmi otomasyon riski taşır. Masa başı kısım risk altında, ama yüz yüze bileşen bir miktar savunulabilirlik sağlıyor.",
       },
       {
         id: "tc1-d",
-        text: "Mostly creative work, strategy, or solving novel problems",
+        text: "Çoğunlukla yaratıcı iş, strateji veya yeni problemler çözmek",
         score: 20,
         reasoning:
-          "Creative and strategic work remains hard for AI. While AI can assist, the synthesis of novel ideas and strategic judgment still requires human cognition.",
+          "Yaratıcı ve stratejik iş yapay zeka için hâlâ zor. Yapay zeka yardımcı olabilir, ama özgün fikirlerin sentezi ve stratejik yargı hâlâ insan bilişi gerektiriyor.",
       },
     ],
   },
@@ -53,80 +53,116 @@ export const quizQuestions: QuizQuestion[] = [
     id: "tc2",
     dimension: "taskComposition",
     question:
-      "How often could someone do your work by following a detailed instruction manual?",
+      "İşini biri detaylı bir talimat kılavuzunu takip ederek ne sıklıkla yapabilir?",
     helpText:
-      "If your work follows clear steps, it's more routine. If every day is different, it's less routine.",
+      "İşin net adımları takip ediyorsa daha rutindir. Her gün farklıysa daha az rutindir.",
     answers: [
       {
         id: "tc2-a",
-        text: "Almost always — my work follows clear, repeatable steps",
+        text: "Neredeyse her zaman — işim net, tekrarlanabilir adımları takip ediyor",
         score: 90,
         reasoning:
-          "Highly procedural work is prime territory for automation. If it can be documented step-by-step, it can be coded or prompted.",
+          "Son derece prosedürel iş, otomasyon için birinci sınıf alan. Adım adım belgelenebiliyorsa, kodlanabilir veya yapay zekaya öğretilebilir.",
       },
       {
         id: "tc2-b",
-        text: "Often, but I need to make judgment calls along the way",
+        text: "Sıklıkla, ama yol boyunca yargı kararları vermem gerekiyor",
         score: 60,
         reasoning:
-          "Semi-structured work is partially automatable. AI can handle the routine parts, but your judgment calls add value — for now.",
+          "Yarı yapılandırılmış iş kısmen otomatikleştirilebilir. Yapay zeka rutin kısımları halledebilir, ama senin yargı kararların değer katıyor — şimdilik.",
       },
       {
         id: "tc2-c",
-        text: "Sometimes — each project is somewhat different",
+        text: "Bazen — her proje biraz farklı",
         score: 35,
         reasoning:
-          "Variable work with unique projects is harder to automate. AI works best when patterns repeat; novelty creates a moat.",
+          "Benzersiz projelerle değişken iş otomatikleştirmesi daha zor. Yapay zeka kalıplar tekrarlandığında en iyi çalışır; yenilik bir savunma hattı oluşturur.",
       },
       {
         id: "tc2-d",
-        text: "Rarely — my work requires constant improvisation and adaptation",
+        text: "Nadiren — işim sürekli doğaçlama ve adaptasyon gerektiriyor",
         score: 10,
         reasoning:
-          "Improvisation and contextual adaptation are among the hardest tasks for AI. This maps to Frey & Osborne's 'non-routine cognitive' category.",
+          "Doğaçlama ve bağlamsal adaptasyon yapay zeka için en zor görevler arasında. Bu, Frey & Osborne'un 'rutin olmayan bilişsel' kategorisine giriyor.",
+      },
+    ],
+  },
+  {
+    id: "tc3",
+    dimension: "taskComposition",
+    question: "Ürettiğin çıktının ne kadarı bir şablon veya algoritma ile oluşturulabilir?",
+    helpText: "Raporlar, e-postalar, tasarımlar, kod — düzenli olarak ürettiğin her şeyi düşün.",
+    answers: [
+      {
+        id: "tc3-a",
+        text: "Büyük kısmı — çıktılarımın çoğu belirli kalıpları takip ediyor",
+        score: 85,
+        reasoning:
+          "Şablona dayalı çıktılar yapay zeka için en kolay hedef. Kalıp tekrarlanıyorsa, yapay zeka bunu öğrenip hızla üretebilir.",
+      },
+      {
+        id: "tc3-b",
+        text: "Yarısına yakını — bazı işler kalıplı, bazıları özgün düşünce gerektiriyor",
+        score: 55,
+        reasoning:
+          "Karışık çıktı profili orta düzey risk taşır. Kalıplı kısımlar otomatikleştirilebilir, özgün kısımlar savunulabilir.",
+      },
+      {
+        id: "tc3-c",
+        text: "Çok azı — çoğu iş duruma özel ve benzersiz",
+        score: 25,
+        reasoning:
+          "Duruma özel çıktılar yapay zeka için zordur çünkü her seferinde farklı bağlam ve yaklaşım gerektirir.",
+      },
+      {
+        id: "tc3-d",
+        text: "Neredeyse hiçbiri — her ürettiğim şey sıfırdan ve tamamen özgün",
+        score: 10,
+        reasoning:
+          "Tamamen özgün üretim yapay zekanın en çok zorlandığı alan. İnsan yaratıcılığı ve bağlam anlayışı hâlâ vazgeçilmez.",
       },
     ],
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
-  // DIMENSION: skillReplaceability (weight: 0.25)
-  // Research basis: O*NET task breakdowns + real-world AI capabilities
-  // assessment. Skills are scored by current AI capability benchmarks.
+  // BOYUT: skillReplaceability (ağırlık: 0.25)
+  // Araştırma temeli: O*NET görev çözümlemeleri + gerçek dünya yapay zeka
+  // yetenekleri değerlendirmesi.
   // ═══════════════════════════════════════════════════════════════════════════
   {
     id: "sr1",
     dimension: "skillReplaceability",
-    question: "Which of these best describes your most important work skill?",
+    question: "En önemli iş becerini hangisi en iyi tanımlıyor?",
     helpText:
-      "Pick the one skill that would be hardest to replace if you left your job.",
+      "İşten ayrılsan yerine konması en zor olacak tek beceriyi seç.",
     answers: [
       {
         id: "sr1-a",
-        text: "Writing, summarizing, or communicating information clearly",
+        text: "Yazmak, özetlemek veya bilgiyi açık şekilde iletmek",
         score: 75,
         reasoning:
-          "LLMs now produce human-quality writing for most business contexts. Summarization, email drafting, and content creation are core AI strengths.",
+          "LLM'ler artık çoğu iş bağlamında insan kalitesinde yazı üretiyor. Özetleme, e-posta taslağı ve içerik oluşturma yapay zekanın güçlü yanları.",
       },
       {
         id: "sr1-b",
-        text: "Building relationships, negotiating, or persuading people",
+        text: "İlişki kurmak, müzakere etmek veya insanları ikna etmek",
         score: 20,
         reasoning:
-          "Interpersonal influence requires emotional intelligence, trust, and real-time social calibration. AI cannot replicate genuine rapport or negotiate in high-stakes settings.",
+          "Kişilerarası etki duygusal zeka, güven ve anlık sosyal kalibrasyon gerektirir. Yapay zeka gerçek iletişim kurma veya yüksek riskli ortamlarda müzakere yapma yeteneğine sahip değil.",
       },
       {
         id: "sr1-c",
-        text: "Technical expertise — coding, engineering, operating specialized equipment",
+        text: "Teknik uzmanlık — kodlama, mühendislik, özel ekipman kullanımı",
         score: 55,
         reasoning:
-          "AI coding assistants are advancing fast (Copilot, Cursor), but complex system design, debugging novel issues, and physical equipment operation still need humans.",
+          "Yapay zeka kodlama asistanları hızla ilerliyor (Copilot, Cursor), ama karmaşık sistem tasarımı, yeni sorunların çözümü ve fiziksel ekipman kullanımı hâlâ insan gerektiriyor.",
       },
       {
         id: "sr1-d",
-        text: "Managing people, resolving conflicts, or coaching teams",
+        text: "İnsan yönetimi, çatışma çözme veya takım koçluğu",
         score: 15,
         reasoning:
-          "People management is deeply human. Reading team dynamics, navigating organizational politics, and coaching require empathy and contextual understanding AI lacks.",
+          "İnsan yönetimi derinden insani bir beceri. Takım dinamiklerini okumak, organizasyonel politikalarda yol almak ve koçluk yapmak empati ve bağlamsal anlayış gerektiriyor.",
       },
     ],
   },
@@ -134,239 +170,347 @@ export const quizQuestions: QuizQuestion[] = [
     id: "sr2",
     dimension: "skillReplaceability",
     question:
-      "If an AI tool could do 80% of one part of your job, which would it be?",
+      "Bir yapay zeka aracı işinin bir bölümünün %80'ini yapabilse, hangi bölüm olurdu?",
     helpText:
-      "Be honest — this helps us identify where AI is closest to your work.",
+      "Dürüst ol — bu, yapay zekanın işine en yakın olduğu noktayı belirlememize yardımcı olur.",
     answers: [
       {
         id: "sr2-a",
-        text: "Researching information or answering factual questions",
+        text: "Bilgi araştırmak veya olgusal soruları yanıtlamak",
         score: 85,
         reasoning:
-          "AI already handles research and factual Q&A at near-human level. RAG systems and search-augmented LLMs are replacing research analyst tasks.",
+          "Yapay zeka araştırma ve olgusal soru-cevabı neredeyse insan seviyesinde hallediyor. RAG sistemleri ve arama destekli LLM'ler araştırma analisti görevlerinin yerini alıyor.",
       },
       {
         id: "sr2-b",
-        text: "Creating first drafts — documents, code, designs, or plans",
+        text: "İlk taslaklar oluşturmak — belgeler, kod, tasarımlar veya planlar",
         score: 70,
         reasoning:
-          "AI excels at first-draft generation across text, code, and even visual design. The value is shifting from creation to curation and refinement.",
+          "Yapay zeka metin, kod ve görsel tasarım genelinde ilk taslak üretiminde mükemmel. Değer, üretimden küratörlük ve iyileştirmeye kayıyor.",
       },
       {
         id: "sr2-c",
-        text: "Scheduling, coordinating, or organizing logistics",
+        text: "Zamanlama, koordinasyon veya lojistik organizasyonu",
         score: 65,
         reasoning:
-          "AI scheduling and coordination tools are maturing rapidly. Routine logistics can be automated, though complex multi-stakeholder coordination still needs humans.",
+          "Yapay zeka zamanlama ve koordinasyon araçları hızla olgunlaşıyor. Rutin lojistik otomatikleştirilebilir, ancak karmaşık çok paydaşlı koordinasyon hâlâ insan gerektiriyor.",
       },
       {
         id: "sr2-d",
-        text: "Honestly, none — my work requires being physically present or reading people",
+        text: "Açıkçası hiçbiri — işim fiziksel olarak orada olmayı veya insanları okumayı gerektiriyor",
         score: 10,
         reasoning:
-          "Physical presence and real-time human reading are the strongest moats against AI. Robotics is decades behind AI software capabilities.",
+          "Fiziksel varlık ve anlık insan okuma yapay zekaya karşı en güçlü savunma hatları. Robotik, yazılım yapay zekasının onlarca yıl gerisinde.",
+      },
+    ],
+  },
+  {
+    id: "sr3",
+    dimension: "skillReplaceability",
+    question: "Bir yapay zeka aracı en kritik günlük görevini ne kadar hızlı öğrenebilir?",
+    helpText: "Günlük en çok vakit harcadığın ve en kritik olan görevi düşün.",
+    answers: [
+      {
+        id: "sr3-a",
+        text: "Hemen — zaten yapay zeka araçları bu görevi yapabiliyor",
+        score: 90,
+        reasoning:
+          "Yapay zekanın zaten yapabildiği görevler en yüksek risk kategorisinde. Bu görev için insan avantajı neredeyse sıfır.",
+      },
+      {
+        id: "sr3-b",
+        text: "Birkaç ay içinde — yeterli veriyle öğrenebilir",
+        score: 65,
+        reasoning:
+          "Veriyle öğrenilebilir görevler orta-yüksek risk taşır. Yapay zeka bu alanda hızla ilerliyor.",
+      },
+      {
+        id: "sr3-c",
+        text: "Yıllar sürer — çok fazla bağlam ve deneyim gerektirir",
+        score: 30,
+        reasoning:
+          "Derin bağlam ve deneyim gerektiren görevler yapay zeka için hâlâ çok zor. Bu tür zımni bilgi güçlü bir savunma hattı.",
+      },
+      {
+        id: "sr3-d",
+        text: "Asla — görevim fiziksel beceri veya anlık insan yargısı gerektiriyor",
+        score: 10,
+        reasoning:
+          "Fiziksel beceri ve anlık insan yargısı gerektiren görevler yapay zekanın en uzak olduğu alan. Bu güçlü bir kariyer kalkanı.",
       },
     ],
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
-  // DIMENSION: industryVelocity (weight: 0.20)
-  // Research basis: McKinsey industry adoption curves + Goldman Sachs
-  // sector-level automation exposure estimates.
+  // BOYUT: industryVelocity (ağırlık: 0.20)
+  // Araştırma temeli: McKinsey sektör benimseme eğrileri + Goldman Sachs
+  // sektör düzeyinde otomasyon maruziyeti tahminleri.
   // ═══════════════════════════════════════════════════════════════════════════
   {
     id: "iv1",
     dimension: "industryVelocity",
-    question: "Which industry do you work in?",
-    helpText: "Pick the closest match. This affects how fast AI is entering your field.",
+    question: "Hangi sektörde çalışıyorsun?",
+    helpText: "En yakın eşleşmeyi seç. Bu, yapay zekanın alanına ne kadar hızlı girdiğini etkiler.",
     answers: [
       {
         id: "iv1-a",
-        text: "Tech, finance, or professional services (consulting, legal, accounting)",
+        text: "Teknoloji, finans veya profesyonel hizmetler (danışmanlık, hukuk, muhasebe)",
         score: 80,
         reasoning:
-          "These industries are AI-first adopters. Goldman Sachs estimates 46% of finance tasks and 44% of legal tasks are exposed to automation.",
+          "Bu sektörler yapay zekayı ilk benimseyen sektörler. Goldman Sachs, finans görevlerinin %46'sının ve hukuk görevlerinin %44'ünün otomasyona açık olduğunu tahmin ediyor.",
       },
       {
         id: "iv1-b",
-        text: "Media, marketing, retail, or customer service",
+        text: "Medya, pazarlama, perakende veya müşteri hizmetleri",
         score: 70,
         reasoning:
-          "Content generation, ad targeting, and customer service are rapidly being AI-augmented. McKinsey estimates 50%+ task automation potential in retail operations.",
+          "İçerik üretimi, reklam hedefleme ve müşteri hizmetleri hızla yapay zeka destekli hale geliyor. McKinsey, perakende operasyonlarında %50'den fazla görev otomasyon potansiyeli tahmin ediyor.",
       },
       {
         id: "iv1-c",
-        text: "Healthcare, education, or government",
+        text: "Sağlık, eğitim veya kamu sektörü",
         score: 40,
         reasoning:
-          "These sectors adopt AI slowly due to regulation, privacy concerns, and institutional inertia. Exposure exists but timelines are longer.",
+          "Bu sektörler düzenleme, gizlilik endişeleri ve kurumsal atalet nedeniyle yapay zekayı yavaş benimsiyor. Maruziyet var ama zaman çizelgeleri daha uzun.",
       },
       {
         id: "iv1-d",
-        text: "Construction, manufacturing, skilled trades, or agriculture",
+        text: "İnşaat, üretim, zanaat veya tarım",
         score: 30,
         reasoning:
-          "Physical industries have lower near-term AI risk. Robotics lags behind software AI. The main exposure is in planning/logistics, not core physical work.",
+          "Fiziksel sektörlerde kısa vadeli yapay zeka riski daha düşük. Robotik, yazılım yapay zekasının gerisinde. Ana maruziyet planlama/lojistikte, temel fiziksel işte değil.",
       },
     ],
   },
   {
     id: "iv2",
     dimension: "industryVelocity",
-    question: "How is AI currently being used at your workplace?",
-    helpText: "Think about tools your company has adopted or is piloting.",
+    question: "İş yerinde yapay zeka şu anda nasıl kullanılıyor?",
+    helpText: "Şirketinin benimsediği veya pilot uyguladığı araçları düşün.",
     answers: [
       {
         id: "iv2-a",
-        text: "AI tools are already replacing tasks people used to do",
+        text: "Yapay zeka araçları zaten insanların yaptığı görevlerin yerini alıyor",
         score: 90,
         reasoning:
-          "If your workplace is already automating roles, you're in a high-velocity environment. The transition from 'pilot' to 'production' AI is underway.",
+          "İş yerin zaten rolleri otomatikleştiriyorsa, yüksek hızlı bir ortamdasın. 'Pilot'tan 'üretim' yapay zekasına geçiş devam ediyor.",
       },
       {
         id: "iv2-b",
-        text: "We use AI tools to assist, but humans still do the core work",
+        text: "Yapay zeka araçlarını yardımcı olarak kullanıyoruz, ama asıl işi hâlâ insanlar yapıyor",
         score: 55,
         reasoning:
-          "AI-assisted workflows are the current norm in progressive companies. This is a transitional phase — today's assistant becomes tomorrow's replacement for simpler tasks.",
+          "Yapay zeka destekli iş akışları ilerici şirketlerde mevcut norm. Bu bir geçiş aşaması — bugünün asistanı yarının basit görevler için ikamesi olur.",
       },
       {
         id: "iv2-c",
-        text: "There's talk about AI, but we haven't really adopted anything yet",
+        text: "Yapay zeka hakkında konuşmalar var, ama henüz gerçekten bir şey benimsemedik",
         score: 35,
         reasoning:
-          "Low current adoption doesn't mean low future risk — it may mean your industry hasn't hit the tipping point yet. But it does buy time for reskilling.",
+          "Düşük mevcut benimseme düşük gelecek riski anlamına gelmiyor — sektörünüz henüz kırılma noktasına ulaşmamış olabilir. Ama yeniden beceri kazanmak için zaman kazandırır.",
       },
       {
         id: "iv2-d",
-        text: "AI isn't really relevant to what we do",
+        text: "Yapay zeka yaptığımız işle gerçekten ilgili değil",
         score: 15,
         reasoning:
-          "Some roles genuinely have low AI exposure. But be aware: many people said this about their jobs in 2022 before ChatGPT changed the landscape.",
+          "Bazı roller gerçekten düşük yapay zeka maruziyetine sahip. Ama dikkat: 2022'de ChatGPT manzarayı değiştirmeden önce birçok kişi işi hakkında bunu söylüyordu.",
+      },
+    ],
+  },
+  {
+    id: "iv3",
+    dimension: "industryVelocity",
+    question: "Sektörünü hedefleyen kaç yapay zeka girişimi veya aracı var?",
+    helpText: "LinkedIn, TechCrunch veya sektör haberlerinde gördüklerini düşün.",
+    answers: [
+      {
+        id: "iv3-a",
+        text: "Çok fazla — her gün yeni bir yapay zeka aracı çıkıyor sektörümüzde",
+        score: 85,
+        reasoning:
+          "Yoğun yapay zeka girişim aktivitesi, sektörünün yatırımcılar tarafından otomasyona açık görüldüğünün güçlü bir sinyali.",
+      },
+      {
+        id: "iv3-b",
+        text: "Birkaç tane — belirli niş alanlarda yapay zeka çözümleri var",
+        score: 55,
+        reasoning:
+          "Niş yapay zeka çözümleri sektörün belirli kısımlarının risk altında olduğunu gösterir. Tüm sektör değil ama belirli görevler hedefleniyor.",
+      },
+      {
+        id: "iv3-c",
+        text: "Çok az — sektörümüzde yapay zeka henüz yaygın değil",
+        score: 30,
+        reasoning:
+          "Düşük yapay zeka girişim aktivitesi kısa vadede nefes alma alanı sağlar, ama sektörler arası yayılma hızlanıyor.",
+      },
+      {
+        id: "iv3-d",
+        text: "Bilmiyorum — bu konuyu takip etmiyorum",
+        score: 50,
+        reasoning:
+          "Sektöründeki yapay zeka gelişmelerini takip etmemek başlı başına bir risk. Bilgi, en iyi savunma hattı.",
       },
     ],
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
-  // DIMENSION: experienceMoat (weight: 0.10)
-  // Research basis: Brookings Institution analysis showing experience
-  // creates defensibility through tacit knowledge and institutional context.
+  // BOYUT: experienceMoat (ağırlık: 0.10)
+  // Araştırma temeli: Brookings Institution analizi — deneyimin zımni bilgi
+  // ve kurumsal bağlam yoluyla savunulabilirlik yarattığını gösteriyor.
   // ═══════════════════════════════════════════════════════════════════════════
   {
     id: "em1",
     dimension: "experienceMoat",
-    question: "How long would it take to train someone new to do your job well?",
+    question: "Yeni birini işini iyi yapacak şekilde eğitmek ne kadar sürer?",
     helpText:
-      "Think about all the context, relationships, and know-how you've built up.",
+      "Biriktirdiğin tüm bağlam, ilişkiler ve bilgi birikimini düşün.",
     answers: [
       {
         id: "em1-a",
-        text: "A few weeks — it's fairly straightforward once you learn the systems",
+        text: "Birkaç hafta — sistemleri öğrenince oldukça basit",
         score: 85,
         reasoning:
-          "Low training time = low barrier to replacement, whether by humans or AI. Jobs that can be learned quickly can also be automated quickly.",
+          "Düşük eğitim süresi = düşük değiştirme engeli, ister insan ister yapay zeka tarafından. Hızlı öğrenilebilen işler hızlı otomatikleştirilebilir.",
       },
       {
         id: "em1-b",
-        text: "A few months — there's a real learning curve",
+        text: "Birkaç ay — gerçek bir öğrenme eğrisi var",
         score: 55,
         reasoning:
-          "Moderate complexity creates some defensibility. The learning curve suggests tacit knowledge that AI struggles to replicate.",
+          "Orta düzey karmaşıklık bir miktar savunulabilirlik yaratır. Öğrenme eğrisi, yapay zekanın kopyalamakta zorlandığı zımni bilgiyi işaret eder.",
       },
       {
         id: "em1-c",
-        text: "A year or more — it takes deep expertise and relationship building",
+        text: "Bir yıl veya daha fazla — derin uzmanlık ve ilişki kurma gerektirir",
         score: 25,
         reasoning:
-          "Deep expertise and relationship capital are strong moats. This level of tacit knowledge and institutional context is very hard to automate.",
+          "Derin uzmanlık ve ilişki sermayesi güçlü savunma hatları. Bu düzeyde zımni bilgi ve kurumsal bağlamı otomatikleştirmek çok zor.",
       },
       {
         id: "em1-d",
-        text: "Years — my role requires rare credentials, extensive training, or deep institutional knowledge",
+        text: "Yıllar — rolüm nadir yetkinlikler, kapsamlı eğitim veya derin kurumsal bilgi gerektiriyor",
         score: 10,
         reasoning:
-          "Rare expertise + credentials + deep institutional knowledge is the strongest moat. Even if AI can assist, the human is irreplaceable in the near term.",
+          "Nadir uzmanlık + yetkinlikler + derin kurumsal bilgi en güçlü savunma hattı. Yapay zeka yardımcı olsa bile, insan kısa vadede vazgeçilmez.",
       },
     ],
   },
   {
     id: "em2",
     dimension: "experienceMoat",
-    question: "How much of your job depends on things you can only learn by doing it for years?",
+    question: "İşinin ne kadarı sadece yıllarca yaparak öğrenebileceğin şeylere bağlı?",
     helpText:
-      "Tacit knowledge — the stuff you can't Google — is your competitive advantage.",
+      "Zımni bilgi — Google'layamayacağın şeyler — senin rekabet avantajın.",
     answers: [
       {
         id: "em2-a",
-        text: "Very little — most of what I need is available in documentation or training materials",
+        text: "Çok azı — ihtiyacım olan çoğu şey dokümantasyonda veya eğitim materyallerinde mevcut",
         score: 80,
         reasoning:
-          "If your job knowledge is documented, it's trainable — both for humans and AI. LLMs excel at learning from documented procedures.",
+          "İş bilgin belgelenmişse, öğretilebilir — hem insanlar hem yapay zeka için. LLM'ler belgelenmiş prosedürlerden öğrenmekte mükemmel.",
       },
       {
         id: "em2-b",
-        text: "Some — I've developed intuitions that help, but the basics are teachable",
+        text: "Bir kısmı — yardımcı olan sezgiler geliştirdim, ama temeller öğretilebilir",
         score: 50,
         reasoning:
-          "Intuition built from experience is partially defensible. AI can learn patterns but struggles with the edge cases that experience teaches you to handle.",
+          "Deneyimden gelen sezgi kısmen savunulabilir. Yapay zeka kalıpları öğrenebilir ama deneyimin öğrettiği uç vakaları halletmekte zorlanır.",
       },
       {
         id: "em2-c",
-        text: "A lot — I rely heavily on judgment, pattern recognition, and relationships built over years",
+        text: "Büyük kısmı — yıllar içinde oluşan yargı, kalıp tanıma ve ilişkilere çok bağımlıyım",
         score: 20,
         reasoning:
-          "Deep tacit knowledge is a strong moat. Pattern recognition from years of experience, especially combined with relationship capital, is very hard to automate.",
+          "Derin zımni bilgi güçlü bir savunma hattı. Yılların deneyiminden gelen kalıp tanıma, özellikle ilişki sermayesiyle birleştiğinde, otomatikleştirmesi çok zor.",
       },
       {
         id: "em2-d",
-        text: "Almost everything — my value comes from decades of accumulated expertise and networks",
+        text: "Neredeyse her şey — değerim on yılların birikmiş uzmanlığından ve ağlarından geliyor",
         score: 5,
         reasoning:
-          "Decades of domain expertise plus networks is the gold standard for automation resistance. No current AI can replicate this depth of institutional knowledge.",
+          "On yılların alan uzmanlığı artı ağlar, otomasyon direnci için altın standart. Hiçbir mevcut yapay zeka bu derinlikteki kurumsal bilgiyi kopyalayamaz.",
+      },
+    ],
+  },
+  {
+    id: "em3",
+    dimension: "experienceMoat",
+    question: "Değerinin ne kadarı profesyonel ağından ve ilişkilerinden geliyor?",
+    helpText: "Tanıdığın insanlar, güvenilirliğin ve sektördeki itibarını düşün.",
+    answers: [
+      {
+        id: "em3-a",
+        text: "Çok azı — işim tamamen bireysel becerilerime bağlı",
+        score: 75,
+        reasoning:
+          "Bireysel becerilere bağımlılık yapay zeka tarafından daha kolay ikame edilebilir. Ağ ve ilişkiler yapay zekanın kopyalayamadığı insani bir avantaj.",
+      },
+      {
+        id: "em3-b",
+        text: "Bir kısmı — tanıdıklarım işimi kolaylaştırıyor ama zorunlu değil",
+        score: 50,
+        reasoning:
+          "Kısmi ağ bağımlılığı orta düzey savunulabilirlik sağlar. İlişkiler yardımcı ama olmasa da iş yapılabilir.",
+      },
+      {
+        id: "em3-c",
+        text: "Büyük kısmı — doğru insanları tanımak işimin temel parçası",
+        score: 20,
+        reasoning:
+          "Güçlü profesyonel ağ yapay zekaya karşı çok savunulabilir. İlişki sermayesi dijital ortamda kopyalanamaz.",
+      },
+      {
+        id: "em3-d",
+        text: "Neredeyse tamamı — başarım tamamen ilişkilerime ve itibarıma bağlı",
+        score: 5,
+        reasoning:
+          "İlişki ve itibar temelli kariyer yapay zekaya karşı en güçlü savunma. Güven ve kişisel marka otomatikleştirilemez.",
       },
     ],
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
-  // DIMENSION: humanInteraction (weight: 0.15)
-  // Research basis: WEF Future of Jobs 2025 — jobs requiring empathy,
-  // physical presence, or moral judgment are least automatable.
+  // BOYUT: humanInteraction (ağırlık: 0.15)
+  // Araştırma temeli: WEF Future of Jobs 2025 — empati, fiziksel varlık
+  // veya ahlaki yargı gerektiren işler en az otomatikleştirilebilir.
   // ═══════════════════════════════════════════════════════════════════════════
   {
     id: "hi1",
     dimension: "humanInteraction",
     question:
-      "How much of your job requires being face-to-face with people (or would suffer if done remotely)?",
+      "İşinin ne kadarı insanlarla yüz yüze olmayı gerektiriyor (veya uzaktan yapılsa zarar görür)?",
     helpText:
-      "Physical presence, body language, and in-person trust all create AI-resistance.",
+      "Fiziksel varlık, beden dili ve yüz yüze güven yapay zeka direnci yaratır.",
     answers: [
       {
         id: "hi1-a",
-        text: "Almost none — I could do my whole job from anywhere with a laptop",
+        text: "Neredeyse hiç — tüm işimi bir dizüstü bilgisayarla her yerden yapabilirim",
         score: 80,
         reasoning:
-          "Fully remote-capable work is more automatable because it's already digitized. If your work flows through a screen, AI can learn to do it through that same screen.",
+          "Tamamen uzaktan yapılabilen iş daha otomatikleştirilebilir çünkü zaten dijitalleşmiş. İşin bir ekran üzerinden akıyorsa, yapay zeka da aynı ekran üzerinden yapmayı öğrenebilir.",
       },
       {
         id: "hi1-b",
-        text: "Some — certain meetings or activities benefit from being in person",
+        text: "Biraz — bazı toplantılar veya aktiviteler yüz yüze olmaktan fayda görür",
         score: 50,
         reasoning:
-          "Partial in-person requirements create moderate defensibility. The remote portions are at risk, but the in-person elements add human value.",
+          "Kısmi yüz yüze gereksinim orta düzey savunulabilirlik yaratır. Uzaktan yapılan kısımlar risk altında, ama yüz yüze unsurlar insani değer katıyor.",
       },
       {
         id: "hi1-c",
-        text: "A lot — I need to physically be somewhere, handle materials, or work with my hands",
+        text: "Çok — fiziksel olarak bir yerde olmam, malzeme kullanmam veya ellerimle çalışmam gerekiyor",
         score: 20,
         reasoning:
-          "Physical work creates a strong moat. AI exists primarily in software; robotics is far less mature and far more expensive to deploy.",
+          "Fiziksel iş güçlü bir savunma hattı yaratır. Yapay zeka öncelikle yazılımda var; robotik çok daha az olgun ve dağıtılması çok daha pahalı.",
       },
       {
         id: "hi1-d",
-        text: "Essentially all of it — my job IS the human interaction (therapy, teaching, care, etc.)",
+        text: "Temelde tamamı — işim İNSAN etkileşiminin kendisi (terapi, öğretmenlik, bakım vb.)",
         score: 10,
         reasoning:
-          "Pure human-interaction roles are the most AI-resistant. Empathy, moral judgment, and trust in high-stakes human contexts cannot be replicated by AI.",
+          "Saf insan etkileşimi rolleri yapay zekaya en dirençli olanlar. Yüksek riskli insan bağlamlarında empati, ahlaki yargı ve güven yapay zeka tarafından kopyalanamaz.",
       },
     ],
   },
@@ -374,37 +518,73 @@ export const quizQuestions: QuizQuestion[] = [
     id: "hi2",
     dimension: "humanInteraction",
     question:
-      "How often does your job require making decisions where there's no clear right answer?",
+      "İşin ne sıklıkla net bir doğru cevabın olmadığı kararlar almayı gerektiriyor?",
     helpText:
-      "Ethical dilemmas, judgment calls with incomplete info, or weighing competing interests.",
+      "Etik ikilemler, eksik bilgiyle verilen yargı kararları veya çatışan çıkarları tartmak.",
     answers: [
       {
         id: "hi2-a",
-        text: "Rarely — most decisions have clear criteria or standard procedures",
+        text: "Nadiren — çoğu kararın net kriterleri veya standart prosedürleri var",
         score: 80,
         reasoning:
-          "Decisions with clear criteria are automatable. AI excels at applying rules consistently — often better than humans for well-defined decision frameworks.",
+          "Net kriterleri olan kararlar otomatikleştirilebilir. Yapay zeka kuralları tutarlı uygulamada mükemmel — iyi tanımlanmış karar çerçeveleri için çoğu zaman insanlardan bile daha iyi.",
       },
       {
         id: "hi2-b",
-        text: "Sometimes — I make judgment calls, but within a structured framework",
+        text: "Bazen — yargı kararları veririm, ama yapılandırılmış bir çerçeve içinde",
         score: 50,
         reasoning:
-          "Structured judgment calls are in the 'AI augmentation' zone. AI can assist with the framework, but the judgment call itself still has value.",
+          "Yapılandırılmış yargı kararları 'yapay zeka desteği' bölgesinde. Yapay zeka çerçeveye yardımcı olabilir, ama yargı kararının kendisi hâlâ değerli.",
       },
       {
         id: "hi2-c",
-        text: "Often — I deal with ambiguity and competing stakeholder interests regularly",
+        text: "Sıklıkla — belirsizlik ve çatışan paydaş çıkarlarıyla düzenli olarak uğraşıyorum",
         score: 25,
         reasoning:
-          "Navigating ambiguity and stakeholder politics requires social intelligence and contextual judgment that AI consistently struggles with.",
+          "Belirsizlikte yol almak ve paydaş politikalarını yönetmek sosyal zeka ve bağlamsal yargı gerektiriyor — yapay zekanın sürekli zorlandığı alanlar.",
       },
       {
         id: "hi2-d",
-        text: "Constantly — my whole role is about navigating gray areas and human complexity",
+        text: "Sürekli — tüm rolüm gri alanlar ve insan karmaşıklığında yol almakla ilgili",
         score: 5,
         reasoning:
-          "Roles defined by moral reasoning, ethical judgment, and human complexity are among the last to be automated, if ever.",
+          "Ahlaki muhakeme, etik yargı ve insan karmaşıklığıyla tanımlanan roller, otomatikleştirilecek son roller arasında — eğer olursa.",
+      },
+    ],
+  },
+  {
+    id: "hi3",
+    dimension: "humanInteraction",
+    question: "İşte ne sıklıkla duyguları veya beden dilini okumanız gerekiyor?",
+    helpText: "Toplantılarda, müşteri görüşmelerinde veya ekip çalışmasında düşün.",
+    answers: [
+      {
+        id: "hi3-a",
+        text: "Neredeyse hiç — işim çoğunlukla veri, sistemler veya süreçlerle ilgili",
+        score: 80,
+        reasoning:
+          "Veri ve sistem odaklı iş duygusal okuma gerektirmediğinde yapay zeka için daha erişilebilir. Dijital görevler otomasyona daha açık.",
+      },
+      {
+        id: "hi3-b",
+        text: "Ara sıra — bazı durumlarda insanların ne hissettiğini anlamam önemli",
+        score: 50,
+        reasoning:
+          "Kısmi duygusal okuma gereksinimi orta düzey savunulabilirlik sağlar. Bu beceri yapay zekanın zayıf olduğu bir alan.",
+      },
+      {
+        id: "hi3-c",
+        text: "Sıklıkla — müzakerelerde, satışta veya ekip yönetiminde sürekli okurum",
+        score: 20,
+        reasoning:
+          "Sık duygusal okuma güçlü bir insani avantaj. Müzakere ve liderlik bağlamında bu beceri yapay zeka tarafından kopyalanamaz.",
+      },
+      {
+        id: "hi3-d",
+        text: "Sürekli — işim tamamen insanları anlamak ve duygusal destek vermekle ilgili",
+        score: 5,
+        reasoning:
+          "Sürekli duygusal okuma ve destek en güçlü yapay zeka direnci. Terapi, koçluk ve bakım gibi roller en son otomatikleştirilecek.",
       },
     ],
   },

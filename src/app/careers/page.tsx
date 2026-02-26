@@ -2,9 +2,9 @@ import { jobPages, seoShared } from "@/copy/seo";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "AI Career Risk Scores by Job | SkillShield",
+  title: "Mesleğe Göre Yapay Zeka Kariyer Risk Skorları | SkillShield",
   description:
-    "See how AI affects different careers. Browse AI risk scores for accountants, software engineers, nurses, designers, marketers, and more.",
+    "Yapay zekanın farklı kariyerleri nasıl etkilediğini görün. Muhasebeciler, yazılım mühendisleri, hemşireler, tasarımcılar, pazarlamacılar ve daha fazlası için yapay zeka risk skorlarına göz atın.",
 };
 
 export default function CareersPage() {
@@ -12,10 +12,10 @@ export default function CareersPage() {
     <div className="px-6 py-16">
       <div className="mx-auto max-w-3xl">
         <h1 className="text-3xl font-bold sm:text-4xl">
-          AI risk scores by career.
+          Kariyere göre yapay zeka risk skorları.
         </h1>
         <p className="mt-4 text-muted text-lg">
-          Every job has a different AI risk profile. Find yours below or take the quiz for a personalized score.
+          Her mesleğin farklı bir yapay zeka risk profili var. Aşağıdan kendi mesleğini bul veya kişiselleştirilmiş skor için testi çöz.
         </p>
 
         <div className="mt-12 space-y-6">
@@ -53,12 +53,12 @@ export default function CareersPage() {
         </div>
 
         <div className="mt-16 text-center">
-          <p className="text-muted">Don&apos;t see your job?</p>
+          <p className="text-muted">Mesleğini bulamadın mı?</p>
           <a
             href="/quiz"
             className="mt-4 inline-block rounded-lg bg-accent px-8 py-4 text-lg font-semibold text-white hover:bg-accent-hover transition-colors"
           >
-            Get your personal score
+            Kişisel skorunu al
           </a>
         </div>
 

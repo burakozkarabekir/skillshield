@@ -1,90 +1,90 @@
 /**
- * Share Card & Social Sharing Copy — SkillShield
+ * Paylaşım Kartı & Sosyal Paylaşım Metinleri — SkillShield
  *
- * Emotional target: Social identity + conversation starter
- * The share card should make them look smart/proactive for taking it,
- * not scared.
+ * Duygusal hedef: Sosyal kimlik + sohbet başlatıcı
+ * Paylaşım kartı onları testi çözdükleri için akıllı/proaktif göstermeli,
+ * korkmuş değil.
  */
 
-// ─── OG IMAGE / SHARE CARD TEXT ──────────────────────────
-// This text appears on the preview card when shared on LinkedIn/Twitter
+// ─── OG GÖRSEL / PAYLAŞIM KARTI METNİ ──────────────────────────
+// LinkedIn/Twitter'da paylaşıldığında önizleme kartında görünen metin
 export const shareCard = {
-  // The main text on the OG image (varies by score range)
+  // OG görseldeki ana metin (skor aralığına göre değişir)
   cardHeadlines: {
     low: [
-      "My AI Career Risk Score: {{score}}/100. Feeling solid.",
-      "Scored {{score}}/100 on AI risk. My career is harder to automate than I thought.",
-      "{{score}}/100 AI risk. Low threat detected.",
+      "Yapay Zeka Kariyer Risk Puanım: {{score}}/100. Gayet iyi durumdayım.",
+      "Yapay zeka riskinde {{score}}/100 aldım. Kariyerimi otomatikleştirmek sanıldığı kadar kolay değilmiş.",
+      "{{score}}/100 yapay zeka riski. Düşük tehdit algılandı.",
     ],
     moderate: [
-      "My AI Career Risk Score: {{score}}/100. Time to pay attention.",
-      "Got my AI risk score: {{score}}/100. Some surprises in the breakdown.",
-      "{{score}}/100 — not safe, not doomed. Now I know where to focus.",
+      "Yapay Zeka Kariyer Risk Puanım: {{score}}/100. Dikkat etme zamanı.",
+      "Yapay zeka risk puanım: {{score}}/100. Detaylarda bazı sürprizler var.",
+      "{{score}}/100 — ne güvende, ne de batmış. Artık nereye odaklanmam gerektiğini biliyorum.",
     ],
     high: [
-      "My AI Career Risk Score: {{score}}/100. Glad I checked.",
-      "Just got my AI risk score. {{score}}/100. Now I have a plan.",
-      "{{score}}/100 — the wake-up call I needed. What's your score?",
+      "Yapay Zeka Kariyer Risk Puanım: {{score}}/100. Kontrol ettiğime iyi oldu.",
+      "Yapay zeka risk puanımı öğrendim. {{score}}/100. Artık bir planım var.",
+      "{{score}}/100 — tam ihtiyacım olan uyandırma çağrısı. Senin puanın kaç?",
     ],
     critical: [
-      "My AI Career Risk Score: {{score}}/100. Good thing I know now.",
-      "{{score}}/100 AI career risk. Knowledge beats denial. What's yours?",
-      "Just scored {{score}}/100. Better to know than to guess. Take the quiz.",
+      "Yapay Zeka Kariyer Risk Puanım: {{score}}/100. Şimdi öğrendiğime iyi oldu.",
+      "{{score}}/100 yapay zeka kariyer riski. Bilmek, inkar etmekten iyidir. Seninki kaç?",
+      "{{score}}/100 aldım. Tahmin etmektense bilmek daha iyi. Testi çöz.",
     ],
   },
-  // Subtext on the card
+  // Karttaki alt metin
   cardSubtext: [
-    "Free AI Career Risk Assessment — SkillShield",
-    "Take the 3-minute quiz at skillshield.com",
-    "What's your AI Career Risk Score? Find out free.",
+    "Ücretsiz Yapay Zeka Kariyer Risk Değerlendirmesi — SkillShield",
+    "3 dakikalık testi skillshield.com'da çöz",
+    "Yapay Zeka Kariyer Risk Puanın kaç? Ücretsiz öğren.",
   ],
 } as const;
 
-// ─── SHARE PROMPT (ON-PAGE) ──────────────────────────────
-// What we show on the results page to encourage sharing
+// ─── PAYLAŞIM İSTEMİ (SAYFA İÇİ) ──────────────────────────────
+// Sonuç sayfasında paylaşımı teşvik etmek için gösterdiğimiz şey
 export const sharePrompt = {
   headlines: [
-    "Know someone who should see their score?",
-    "Share it. Start the conversation.",
-    "Your network needs to see this.",
+    "Puanını görmesi gereken biri var mı?",
+    "Paylaş. Konuşmayı başlat.",
+    "Çevrendeki insanların bunu görmesi lazım.",
   ],
   subheads: [
-    "The professionals who share their score are starting the career conversations that matter.",
-    "847,000 people have taken the quiz. Help your network join them.",
-    "Sharing your score isn't bragging — it's a public service.",
+    "Puanını paylaşanlar, gerçekten önemli olan kariyer konuşmalarını başlatıyor.",
+    "847.000 kişi testi çözdü. Çevrenin de katılmasına yardım et.",
+    "Puanını paylaşmak övünmek değil — topluma hizmet.",
   ],
   buttonLabels: {
-    linkedin: "Share on LinkedIn",
-    twitter: "Share on X",
-    copy: "Copy link",
-    email: "Send via email",
+    linkedin: "LinkedIn'de Paylaş",
+    twitter: "X'te Paylaş",
+    copy: "Linki kopyala",
+    email: "E-posta ile gönder",
   },
 } as const;
 
-// ─── SHARE TEMPLATES (PRE-FILLED POST TEXT) ──────────────
+// ─── PAYLAŞIM ŞABLONLARI (ÖN DOLDURULMUŞ GÖNDERİ METNİ) ──────────────
 export const shareTemplates = {
   linkedin: [
-    "Just took the SkillShield AI Career Risk Assessment. My score: {{score}}/100.\n\nThe task-by-task breakdown was eye-opening. If you're wondering how AI might affect your role, this is worth 3 minutes.\n\n{{url}}",
-    "I've been hearing about AI replacing jobs for years. Finally got a specific, data-backed answer for MY role.\n\nMy AI Career Risk Score: {{score}}/100.\n\nThe breakdown shows exactly which of my daily tasks are most at risk. Take it yourself: {{url}}",
-    "Everyone's got an opinion about AI and jobs. SkillShield gives you data.\n\nMy score: {{score}}/100. What's yours?\n\n{{url}}",
+    "SkillShield Yapay Zeka Kariyer Risk Değerlendirmesini çözdüm. Puanım: {{score}}/100.\n\nGörev görev analiz gerçekten göz açıcıydı. Yapay zekanın rolünüzü nasıl etkileyeceğini merak ediyorsanız, 3 dakikaya değer.\n\n{{url}}",
+    "Yıllardır yapay zekanın işleri ele geçireceğini duyuyordum. Sonunda KENDİ rolüm için somut, veriye dayalı bir cevap aldım.\n\nYapay Zeka Kariyer Risk Puanım: {{score}}/100.\n\nAnaliz, günlük görevlerimden hangilerinin en çok risk altında olduğunu gösteriyor. Sen de dene: {{url}}",
+    "Herkesin yapay zeka ve işler hakkında bir fikri var. SkillShield sana veri veriyor.\n\nBenim puanım: {{score}}/100. Seninki kaç?\n\n{{url}}",
   ],
   twitter: [
-    "My AI Career Risk Score: {{score}}/100 🎯\n\n3-minute quiz, data-backed results. No fluff.\n\nWhat's yours? {{url}}",
-    "Just found out {{score}}% of my core job tasks are automatable by AI.\n\nKnowledge > denial.\n\n{{url}}",
-    "\"How will AI affect my job?\" is vague.\n\"{{score}}/100\" is specific.\n\nTake the quiz: {{url}}",
+    "Yapay Zeka Kariyer Risk Puanım: {{score}}/100\n\n3 dakikalık test, veriye dayalı sonuçlar. Laf yok.\n\nSeninki kaç? {{url}}",
+    "Temel iş görevlerimin %{{score}}'inin yapay zeka tarafından otomatikleştirilebileceğini öğrendim.\n\nBilmek > inkar etmek.\n\n{{url}}",
+    "\"Yapay zeka işimi nasıl etkiler?\" belirsiz.\n\"{{score}}/100\" net.\n\nTesti çöz: {{url}}",
   ],
 } as const;
 
-// ─── SHARE SUCCESS / COPIED STATE ────────────────────────
+// ─── PAYLAŞIM BAŞARILI / KOPYALANDI DURUMU ────────────────────────
 export const shareConfirmation = {
   copied: [
-    "Link copied. Share away.",
-    "Copied to clipboard.",
-    "Got it. Now paste it somewhere good.",
+    "Link kopyalandı. Paylaşabilirsin.",
+    "Panoya kopyalandı.",
+    "Tamam. Şimdi güzel bir yere yapıştır.",
   ],
   shared: [
-    "Shared. You're officially proactive.",
-    "Done. Your network will thank you.",
-    "Posted. Now let's get back to your results.",
+    "Paylaşıldı. Artık resmen proaktifsin.",
+    "Tamam. Çevren sana teşekkür edecek.",
+    "Paylaşıldı. Şimdi sonuçlarına geri dönelim.",
   ],
 } as const;

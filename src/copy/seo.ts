@@ -1,12 +1,11 @@
 /**
- * SEO Job-Specific Landing Page Copy — SkillShield
+ * SEO Mesleğe Özel Açılış Sayfası Metinleri — SkillShield
  *
- * Template system for pages like:
- * "Will AI replace accountants?"
- * "Will AI replace graphic designers?"
+ * Şu tarz sayfalar için şablon sistemi:
+ * "Yapay zeka muhasebecilerin yerini alacak mı?"
+ * "Yapay zeka grafik tasarımcıların yerini alacak mı?"
  *
- * Each page gets a unique slug, title, and tailored copy
- * that ranks for "[job] AI replacement" searches.
+ * Her sayfa benzersiz bir slug, başlık ve özel metin alır.
  */
 
 export interface JobSEOPage {
@@ -26,205 +25,204 @@ export interface JobSEOPage {
   ctaSubhead: string;
 }
 
-// ─── SEO PAGE TEMPLATES ──────────────────────────────────
-// Reusable patterns for generating pages at scale
+// ─── SEO SAYFA ŞABLONLARI ──────────────────────────────────
 export const seoTemplates = {
   metaTitle: (jobTitle: string) =>
-    `Will AI Replace ${jobTitle}? Your Risk Score | SkillShield`,
+    `Yapay Zeka ${jobTitle} Yerini Alacak mı? Risk Skorun | SkillShield`,
   metaDescription: (jobTitle: string, avgScore: number) =>
-    `The average AI risk score for ${jobTitle} is ${avgScore}/100. Take the free 3-minute quiz to get your personalized score and task-by-task breakdown.`,
+    `${jobTitle} için ortalama yapay zeka risk skoru ${avgScore}/100. Kişiselleştirilmiş skorunu ve görev görev analizini almak için ücretsiz 3 dakikalık testi çöz.`,
   heroHeadline: (jobTitle: string) =>
-    `Will AI replace ${jobTitle.toLowerCase()}?`,
+    `Yapay zeka ${jobTitle.toLowerCase()} yerini alacak mı?`,
   heroSubhead: (jobTitle: string, avgScore: number) =>
-    `The average ${jobTitle.toLowerCase()} scores ${avgScore}/100 on AI career risk. Here's what that means — and how to get your own score.`,
-  verdictCta: "Get your personal score",
+    `Ortalama ${jobTitle.toLowerCase()} yapay zeka kariyer riskinde ${avgScore}/100 alıyor. İşte bunun anlamı — ve kendi skorunu nasıl alacağın.`,
+  verdictCta: "Kişisel skorunu al",
 } as const;
 
-// ─── SAMPLE JOB PAGES ────────────────────────────────────
+// ─── ÖRNEK MESLEK SAYFALARI ────────────────────────────────
 export const jobPages: JobSEOPage[] = [
   {
     slug: "accountants",
-    jobTitle: "Accountants",
-    metaTitle: "Will AI Replace Accountants? Your Risk Score | SkillShield",
+    jobTitle: "Muhasebeciler",
+    metaTitle: "Yapay Zeka Muhasebecilerin Yerini Alacak mı? Risk Skorun | SkillShield",
     metaDescription:
-      "The average AI risk score for accountants is 72/100. Take the free 3-minute quiz to get your personalized score and task-by-task breakdown.",
-    heroHeadline: "Will AI replace accountants?",
+      "Muhasebeciler için ortalama yapay zeka risk skoru 72/100. Kişiselleştirilmiş skorunu ve görev görev analizini almak için ücretsiz 3 dakikalık testi çöz.",
+    heroHeadline: "Yapay zeka muhasebecilerin yerini alacak mı?",
     heroSubhead:
-      "The average accountant scores 72/100 on AI career risk. Bookkeeping is almost fully automatable. Advisory work is not. Where do you fall?",
+      "Ortalama muhasebeci yapay zeka kariyer riskinde 72/100 alıyor. Defter tutma neredeyse tamamen otomatikleştirilebilir. Danışmanlık işi değil. Sen neredesin?",
     riskSummary:
-      "Accounting is one of the highest-risk white-collar professions. AI can already handle bookkeeping, tax preparation, basic auditing, and financial reporting faster and cheaper than humans. But complex advisory, client relationships, and regulatory judgment remain firmly human.",
+      "Muhasebe en yüksek riskli beyaz yakalı mesleklerden biri. Yapay zeka zaten defter tutma, vergi hazırlama, temel denetim ve finansal raporlamayı insanlardan daha hızlı ve ucuza yapabiliyor. Ama karmaşık danışmanlık, müşteri ilişkileri ve düzenleyici yargı kesinlikle insani kalmaya devam ediyor.",
     averageScore: 72,
     tasksAtRisk: [
-      "Bookkeeping and transaction recording",
-      "Standard tax return preparation",
-      "Financial report generation",
-      "Invoice processing and reconciliation",
-      "Basic audit procedures",
+      "Defter tutma ve işlem kaydı",
+      "Standart vergi beyannamesi hazırlama",
+      "Finansal rapor üretimi",
+      "Fatura işleme ve mutabakat",
+      "Temel denetim prosedürleri",
     ],
     tasksSafe: [
-      "Complex tax strategy and planning",
-      "Client relationship management",
-      "Regulatory interpretation for novel situations",
-      "Fraud detection requiring investigative judgment",
-      "Business advisory and strategic counsel",
+      "Karmaşık vergi stratejisi ve planlama",
+      "Müşteri ilişkileri yönetimi",
+      "Yeni durumlar için düzenleyici yorum",
+      "Araştırma yargısı gerektiren dolandırıcılık tespiti",
+      "İş danışmanlığı ve stratejik rehberlik",
     ],
-    verdictHeadline: "The verdict: evolve or compete with software.",
+    verdictHeadline: "Sonuç: gelişmek ya da yazılımla rekabet etmek.",
     verdictBody:
-      "If your day is mostly bookkeeping and standard compliance, your risk is real. If you're doing strategic advisory and complex client work, you're in a stronger position. Most accountants are somewhere in between — which is exactly why getting your personal score matters.",
-    ctaHeadline: "What's YOUR score as an accountant?",
+      "Günün çoğunlukla defter tutma ve standart uyumla geçiyorsa, riskin gerçek. Stratejik danışmanlık ve karmaşık müşteri işleri yapıyorsan, daha güçlü bir konumdasın. Çoğu muhasebeci ikisinin arasında bir yerde — kişisel skorunu almanın tam da bu yüzden önemli olduğu yer.",
+    ctaHeadline: "Bir muhasebeci olarak SENİN skorun kaç?",
     ctaSubhead:
-      "The average is 72/100. But your daily tasks, experience level, and specialization all affect your personal risk. Find out in 3 minutes.",
+      "Ortalama 72/100. Ama günlük görevlerin, deneyim seviyen ve uzmanlık alanın kişisel riskini etkiliyor. 3 dakikada öğren.",
   },
   {
     slug: "graphic-designers",
-    jobTitle: "Graphic Designers",
+    jobTitle: "Grafik Tasarımcılar",
     metaTitle:
-      "Will AI Replace Graphic Designers? Your Risk Score | SkillShield",
+      "Yapay Zeka Grafik Tasarımcıların Yerini Alacak mı? Risk Skorun | SkillShield",
     metaDescription:
-      "The average AI risk score for graphic designers is 61/100. Take the free 3-minute quiz to get your personalized score and task-by-task breakdown.",
-    heroHeadline: "Will AI replace graphic designers?",
+      "Grafik tasarımcılar için ortalama yapay zeka risk skoru 61/100. Kişiselleştirilmiş skorunu ve görev görev analizini almak için ücretsiz 3 dakikalık testi çöz.",
+    heroHeadline: "Yapay zeka grafik tasarımcıların yerini alacak mı?",
     heroSubhead:
-      "The average graphic designer scores 61/100 on AI career risk. Template work is toast. Original brand thinking is not.",
+      "Ortalama grafik tasarımcı yapay zeka kariyer riskinde 61/100 alıyor. Şablon işi bitti. Özgün marka düşüncesi bitmedi.",
     riskSummary:
-      "AI image generation has advanced faster than almost any other domain. Tools like Midjourney and DALL-E can now produce professional-quality visuals in seconds. But brand strategy, art direction, and designs that require deep client understanding remain human-led.",
+      "Yapay zeka görsel üretimi neredeyse diğer tüm alanlardan daha hızlı ilerledi. Midjourney ve DALL-E gibi araçlar artık saniyeler içinde profesyonel kalitede görseller üretebiliyor. Ama marka stratejisi, sanat yönetimi ve derin müşteri anlayışı gerektiren tasarımlar insanların yönetiminde kalmaya devam ediyor.",
     averageScore: 61,
     tasksAtRisk: [
-      "Social media graphic creation from templates",
-      "Stock image selection and basic photo editing",
-      "Standard presentation design",
-      "Simple logo variations and resizing",
-      "Banner ad production",
+      "Şablonlardan sosyal medya grafiği oluşturma",
+      "Stok görsel seçimi ve temel fotoğraf düzenleme",
+      "Standart sunum tasarımı",
+      "Basit logo varyasyonları ve yeniden boyutlandırma",
+      "Banner reklam üretimi",
     ],
     tasksSafe: [
-      "Brand identity development and strategy",
-      "Art direction and creative leadership",
-      "User experience design requiring user research",
-      "Complex multi-touchpoint campaign design",
-      "Client presentation and concept selling",
+      "Marka kimliği geliştirme ve strateji",
+      "Sanat yönetimi ve yaratıcı liderlik",
+      "Kullanıcı araştırması gerektiren kullanıcı deneyimi tasarımı",
+      "Karmaşık çoklu temas noktası kampanya tasarımı",
+      "Müşteri sunumu ve konsept satışı",
     ],
-    verdictHeadline: "The verdict: production work is disappearing. Thinking isn't.",
+    verdictHeadline: "Sonuç: üretim işi kayboluyor. Düşünce kaybolmuyor.",
     verdictBody:
-      "If you're primarily executing templates and production work, AI is already doing it faster. If you're the person who decides what gets made, why, and how it connects to business goals — you're the one who'll manage the AI, not compete with it.",
-    ctaHeadline: "What's YOUR score as a designer?",
+      "Esas olarak şablon ve üretim işi yapıyorsan, yapay zeka zaten daha hızlı yapıyor. Neyin yapılacağına, neden yapılacağına ve iş hedeflerine nasıl bağlanacağına karar veren kişiysen — yapay zekayı yönetecek olan sensin, onunla rekabet eden değil.",
+    ctaHeadline: "Bir tasarımcı olarak SENİN skorun kaç?",
     ctaSubhead:
-      "The average is 61/100. But whether you do production or strategy changes everything. Get your personal breakdown.",
+      "Ortalama 61/100. Ama üretim mi strateji mi yaptığın her şeyi değiştiriyor. Kişisel analizini al.",
   },
   {
     slug: "software-engineers",
-    jobTitle: "Software Engineers",
+    jobTitle: "Yazılım Mühendisleri",
     metaTitle:
-      "Will AI Replace Software Engineers? Your Risk Score | SkillShield",
+      "Yapay Zeka Yazılım Mühendislerinin Yerini Alacak mı? Risk Skorun | SkillShield",
     metaDescription:
-      "The average AI risk score for software engineers is 48/100. Take the free 3-minute quiz to get your personalized score and task-by-task breakdown.",
-    heroHeadline: "Will AI replace software engineers?",
+      "Yazılım mühendisleri için ortalama yapay zeka risk skoru 48/100. Kişiselleştirilmiş skorunu ve görev görev analizini almak için ücretsiz 3 dakikalık testi çöz.",
+    heroHeadline: "Yapay zeka yazılım mühendislerinin yerini alacak mı?",
     heroSubhead:
-      "The average software engineer scores 48/100 on AI career risk. Boilerplate code is trivial for AI. System design is not.",
+      "Ortalama yazılım mühendisi yapay zeka kariyer riskinde 48/100 alıyor. Şablon kod yapay zeka için kolay. Sistem tasarımı değil.",
     riskSummary:
-      "AI coding assistants can now write, debug, and refactor code at a level that handles most routine programming tasks. But system architecture, understanding ambiguous requirements, cross-team coordination, and novel problem-solving remain deeply human. The role is transforming, not disappearing.",
+      "Yapay zeka kodlama asistanları artık çoğu rutin programlama görevini halledecek seviyede kod yazabilir, hata ayıklayabilir ve yeniden düzenleyebilir. Ama sistem mimarisi, belirsiz gereksinimleri anlama, ekipler arası koordinasyon ve yeni problem çözme derinden insani kalmaya devam ediyor. Rol dönüşüyor, yok olmuyor.",
     averageScore: 48,
     tasksAtRisk: [
-      "Writing boilerplate and CRUD code",
-      "Bug fixing in well-documented codebases",
-      "Code review for style and standard issues",
-      "Writing unit tests for existing code",
-      "Documentation generation",
+      "Şablon ve CRUD kodu yazma",
+      "İyi belgelenmiş kod tabanlarında hata düzeltme",
+      "Stil ve standart sorunları için kod inceleme",
+      "Mevcut kod için birim test yazma",
+      "Dokümantasyon üretimi",
     ],
     tasksSafe: [
-      "System architecture and design decisions",
-      "Translating ambiguous business requirements into technical specs",
-      "Cross-team technical leadership",
-      "Performance optimization of complex systems",
-      "Mentoring and growing engineering teams",
+      "Sistem mimarisi ve tasarım kararları",
+      "Belirsiz iş gereksinimlerini teknik özelliklere dönüştürme",
+      "Ekipler arası teknik liderlik",
+      "Karmaşık sistemlerin performans optimizasyonu",
+      "Mühendislik ekiplerini mentorluk ve büyütme",
     ],
-    verdictHeadline: "The verdict: 10x engineers just became 100x engineers.",
+    verdictHeadline: "Sonuç: 10x mühendisler artık 100x mühendis oldu.",
     verdictBody:
-      "AI won't replace software engineers — it will amplify them. Engineers who adopt AI tools will be dramatically more productive. Those who don't will be out-competed by smaller teams using AI. The question isn't replacement. It's whether you're using the tools or losing to them.",
-    ctaHeadline: "What's YOUR score as an engineer?",
+      "Yapay zeka yazılım mühendislerinin yerini almayacak — onları güçlendirecek. Yapay zeka araçlarını benimseyen mühendisler dramatik şekilde daha üretken olacak. Benimsemeyenler yapay zeka kullanan daha küçük ekipler tarafından geçilecek. Soru değiştirme değil. Araçları kullanıp kullanmadığın.",
+    ctaHeadline: "Bir mühendis olarak SENİN skorun kaç?",
     ctaSubhead:
-      "The average is 48/100. But junior IC vs. senior architect makes a huge difference. Get your personal score.",
+      "Ortalama 48/100. Ama junior bireysel katkıcı ile senior mimar arasında büyük fark var. Kişisel skorunu al.",
   },
   {
     slug: "registered-nurses",
-    jobTitle: "Registered Nurses",
+    jobTitle: "Hemşireler",
     metaTitle:
-      "Will AI Replace Registered Nurses? Your Risk Score | SkillShield",
+      "Yapay Zeka Hemşirelerin Yerini Alacak mı? Risk Skorun | SkillShield",
     metaDescription:
-      "The average AI risk score for registered nurses is 23/100. Take the free 3-minute quiz to get your personalized score and task-by-task breakdown.",
-    heroHeadline: "Will AI replace nurses?",
+      "Hemşireler için ortalama yapay zeka risk skoru 23/100. Kişiselleştirilmiş skorunu ve görev görev analizini almak için ücretsiz 3 dakikalık testi çöz.",
+    heroHeadline: "Yapay zeka hemşirelerin yerini alacak mı?",
     heroSubhead:
-      "The average registered nurse scores 23/100 on AI career risk. Hands-on care is irreplaceable. Charting is not.",
+      "Ortalama hemşire yapay zeka kariyer riskinde 23/100 alıyor. Uygulamalı bakım vazgeçilmez. Kayıt tutma değil.",
     riskSummary:
-      "Nursing is one of the most AI-resistant professions. Physical patient care, emotional support, and clinical judgment in unpredictable situations are beyond AI's reach. However, documentation, scheduling, and routine monitoring tasks will be increasingly automated.",
+      "Hemşirelik yapay zekaya en dirençli mesleklerden biri. Fiziksel hasta bakımı, duygusal destek ve öngörülemeyen durumlarda klinik yargı yapay zekanın erişim alanının ötesinde. Ancak dokümantasyon, zamanlama ve rutin izleme görevleri giderek daha fazla otomatikleştirilecek.",
     averageScore: 23,
     tasksAtRisk: [
-      "Medical charting and documentation",
-      "Routine vital sign monitoring",
-      "Medication administration scheduling",
-      "Patient record data entry",
+      "Tıbbi kayıt ve dokümantasyon",
+      "Rutin yaşam bulgusu izleme",
+      "İlaç uygulama zamanlaması",
+      "Hasta kaydı veri girişi",
     ],
     tasksSafe: [
-      "Physical patient care and procedures",
-      "Emergency response and triage decisions",
-      "Patient and family emotional support",
-      "Complex clinical judgment calls",
-      "Interdisciplinary care coordination",
+      "Fiziksel hasta bakımı ve prosedürler",
+      "Acil müdahale ve triaj kararları",
+      "Hasta ve aile duygusal desteği",
+      "Karmaşık klinik yargı kararları",
+      "Disiplinler arası bakım koordinasyonu",
     ],
-    verdictHeadline: "The verdict: AI will make nurses more efficient, not obsolete.",
+    verdictHeadline: "Sonuç: Yapay zeka hemşireleri daha verimli yapacak, gereksiz değil.",
     verdictBody:
-      "Nursing combines physical skill, emotional intelligence, and rapid clinical judgment in ways AI cannot replicate. Expect AI to handle your paperwork, not your patients. The biggest change: nurses who embrace AI documentation tools will spend more time on actual care.",
-    ctaHeadline: "What's YOUR score as a nurse?",
+      "Hemşirelik fiziksel beceri, duygusal zeka ve hızlı klinik yargıyı yapay zekanın kopyalayamadığı şekillerde birleştiriyor. Yapay zekanın evrak işlerini halletmesini bekle, hastalarını değil. En büyük değişiklik: yapay zeka dokümantasyon araçlarını benimseyen hemşireler gerçek bakıma daha fazla zaman ayıracak.",
+    ctaHeadline: "Bir hemşire olarak SENİN skorun kaç?",
     ctaSubhead:
-      "The average is 23/100. Your specific specialty and daily task mix affect your personal score. Find out.",
+      "Ortalama 23/100. Spesifik uzmanlık alanın ve günlük görev karışımın kişisel skorunu etkiler. Öğren.",
   },
   {
     slug: "marketing-managers",
-    jobTitle: "Marketing Managers",
+    jobTitle: "Pazarlama Yöneticileri",
     metaTitle:
-      "Will AI Replace Marketing Managers? Your Risk Score | SkillShield",
+      "Yapay Zeka Pazarlama Yöneticilerinin Yerini Alacak mı? Risk Skorun | SkillShield",
     metaDescription:
-      "The average AI risk score for marketing managers is 55/100. Take the free 3-minute quiz to get your personalized score and task-by-task breakdown.",
-    heroHeadline: "Will AI replace marketing managers?",
+      "Pazarlama yöneticileri için ortalama yapay zeka risk skoru 55/100. Kişiselleştirilmiş skorunu ve görev görev analizini almak için ücretsiz 3 dakikalık testi çöz.",
+    heroHeadline: "Yapay zeka pazarlama yöneticilerinin yerini alacak mı?",
     heroSubhead:
-      "The average marketing manager scores 55/100 on AI career risk. Content production is already automated. Strategy is holding firm.",
+      "Ortalama pazarlama yöneticisi yapay zeka kariyer riskinde 55/100 alıyor. İçerik üretimi zaten otomatikleştirildi. Strateji sağlam duruyor.",
     riskSummary:
-      "AI can now write copy, generate images, analyze campaign data, run A/B tests, and optimize ad spend — tasks that used to fill most of a marketer's day. But brand positioning, customer insight, creative direction, and cross-functional leadership still require human judgment.",
+      "Yapay zeka artık metin yazabilir, görsel üretebilir, kampanya verilerini analiz edebilir, A/B testleri çalıştırabilir ve reklam harcamalarını optimize edebilir — bir pazarlamacının gününün çoğunu dolduran görevler. Ama marka konumlandırma, müşteri içgörüsü, yaratıcı yönetim ve çapraz fonksiyonel liderlik hâlâ insan yargısı gerektiriyor.",
     averageScore: 55,
     tasksAtRisk: [
-      "Social media content creation",
-      "Basic copywriting (emails, ad copy, blog posts)",
-      "Campaign performance reporting",
-      "A/B test setup and analysis",
-      "SEO keyword research and optimization",
+      "Sosyal medya içerik üretimi",
+      "Temel metin yazarlığı (e-postalar, reklam metni, blog yazıları)",
+      "Kampanya performans raporlaması",
+      "A/B test kurulumu ve analizi",
+      "SEO anahtar kelime araştırması ve optimizasyonu",
     ],
     tasksSafe: [
-      "Brand strategy and positioning",
-      "Customer insight and persona development",
-      "Creative campaign concepting",
-      "Stakeholder management and cross-functional leadership",
-      "Budget allocation and strategic planning",
+      "Marka stratejisi ve konumlandırma",
+      "Müşteri içgörüsü ve persona geliştirme",
+      "Yaratıcı kampanya konsepti oluşturma",
+      "Paydaş yönetimi ve çapraz fonksiyonel liderlik",
+      "Bütçe tahsisi ve stratejik planlama",
     ],
-    verdictHeadline: "The verdict: content producers are at risk. Strategists are not.",
+    verdictHeadline: "Sonuç: içerik üreticileri risk altında. Stratejistler değil.",
     verdictBody:
-      "The marketing managers most at risk are those who spend their days producing content and pulling reports. Those who focus on strategy, customer understanding, and team leadership are well-positioned. The smartest move: become the person who directs AI, not the person AI replaces.",
-    ctaHeadline: "What's YOUR score as a marketer?",
+      "En çok risk altındaki pazarlama yöneticileri günlerini içerik üreterek ve rapor çekerek geçirenler. Strateji, müşteri anlayışı ve ekip liderliğine odaklananlar iyi konumda. En akıllı hamle: yapay zekayı yöneten kişi ol, yapay zekanın yerini aldığı kişi değil.",
+    ctaHeadline: "Bir pazarlamacı olarak SENİN skorun kaç?",
     ctaSubhead:
-      "The average is 55/100. But content-focused vs. strategy-focused roles score very differently. See yours.",
+      "Ortalama 55/100. Ama içerik odaklı ile strateji odaklı roller çok farklı puan alıyor. Kendininkini gör.",
   },
 ] as const;
 
-// ─── SEO SHARED ELEMENTS ─────────────────────────────────
+// ─── SEO PAYLAŞILAN ELEMANLAR ─────────────────────────────────
 export const seoShared = {
   methodology: {
-    headline: "How we calculate these scores.",
-    body: "Every score is derived from O*NET task-level data cross-referenced with published AI capability benchmarks. We analyze which specific tasks within each occupation can be performed by current AI systems, weighted by how much time workers spend on each task.",
+    headline: "Bu skorları nasıl hesaplıyoruz.",
+    body: "Her skor, yayınlanmış yapay zeka yetenek ölçütleriyle çapraz kontrol edilen O*NET görev düzeyinde verilerden türetilir. Her meslek içindeki hangi spesifik görevlerin mevcut yapay zeka sistemleri tarafından yapılabileceğini, çalışanların her göreve ne kadar zaman harcadığına göre ağırlıklandırarak analiz ediyoruz.",
   },
   disclaimerFooter:
-    "Scores represent current AI capability overlap, not a prediction of job elimination. Actual job displacement depends on adoption speed, regulation, and economic factors. Updated quarterly.",
+    "Skorlar mevcut yapay zeka yetenek örtüşmesini temsil eder, iş kaybı tahmini değil. Gerçek iş yerinden edilme benimseme hızına, düzenlemeye ve ekonomik faktörlere bağlıdır. Üç ayda bir güncellenir.",
   relatedJobs: {
-    headline: "See scores for related roles.",
+    headline: "İlgili roller için skorları gör.",
   },
   breadcrumb: {
-    home: "Home",
-    careers: "Career Risk Scores",
+    home: "Ana Sayfa",
+    careers: "Kariyer Risk Skorları",
   },
 } as const;
