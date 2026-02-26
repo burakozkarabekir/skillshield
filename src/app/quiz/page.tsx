@@ -109,6 +109,7 @@ export default function QuizPage() {
     return (
       <div className="px-6 py-20">
         <div className="mx-auto max-w-2xl text-center">
+          <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-accent border-t-transparent mb-8" />
           <h2 className="text-3xl font-bold">{quizComplete.headlines[0]}</h2>
           <p className="mt-4 text-muted text-lg">
             {quizComplete.subheads[0]}
@@ -124,6 +125,9 @@ export default function QuizPage() {
               </p>
             ))}
           </div>
+          <p className="mt-6 text-xs text-muted">
+            Bu islem birkaç saniye surebilir...
+          </p>
           <p className="sr-only" role="status" aria-live="polite">
             {a11y.loadingAnnouncement}
           </p>
@@ -144,7 +148,33 @@ export default function QuizPage() {
             {errors.quizSubmitFailed.body[0]}
           </p>
           <button
-            onClick={() => setState("submitting")}
+            onClick={() => {
+              setState("submitting");
+              // Re-submit answers
+              const quizAnswerPayload = Object.entries(answers).map(
+                ([questionId, answerId]) => ({ questionId, answerId })
+              );
+              fetch("/api/score", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  answers: quizAnswerPayload,
+                  jobCategoryId: "other",
+                }),
+              })
+                .then((res) => {
+                  if (!res.ok) throw new Error("Failed");
+                  return res.json();
+                })
+                .then((data) => {
+                  if (data.scoreId) {
+                    window.location.href = `/results?scoreId=${data.scoreId}`;
+                  } else {
+                    setState("error");
+                  }
+                })
+                .catch(() => setState("error"));
+            }}
             className="mt-8 rounded-lg bg-accent px-6 py-3 font-semibold text-white hover:bg-accent-hover transition-colors cursor-pointer"
           >
             {errors.quizSubmitFailed.cta}

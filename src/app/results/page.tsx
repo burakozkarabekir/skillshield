@@ -337,7 +337,14 @@ function APIResultsContent({ scoreId }: { scoreId: string }) {
   if (!result) {
     return (
       <div className="px-6 py-20 text-center">
-        <p className="text-muted animate-pulse">{loading.resultsLoading[0]}</p>
+        <div className="mx-auto max-w-md">
+          <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-accent border-t-transparent mb-6" />
+          <h2 className="text-2xl font-bold mb-2">Skorun hesaplaniyor...</h2>
+          <p className="text-muted animate-pulse">{loading.resultsLoading[0]}</p>
+          <p className="mt-4 text-xs text-muted">
+            Yanitlarin otomasyon arastirma verileriyle karsilastiriliyor
+          </p>
+        </div>
       </div>
     );
   }
@@ -409,7 +416,11 @@ export default function ResultsPage() {
     <Suspense
       fallback={
         <div className="px-6 py-20 text-center">
-          <p className="text-muted animate-pulse">{loading.resultsLoading[0]}</p>
+          <div className="mx-auto max-w-md">
+            <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-accent border-t-transparent mb-6" />
+            <h2 className="text-2xl font-bold mb-2">Skorun hazirlaniyor...</h2>
+            <p className="text-muted animate-pulse">{loading.resultsLoading[0]}</p>
+          </div>
         </div>
       }
     >

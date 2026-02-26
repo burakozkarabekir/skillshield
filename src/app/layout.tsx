@@ -36,7 +36,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="tr">
-      <body className="antialiased">
+      <body className="antialiased min-h-screen flex flex-col">
         <nav className="border-b border-border px-6 py-4">
           <div className="mx-auto max-w-5xl flex items-center justify-between">
             <a href="/" className="text-lg font-bold tracking-tight">
@@ -58,8 +58,8 @@ export default function RootLayout({
             </div>
           </div>
         </nav>
-        <main>{children}</main>
-        <footer className="border-t border-border px-6 py-12 mt-20">
+        <main className="flex-1">{children}</main>
+        <footer className="border-t border-border px-6 py-12 mt-auto">
           <div className="mx-auto max-w-5xl text-center text-sm text-muted">
             <p>
               O*NET görev verileri, BLS projeksiyonları ve yapay zeka
