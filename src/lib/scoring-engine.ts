@@ -149,6 +149,8 @@ export function calculateScore(
     dimensions,
     skillBreakdown,
     reskillPriorities,
+    jobCategoryId,
+    quizAnswers: answers,
   };
 }
 

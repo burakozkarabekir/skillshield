@@ -97,6 +97,10 @@ export interface ScoringResult {
   skillBreakdown: SkillRisk[];
   /** Reskilling priorities (premium tier) */
   reskillPriorities: ReskillRecommendation[];
+  /** Job category used for scoring (passed through for premium report) */
+  jobCategoryId?: string;
+  /** Original quiz answers (passed through for premium report) */
+  quizAnswers?: QuizAnswer[];
 }
 
 // ─── Job Category Types ─────────────────────────────────────────────────────

@@ -1,4 +1,6 @@
-import { ScoringResult, DimensionScore, SkillRisk, ReskillRecommendation } from "./types";
+import { ScoringResult, DimensionScore, SkillRisk, ReskillRecommendation, QuizAnswer } from "./types";
+import { quizQuestions } from "@/data/quiz-questions";
+import { getToolKitForJob, ToolRecommendation, FreeResource, JobToolKit } from "@/data/tool-recommendations";
 
 /**
  * Premium Report Generator
@@ -333,4 +335,258 @@ function generateCareerOutlook(result: ScoringResult): string {
     return "Kariyer alanın yapay zekadan etkilenecek ama tamamen dönüşmeyecek. Stratejik beceri geliştirme ile güçlü bir konuma geçebilirsin. Yapay zeka araçlarını erken benimseyenler arasında ol — bu seni rakiplerinden ayıracak. Önümüzdeki 12 ay kritik bir pencere.";
   }
   return "Kariyer alanın yapay zekaya karşı güçlü bir konumda. Ancak rehavete kapılma — yapay zeka yetenekleri hızla gelişiyor. Mevcut güçlü yönlerini korurken yapay zeka okuryazarlığını geliştir. Yapay zekayı verimliliğini artırmak için kullan ve alanında 'yapay zeka + insan' kombinasyonunun en iyisi ol.";
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// ENHANCED PREMIUM REPORT — Steps 3-5
+// ═══════════════════════════════════════════════════════════════════════════
+
+// ─── Answer Insight Types ────────────────────────────────────────────────────
+
+export interface AnswerInsight {
+  questionSummary: string;
+  riskImpact: "artiriyor" | "notr" | "azaltiyor";
+  explanation: string;
+  personalTip: string;
+}
+
+// ─── Six Month Roadmap Types ─────────────────────────────────────────────────
+
+export interface MonthlyMilestone {
+  month: number;
+  theme: string;
+  skill: string;
+  tool: string;
+  course: string;
+  milestone: string;
+  weeklyAction: string;
+}
+
+export interface SixMonthRoadmap {
+  title: string;
+  overview: string;
+  months: MonthlyMilestone[];
+}
+
+// ─── Paid Investment Summary ─────────────────────────────────────────────────
+
+export interface PaidInvestmentSummary {
+  totalMonthly: string;
+  mustHave: ToolRecommendation[];
+  niceToHave: ToolRecommendation[];
+  advanced: ToolRecommendation[];
+  roiExplanation: string;
+}
+
+// ─── Enhanced Premium Report ─────────────────────────────────────────────────
+
+export interface EnhancedPremiumReport extends PremiumReport {
+  answerInsights: AnswerInsight[];
+  toolRecommendations: ToolRecommendation[];
+  freeResources: FreeResource[];
+  sixMonthRoadmap: SixMonthRoadmap;
+  paidInvestments: PaidInvestmentSummary;
+}
+
+// ─── Answer Insights Generator ───────────────────────────────────────────────
+
+function generateAnswerInsights(quizAnswers?: QuizAnswer[]): AnswerInsight[] {
+  if (!quizAnswers || quizAnswers.length === 0) return [];
+
+  const insights: AnswerInsight[] = [];
+
+  // Group answers by dimension and find the most impactful ones
+  const dimensionAnswers: Record<string, { score: number; questionText: string; answerText: string; reasoning: string }[]> = {};
+
+  for (const answer of quizAnswers) {
+    const question = quizQuestions.find((q) => q.id === answer.questionId);
+    if (!question) continue;
+
+    const selectedAnswer = question.answers.find((a) => a.id === answer.answerId);
+    if (!selectedAnswer) continue;
+
+    const dim = question.dimension;
+    if (!dimensionAnswers[dim]) dimensionAnswers[dim] = [];
+    dimensionAnswers[dim].push({
+      score: selectedAnswer.score,
+      questionText: question.question,
+      answerText: selectedAnswer.text,
+      reasoning: selectedAnswer.reasoning,
+    });
+  }
+
+  // For each dimension, pick the most impactful 1-2 answers
+  for (const [, answers] of Object.entries(dimensionAnswers)) {
+    // Sort by distance from neutral (50) — most impactful first
+    const sorted = [...answers].sort((a, b) => Math.abs(b.score - 50) - Math.abs(a.score - 50));
+
+    for (const ans of sorted.slice(0, 2)) {
+      const riskImpact: AnswerInsight["riskImpact"] =
+        ans.score >= 65 ? "artiriyor" : ans.score <= 35 ? "azaltiyor" : "notr";
+
+      let personalTip: string;
+      if (riskImpact === "artiriyor") {
+        personalTip = "Bu alanda yapay zeka araclari kullanarak verimliligi artir ve stratejik gorevlere odaklan. Risk azaltma icin asagidaki yol haritasini takip et.";
+      } else if (riskImpact === "azaltiyor") {
+        personalTip = "Bu guclu yonunu korumaya ve derinlestirmeye devam et. Yapay zekanin senin yerine yapmasi zor olan bu beceriyi kariyerinin merkezine koy.";
+      } else {
+        personalTip = "Orta duzeyde bir konumdasin. Kucuk adimlarla bu alani guclendirmek risk profilini iyilestirir.";
+      }
+
+      insights.push({
+        questionSummary: `"${ans.answerText}"`,
+        riskImpact,
+        explanation: ans.reasoning,
+        personalTip,
+      });
+    }
+  }
+
+  // Limit to most impactful 8 insights
+  return insights.slice(0, 8);
+}
+
+// ─── Six Month Roadmap Generator ─────────────────────────────────────────────
+
+function generateSixMonthRoadmap(result: ScoringResult, toolKit: JobToolKit): SixMonthRoadmap {
+  const tools = toolKit.tools;
+  const resources = toolKit.freeResources;
+  const highestRiskDim = [...result.dimensions].sort((a, b) => b.score - a.score)[0];
+  const lowestRiskDim = [...result.dimensions].sort((a, b) => a.score - b.score)[0];
+  const topReskill = result.reskillPriorities[0];
+
+  // Pick tools by priority
+  const mustHaveTool = tools.find((t) => t.priority === "zorunlu") ?? tools[0];
+  const secondTool = tools.find((t) => t.priority === "onerilen") ?? tools[1] ?? mustHaveTool;
+  const advancedTool = tools.find((t) => t.priority === "ileri-seviye") ?? tools[tools.length - 1];
+
+  // Pick courses
+  const course1 = resources[0]?.name ?? "Coursera — AI For Everyone";
+  const course2 = resources[1]?.name ?? "LinkedIn Learning — AI Becerileri";
+  const course3 = resources[2]?.name ?? "Prompt Muhendisligi Rehberi";
+
+  const months: MonthlyMilestone[] = [
+    {
+      month: 1,
+      theme: "AI Temelleri & Ilk Arac",
+      skill: "Yapay zeka okuryazarligi ve temel prompt yazma",
+      tool: mustHaveTool.name,
+      course: course1,
+      milestone: `${mustHaveTool.name} aracini gunluk islerinde kullanmaya basla`,
+      weeklyAction: "Her gun en az 1 gorevi yapay zeka ile tamamla. Prompt kalitesini artir.",
+    },
+    {
+      month: 2,
+      theme: `Risk Azaltma: ${highestRiskDim.label}`,
+      skill: `${highestRiskDim.label} boyutunda savunulabilir becerilere odaklan`,
+      tool: mustHaveTool.name,
+      course: course2,
+      milestone: `${highestRiskDim.label} alanindaki rutin gorevlerin %30'unu AI ile otomatiklestir`,
+      weeklyAction: "Haftada 2 saat yapay zeka araclarini deneyimle. En verimli kullanim alanlarini belirle.",
+    },
+    {
+      month: 3,
+      theme: `Guclu Yonleri Derinlestir: ${lowestRiskDim.label}`,
+      skill: `${lowestRiskDim.label} alanindaki insani becerilerini pekistir`,
+      tool: secondTool.name,
+      course: course3,
+      milestone: `${secondTool.name} aracini is akisina entegre et. Guclu yonlerini belgele.`,
+      weeklyAction: "Insani becerilerini gosteren bir proje veya sorumluluk al. Ikinci araci ogrenmeye basla.",
+    },
+    {
+      month: 4,
+      theme: `Yeni Beceri: ${topReskill?.skill ?? "Stratejik Dusunme"}`,
+      skill: topReskill?.skill ?? "Stratejik dusunme ve problem cozme",
+      tool: secondTool.name,
+      course: topReskill?.resources?.[0] ?? "Coursera — Stratejik Liderlik",
+      milestone: `${topReskill?.skill ?? "Yeni beceri"} alaninda temel yetkinlik kazan`,
+      weeklyAction: `Haftada 3 saat ${topReskill?.skill ?? "yeni beceri"} calismasina ayir. Online kurs tamamla.`,
+    },
+    {
+      month: 5,
+      theme: "Entegrasyon: AI + Insan Is Akisi",
+      skill: "Yapay zekayi is akisina tam entegre etme ve verimlilik olcme",
+      tool: `${mustHaveTool.name} + ${secondTool.name}`,
+      course: "Ucretsiz kaynaklar ve topluluk etkiliesimleri",
+      milestone: "AI araclariyla haftalik 5+ saat kazanc saglayan otomatik is akisi kur",
+      weeklyAction: "Araclari birlestir. Verimlilik olc. Ekiple sonuclari paylas.",
+    },
+    {
+      month: 6,
+      theme: "Kariyer Konumlandirma",
+      skill: "Portfolyo, sertifika ve profesyonel ag genisletme",
+      tool: advancedTool.name,
+      course: "Sektore ozel sertifika programi",
+      milestone: "Yapay zeka destekli yeni kariyer profilini olustur ve paylas",
+      weeklyAction: "LinkedIn profilini guncelle. Sektorel etkinlige katil. Mentor bul veya ol.",
+    },
+  ];
+
+  const overview = result.overallScore >= 60
+    ? "Bu yol haritasi, yuksek risk alanlarini onceliklendirerek seni 6 ay icinde yapay zeka cagina hazir hale getirmeyi hedefliyor. Her ay somut bir hedefe odaklan."
+    : result.overallScore >= 35
+      ? "Bu yol haritasi, mevcut guclu yonlerini korurken risk alanlarini iyilestirmeye odaklaniyor. 6 ay sonunda yapay zekayi rakip degil, guclu bir ortak olarak kullanacaksin."
+      : "Bu yol haritasi, zaten guclu olan kariyer profilini daha da pekistirmeye odaklaniyor. Yapay zeka araclariyla verimliligi artir ve alaninda 'AI + insan' en iyi kombinasyonu ol.";
+
+  return {
+    title: "6 Aylik Kisisel Gelisim Yol Haritasi",
+    overview,
+    months,
+  };
+}
+
+// ─── Paid Investment Summary Generator ───────────────────────────────────────
+
+function generatePaidInvestments(tools: ToolRecommendation[], overallScore: number): PaidInvestmentSummary {
+  const mustHave = tools.filter((t) => t.priority === "zorunlu");
+  const niceToHave = tools.filter((t) => t.priority === "onerilen");
+  const advanced = tools.filter((t) => t.priority === "ileri-seviye");
+
+  // Calculate total monthly for must-have tools
+  let totalMonthly = 0;
+  for (const tool of mustHave) {
+    if (tool.monthlyPrice) {
+      const price = parseFloat(tool.monthlyPrice.replace(/[^0-9.]/g, ""));
+      if (!isNaN(price)) totalMonthly += price;
+    }
+  }
+
+  const roiExplanation = overallScore >= 60
+    ? `Zorunlu araclara aylik ~$${totalMonthly.toFixed(0)} yatirim, yapay zeka otomasyonu riskini azaltarak kariyerini korur. Bu yatirim, beceri kaybi maliyetinin yanininda ihmal edilebilir.`
+    : overallScore >= 35
+      ? `Zorunlu araclara aylik ~$${totalMonthly.toFixed(0)} yatirim, verimliligi artirarak rekabet avantaji saglar. Risk profilini iyilestirmenin en hizli yolu.`
+      : `Zorunlu araclara aylik ~$${totalMonthly.toFixed(0)} yatirim, zaten guclu konumunu daha da pekistirir. Verimliligi artirarak zamanini daha degerli islere yonlendir.`;
+
+  return {
+    totalMonthly: `~$${totalMonthly.toFixed(0)}/ay`,
+    mustHave,
+    niceToHave,
+    advanced,
+    roiExplanation,
+  };
+}
+
+// ─── Enhanced Premium Report Main Generator ──────────────────────────────────
+
+export function generateEnhancedPremiumReport(result: ScoringResult): EnhancedPremiumReport {
+  // Generate base premium report
+  const baseReport = generatePremiumReport(result);
+
+  // Get tool kit for this job category
+  const jobCategoryId = result.jobCategoryId ?? "other";
+  const toolKit = getToolKitForJob(jobCategoryId);
+
+  // Generate new sections
+  const answerInsights = generateAnswerInsights(result.quizAnswers);
+  const sixMonthRoadmap = generateSixMonthRoadmap(result, toolKit);
+  const paidInvestments = generatePaidInvestments(toolKit.tools, result.overallScore);
+
+  return {
+    ...baseReport,
+    answerInsights,
+    toolRecommendations: toolKit.tools,
+    freeResources: toolKit.freeResources,
+    sixMonthRoadmap,
+    paidInvestments,
+  };
 }

@@ -2,8 +2,8 @@ import { NextResponse } from "next/server";
 import { kv, keys } from "@/lib/kv";
 import type { PremiumRecord } from "@/lib/kv";
 import type { ScoringResult } from "@/lib/types";
-import { generatePremiumReport } from "@/lib/premium-report";
-import { renderPremiumPDF } from "@/lib/pdf-report";
+import { generateEnhancedPremiumReport } from "@/lib/premium-report";
+import { renderEnhancedPremiumPDF } from "@/lib/pdf-report";
 
 /**
  * GET /api/premium/report?email=<email>&scoreId=<scoreId>
@@ -42,11 +42,11 @@ export async function GET(request: Request) {
     );
   }
 
-  // Generate premium report
-  const report = generatePremiumReport(scoreResult);
+  // Generate enhanced premium report
+  const report = generateEnhancedPremiumReport(scoreResult);
 
-  // Render PDF
-  const pdfBuffer = await renderPremiumPDF(report);
+  // Render enhanced PDF (5-6 pages)
+  const pdfBuffer = await renderEnhancedPremiumPDF(report);
 
   return new Response(new Uint8Array(pdfBuffer), {
     status: 200,
